@@ -40,6 +40,44 @@
 		EA9A1BE01791BD3D005E9130 /* sample_adv1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BDD1791BD3D005E9130 /* sample_adv1.jpg */; };
 		EA9A1BE11791BD3D005E9130 /* sample_adv2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BDE1791BD3D005E9130 /* sample_adv2.jpg */; };
 		EA9A1BE21791BD3D005E9130 /* sample_adv3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BDF1791BD3D005E9130 /* sample_adv3.jpg */; };
+		EA9A1BE61791BF1B005E9130 /* MSProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BE51791BF1B005E9130 /* MSProductCell.m */; };
+		EA9A1BE81791BF2F005E9130 /* MSProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BE71791BF2F005E9130 /* MSProductCell.xib */; };
+		EA9A1BEB1791C027005E9130 /* sample_product.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BEA1791C027005E9130 /* sample_product.jpg */; };
+		EA9A1BED1791C085005E9130 /* shadowedBgWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BEC1791C084005E9130 /* shadowedBgWhite@2x.png */; };
+		EA9A1C031791C423005E9130 /* NSMutableArray+AddOn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BF01791C423005E9130 /* NSMutableArray+AddOn.m */; };
+		EA9A1C041791C423005E9130 /* NSMutableDictionary+AddOn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BF21791C423005E9130 /* NSMutableDictionary+AddOn.m */; };
+		EA9A1C051791C423005E9130 /* NSObject+BeeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BF41791C423005E9130 /* NSObject+BeeNotification.m */; };
+		EA9A1C061791C423005E9130 /* NSString+GGAddOn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BF61791C423005E9130 /* NSString+GGAddOn.m */; };
+		EA9A1C071791C423005E9130 /* UIButton+GGAddOn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BF81791C423005E9130 /* UIButton+GGAddOn.m */; };
+		EA9A1C081791C423005E9130 /* UILabel+AddOn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BFA1791C423005E9130 /* UILabel+AddOn.m */; };
+		EA9A1C091791C423005E9130 /* UINavigationController+Autorotate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BFC1791C423005E9130 /* UINavigationController+Autorotate.m */; };
+		EA9A1C0A1791C423005E9130 /* UIScrollView+OTS.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BFE1791C423005E9130 /* UIScrollView+OTS.m */; };
+		EA9A1C0B1791C423005E9130 /* UIView+AddOn.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C001791C423005E9130 /* UIView+AddOn.m */; };
+		EA9A1C0C1791C423005E9130 /* UIView+LoadFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C021791C423005E9130 /* UIView+LoadFromNib.m */; };
+		EA9A1C3D1791C477005E9130 /* GGCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C101791C476005E9130 /* GGCache.m */; };
+		EA9A1C411791C477005E9130 /* GGAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C181791C477005E9130 /* GGAlert.m */; };
+		EA9A1C421791C477005E9130 /* GGAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C1A1791C477005E9130 /* GGAnimation.m */; };
+		EA9A1C431791C477005E9130 /* GGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C1C1791C477005E9130 /* GGColor.m */; };
+		EA9A1C441791C477005E9130 /* GGDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C1E1791C477005E9130 /* GGDefine.m */; };
+		EA9A1C471791C477005E9130 /* GGFont.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C241791C477005E9130 /* GGFont.m */; };
+		EA9A1C481791C477005E9130 /* GGImagePool.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C261791C477005E9130 /* GGImagePool.m */; };
+		EA9A1C491791C477005E9130 /* GGLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C281791C477005E9130 /* GGLayout.m */; };
+		EA9A1C4A1791C477005E9130 /* GGNib.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C2A1791C477005E9130 /* GGNib.m */; };
+		EA9A1C4B1791C477005E9130 /* GGOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C2C1791C477005E9130 /* GGOrientation.m */; };
+		EA9A1C4C1791C477005E9130 /* GGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C2E1791C477005E9130 /* GGPath.m */; };
+		EA9A1C4D1791C477005E9130 /* GGPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C301791C477005E9130 /* GGPredicate.m */; };
+		EA9A1C4F1791C477005E9130 /* GGStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C341791C477005E9130 /* GGStringFormatter.m */; };
+		EA9A1C501791C477005E9130 /* GGStringPool.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C361791C477005E9130 /* GGStringPool.m */; };
+		EA9A1C511791C477005E9130 /* GGTableViewExpandHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C381791C477005E9130 /* GGTableViewExpandHelper.m */; };
+		EA9A1C521791C477005E9130 /* GGTagetActionPair.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C3A1791C477005E9130 /* GGTagetActionPair.m */; };
+		EA9A1C531791C477005E9130 /* GGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C3C1791C477005E9130 /* GGUtils.m */; };
+		EA9A1C571791C5C1005E9130 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C561791C5C1005E9130 /* MBProgressHUD.m */; };
+		EA9A1C5F1791C614005E9130 /* bg-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1C591791C614005E9130 /* bg-yellow.png */; };
+		EA9A1C601791C614005E9130 /* bg-yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1C5A1791C614005E9130 /* bg-yellow@2x.png */; };
+		EA9A1C611791C614005E9130 /* dropdown-alert.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1C5B1791C614005E9130 /* dropdown-alert.png */; };
+		EA9A1C621791C614005E9130 /* dropdown-alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1C5C1791C614005E9130 /* dropdown-alert@2x.png */; };
+		EA9A1C631791C614005E9130 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1C5E1791C614005E9130 /* YRDropdownView.m */; };
+		EA9A1C651791C7A4005E9130 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1C641791C7A4005E9130 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +130,74 @@
 		EA9A1BDD1791BD3D005E9130 /* sample_adv1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_adv1.jpg; sourceTree = "<group>"; };
 		EA9A1BDE1791BD3D005E9130 /* sample_adv2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_adv2.jpg; sourceTree = "<group>"; };
 		EA9A1BDF1791BD3D005E9130 /* sample_adv3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_adv3.jpg; sourceTree = "<group>"; };
+		EA9A1BE41791BF1B005E9130 /* MSProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSProductCell.h; sourceTree = "<group>"; };
+		EA9A1BE51791BF1B005E9130 /* MSProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSProductCell.m; sourceTree = "<group>"; };
+		EA9A1BE71791BF2F005E9130 /* MSProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSProductCell.xib; sourceTree = "<group>"; };
+		EA9A1BEA1791C027005E9130 /* sample_product.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_product.jpg; sourceTree = "<group>"; };
+		EA9A1BEC1791C084005E9130 /* shadowedBgWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shadowedBgWhite@2x.png"; sourceTree = "<group>"; };
+		EA9A1BEF1791C423005E9130 /* NSMutableArray+AddOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+AddOn.h"; sourceTree = "<group>"; };
+		EA9A1BF01791C423005E9130 /* NSMutableArray+AddOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+AddOn.m"; sourceTree = "<group>"; };
+		EA9A1BF11791C423005E9130 /* NSMutableDictionary+AddOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+AddOn.h"; sourceTree = "<group>"; };
+		EA9A1BF21791C423005E9130 /* NSMutableDictionary+AddOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+AddOn.m"; sourceTree = "<group>"; };
+		EA9A1BF31791C423005E9130 /* NSObject+BeeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BeeNotification.h"; sourceTree = "<group>"; };
+		EA9A1BF41791C423005E9130 /* NSObject+BeeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BeeNotification.m"; sourceTree = "<group>"; };
+		EA9A1BF51791C423005E9130 /* NSString+GGAddOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GGAddOn.h"; sourceTree = "<group>"; };
+		EA9A1BF61791C423005E9130 /* NSString+GGAddOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GGAddOn.m"; sourceTree = "<group>"; };
+		EA9A1BF71791C423005E9130 /* UIButton+GGAddOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+GGAddOn.h"; sourceTree = "<group>"; };
+		EA9A1BF81791C423005E9130 /* UIButton+GGAddOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+GGAddOn.m"; sourceTree = "<group>"; };
+		EA9A1BF91791C423005E9130 /* UILabel+AddOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+AddOn.h"; sourceTree = "<group>"; };
+		EA9A1BFA1791C423005E9130 /* UILabel+AddOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+AddOn.m"; sourceTree = "<group>"; };
+		EA9A1BFB1791C423005E9130 /* UINavigationController+Autorotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Autorotate.h"; sourceTree = "<group>"; };
+		EA9A1BFC1791C423005E9130 /* UINavigationController+Autorotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Autorotate.m"; sourceTree = "<group>"; };
+		EA9A1BFD1791C423005E9130 /* UIScrollView+OTS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+OTS.h"; sourceTree = "<group>"; };
+		EA9A1BFE1791C423005E9130 /* UIScrollView+OTS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+OTS.m"; sourceTree = "<group>"; };
+		EA9A1BFF1791C423005E9130 /* UIView+AddOn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AddOn.h"; sourceTree = "<group>"; };
+		EA9A1C001791C423005E9130 /* UIView+AddOn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AddOn.m"; sourceTree = "<group>"; };
+		EA9A1C011791C423005E9130 /* UIView+LoadFromNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadFromNib.h"; sourceTree = "<group>"; };
+		EA9A1C021791C423005E9130 /* UIView+LoadFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LoadFromNib.m"; sourceTree = "<group>"; };
+		EA9A1C0F1791C476005E9130 /* GGCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGCache.h; sourceTree = "<group>"; };
+		EA9A1C101791C476005E9130 /* GGCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGCache.m; sourceTree = "<group>"; };
+		EA9A1C171791C477005E9130 /* GGAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAlert.h; sourceTree = "<group>"; };
+		EA9A1C181791C477005E9130 /* GGAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAlert.m; sourceTree = "<group>"; };
+		EA9A1C191791C477005E9130 /* GGAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGAnimation.h; sourceTree = "<group>"; };
+		EA9A1C1A1791C477005E9130 /* GGAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGAnimation.m; sourceTree = "<group>"; };
+		EA9A1C1B1791C477005E9130 /* GGColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGColor.h; sourceTree = "<group>"; };
+		EA9A1C1C1791C477005E9130 /* GGColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGColor.m; sourceTree = "<group>"; };
+		EA9A1C1D1791C477005E9130 /* GGDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDefine.h; sourceTree = "<group>"; };
+		EA9A1C1E1791C477005E9130 /* GGDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDefine.m; sourceTree = "<group>"; };
+		EA9A1C231791C477005E9130 /* GGFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGFont.h; sourceTree = "<group>"; };
+		EA9A1C241791C477005E9130 /* GGFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGFont.m; sourceTree = "<group>"; };
+		EA9A1C251791C477005E9130 /* GGImagePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGImagePool.h; sourceTree = "<group>"; };
+		EA9A1C261791C477005E9130 /* GGImagePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGImagePool.m; sourceTree = "<group>"; };
+		EA9A1C271791C477005E9130 /* GGLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLayout.h; sourceTree = "<group>"; };
+		EA9A1C281791C477005E9130 /* GGLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGLayout.m; sourceTree = "<group>"; };
+		EA9A1C291791C477005E9130 /* GGNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGNib.h; sourceTree = "<group>"; };
+		EA9A1C2A1791C477005E9130 /* GGNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNib.m; sourceTree = "<group>"; };
+		EA9A1C2B1791C477005E9130 /* GGOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGOrientation.h; sourceTree = "<group>"; };
+		EA9A1C2C1791C477005E9130 /* GGOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGOrientation.m; sourceTree = "<group>"; };
+		EA9A1C2D1791C477005E9130 /* GGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPath.h; sourceTree = "<group>"; };
+		EA9A1C2E1791C477005E9130 /* GGPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPath.m; sourceTree = "<group>"; };
+		EA9A1C2F1791C477005E9130 /* GGPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPredicate.h; sourceTree = "<group>"; };
+		EA9A1C301791C477005E9130 /* GGPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPredicate.m; sourceTree = "<group>"; };
+		EA9A1C331791C477005E9130 /* GGStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGStringFormatter.h; sourceTree = "<group>"; };
+		EA9A1C341791C477005E9130 /* GGStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGStringFormatter.m; sourceTree = "<group>"; };
+		EA9A1C351791C477005E9130 /* GGStringPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGStringPool.h; sourceTree = "<group>"; };
+		EA9A1C361791C477005E9130 /* GGStringPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGStringPool.m; sourceTree = "<group>"; };
+		EA9A1C371791C477005E9130 /* GGTableViewExpandHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGTableViewExpandHelper.h; sourceTree = "<group>"; };
+		EA9A1C381791C477005E9130 /* GGTableViewExpandHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGTableViewExpandHelper.m; sourceTree = "<group>"; };
+		EA9A1C391791C477005E9130 /* GGTagetActionPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGTagetActionPair.h; sourceTree = "<group>"; };
+		EA9A1C3A1791C477005E9130 /* GGTagetActionPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGTagetActionPair.m; sourceTree = "<group>"; };
+		EA9A1C3B1791C477005E9130 /* GGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGUtils.h; sourceTree = "<group>"; };
+		EA9A1C3C1791C477005E9130 /* GGUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGUtils.m; sourceTree = "<group>"; };
+		EA9A1C551791C5C1005E9130 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		EA9A1C561791C5C1005E9130 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		EA9A1C591791C614005E9130 /* bg-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-yellow.png"; sourceTree = "<group>"; };
+		EA9A1C5A1791C614005E9130 /* bg-yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-yellow@2x.png"; sourceTree = "<group>"; };
+		EA9A1C5B1791C614005E9130 /* dropdown-alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown-alert.png"; sourceTree = "<group>"; };
+		EA9A1C5C1791C614005E9130 /* dropdown-alert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown-alert@2x.png"; sourceTree = "<group>"; };
+		EA9A1C5D1791C614005E9130 /* YRDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRDropdownView.h; sourceTree = "<group>"; };
+		EA9A1C5E1791C614005E9130 /* YRDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRDropdownView.m; sourceTree = "<group>"; };
+		EA9A1C641791C7A4005E9130 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9A1C651791C7A4005E9130 /* MessageUI.framework in Frameworks */,
 				EA9A1BC317919ED8005E9130 /* QuartzCore.framework in Frameworks */,
 				EA9A1B7F17919769005E9130 /* UIKit.framework in Frameworks */,
 				EA9A1B8117919769005E9130 /* Foundation.framework in Frameworks */,
@@ -112,6 +219,7 @@
 		EA9A1B7217919769005E9130 = {
 			isa = PBXGroup;
 			children = (
+				EA9A1C641791C7A4005E9130 /* MessageUI.framework */,
 				EA9A1BD61791B5AD005E9130 /* Icon@2x.png */,
 				EA9A1BD41791B5A4005E9130 /* Icon.png */,
 				EA9A1B8417919769005E9130 /* MedicalStore */,
@@ -142,6 +250,9 @@
 		EA9A1B8417919769005E9130 /* MedicalStore */ = {
 			isa = PBXGroup;
 			children = (
+				EA9A1C0D1791C476005E9130 /* Utilities */,
+				EA9A1BEE1791C423005E9130 /* Categories */,
+				EA9A1BE31791BED1005E9130 /* TableCells */,
 				EA9A1BC41791AACF005E9130 /* Images */,
 				EA9A1BB217919A44005E9130 /* ViewControllers */,
 				EA9A1B9B179199E7005E9130 /* OpenSource */,
@@ -170,6 +281,8 @@
 		EA9A1B9B179199E7005E9130 /* OpenSource */ = {
 			isa = PBXGroup;
 			children = (
+				EA9A1C581791C614005E9130 /* YRDropdownView */,
+				EA9A1C541791C5C1005E9130 /* MBProgressHUD */,
 				EA9A1BD81791B72D005E9130 /* KASlideShow */,
 				EA9A1B9C179199E7005E9130 /* AKTabBarController */,
 			);
@@ -216,6 +329,7 @@
 		EA9A1BC41791AACF005E9130 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EA9A1BE91791C027005E9130 /* Products */,
 				EA9A1BDC1791BD3D005E9130 /* Advertise */,
 				EA9A1BC51791AACF005E9130 /* Tabbar */,
 			);
@@ -250,6 +364,123 @@
 				EA9A1BDF1791BD3D005E9130 /* sample_adv3.jpg */,
 			);
 			path = Advertise;
+			sourceTree = "<group>";
+		};
+		EA9A1BE31791BED1005E9130 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1BE41791BF1B005E9130 /* MSProductCell.h */,
+				EA9A1BE51791BF1B005E9130 /* MSProductCell.m */,
+				EA9A1BE71791BF2F005E9130 /* MSProductCell.xib */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		EA9A1BE91791C027005E9130 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1BEC1791C084005E9130 /* shadowedBgWhite@2x.png */,
+				EA9A1BEA1791C027005E9130 /* sample_product.jpg */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		EA9A1BEE1791C423005E9130 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1BEF1791C423005E9130 /* NSMutableArray+AddOn.h */,
+				EA9A1BF01791C423005E9130 /* NSMutableArray+AddOn.m */,
+				EA9A1BF11791C423005E9130 /* NSMutableDictionary+AddOn.h */,
+				EA9A1BF21791C423005E9130 /* NSMutableDictionary+AddOn.m */,
+				EA9A1BF31791C423005E9130 /* NSObject+BeeNotification.h */,
+				EA9A1BF41791C423005E9130 /* NSObject+BeeNotification.m */,
+				EA9A1BF51791C423005E9130 /* NSString+GGAddOn.h */,
+				EA9A1BF61791C423005E9130 /* NSString+GGAddOn.m */,
+				EA9A1BF71791C423005E9130 /* UIButton+GGAddOn.h */,
+				EA9A1BF81791C423005E9130 /* UIButton+GGAddOn.m */,
+				EA9A1BF91791C423005E9130 /* UILabel+AddOn.h */,
+				EA9A1BFA1791C423005E9130 /* UILabel+AddOn.m */,
+				EA9A1BFB1791C423005E9130 /* UINavigationController+Autorotate.h */,
+				EA9A1BFC1791C423005E9130 /* UINavigationController+Autorotate.m */,
+				EA9A1BFD1791C423005E9130 /* UIScrollView+OTS.h */,
+				EA9A1BFE1791C423005E9130 /* UIScrollView+OTS.m */,
+				EA9A1BFF1791C423005E9130 /* UIView+AddOn.h */,
+				EA9A1C001791C423005E9130 /* UIView+AddOn.m */,
+				EA9A1C011791C423005E9130 /* UIView+LoadFromNib.h */,
+				EA9A1C021791C423005E9130 /* UIView+LoadFromNib.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		EA9A1C0D1791C476005E9130 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1C0E1791C476005E9130 /* Cache */,
+				EA9A1C171791C477005E9130 /* GGAlert.h */,
+				EA9A1C181791C477005E9130 /* GGAlert.m */,
+				EA9A1C191791C477005E9130 /* GGAnimation.h */,
+				EA9A1C1A1791C477005E9130 /* GGAnimation.m */,
+				EA9A1C1B1791C477005E9130 /* GGColor.h */,
+				EA9A1C1C1791C477005E9130 /* GGColor.m */,
+				EA9A1C1D1791C477005E9130 /* GGDefine.h */,
+				EA9A1C1E1791C477005E9130 /* GGDefine.m */,
+				EA9A1C231791C477005E9130 /* GGFont.h */,
+				EA9A1C241791C477005E9130 /* GGFont.m */,
+				EA9A1C251791C477005E9130 /* GGImagePool.h */,
+				EA9A1C261791C477005E9130 /* GGImagePool.m */,
+				EA9A1C271791C477005E9130 /* GGLayout.h */,
+				EA9A1C281791C477005E9130 /* GGLayout.m */,
+				EA9A1C291791C477005E9130 /* GGNib.h */,
+				EA9A1C2A1791C477005E9130 /* GGNib.m */,
+				EA9A1C2B1791C477005E9130 /* GGOrientation.h */,
+				EA9A1C2C1791C477005E9130 /* GGOrientation.m */,
+				EA9A1C2D1791C477005E9130 /* GGPath.h */,
+				EA9A1C2E1791C477005E9130 /* GGPath.m */,
+				EA9A1C2F1791C477005E9130 /* GGPredicate.h */,
+				EA9A1C301791C477005E9130 /* GGPredicate.m */,
+				EA9A1C331791C477005E9130 /* GGStringFormatter.h */,
+				EA9A1C341791C477005E9130 /* GGStringFormatter.m */,
+				EA9A1C351791C477005E9130 /* GGStringPool.h */,
+				EA9A1C361791C477005E9130 /* GGStringPool.m */,
+				EA9A1C371791C477005E9130 /* GGTableViewExpandHelper.h */,
+				EA9A1C381791C477005E9130 /* GGTableViewExpandHelper.m */,
+				EA9A1C391791C477005E9130 /* GGTagetActionPair.h */,
+				EA9A1C3A1791C477005E9130 /* GGTagetActionPair.m */,
+				EA9A1C3B1791C477005E9130 /* GGUtils.h */,
+				EA9A1C3C1791C477005E9130 /* GGUtils.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EA9A1C0E1791C476005E9130 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1C0F1791C476005E9130 /* GGCache.h */,
+				EA9A1C101791C476005E9130 /* GGCache.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		EA9A1C541791C5C1005E9130 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1C551791C5C1005E9130 /* MBProgressHUD.h */,
+				EA9A1C561791C5C1005E9130 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		EA9A1C581791C614005E9130 /* YRDropdownView */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1C591791C614005E9130 /* bg-yellow.png */,
+				EA9A1C5A1791C614005E9130 /* bg-yellow@2x.png */,
+				EA9A1C5B1791C614005E9130 /* dropdown-alert.png */,
+				EA9A1C5C1791C614005E9130 /* dropdown-alert@2x.png */,
+				EA9A1C5D1791C614005E9130 /* YRDropdownView.h */,
+				EA9A1C5E1791C614005E9130 /* YRDropdownView.m */,
+			);
+			path = YRDropdownView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +550,13 @@
 				EA9A1BE01791BD3D005E9130 /* sample_adv1.jpg in Resources */,
 				EA9A1BE11791BD3D005E9130 /* sample_adv2.jpg in Resources */,
 				EA9A1BE21791BD3D005E9130 /* sample_adv3.jpg in Resources */,
+				EA9A1BE81791BF2F005E9130 /* MSProductCell.xib in Resources */,
+				EA9A1BEB1791C027005E9130 /* sample_product.jpg in Resources */,
+				EA9A1BED1791C085005E9130 /* shadowedBgWhite@2x.png in Resources */,
+				EA9A1C5F1791C614005E9130 /* bg-yellow.png in Resources */,
+				EA9A1C601791C614005E9130 /* bg-yellow@2x.png in Resources */,
+				EA9A1C611791C614005E9130 /* dropdown-alert.png in Resources */,
+				EA9A1C621791C614005E9130 /* dropdown-alert@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +581,36 @@
 				EA9A1BC017919A44005E9130 /* MSCategoryVC.m in Sources */,
 				EA9A1BC117919A44005E9130 /* MSCartVC.m in Sources */,
 				EA9A1BDB1791B72D005E9130 /* KASlideShow.m in Sources */,
+				EA9A1BE61791BF1B005E9130 /* MSProductCell.m in Sources */,
+				EA9A1C031791C423005E9130 /* NSMutableArray+AddOn.m in Sources */,
+				EA9A1C041791C423005E9130 /* NSMutableDictionary+AddOn.m in Sources */,
+				EA9A1C051791C423005E9130 /* NSObject+BeeNotification.m in Sources */,
+				EA9A1C061791C423005E9130 /* NSString+GGAddOn.m in Sources */,
+				EA9A1C071791C423005E9130 /* UIButton+GGAddOn.m in Sources */,
+				EA9A1C081791C423005E9130 /* UILabel+AddOn.m in Sources */,
+				EA9A1C091791C423005E9130 /* UINavigationController+Autorotate.m in Sources */,
+				EA9A1C0A1791C423005E9130 /* UIScrollView+OTS.m in Sources */,
+				EA9A1C0B1791C423005E9130 /* UIView+AddOn.m in Sources */,
+				EA9A1C0C1791C423005E9130 /* UIView+LoadFromNib.m in Sources */,
+				EA9A1C3D1791C477005E9130 /* GGCache.m in Sources */,
+				EA9A1C411791C477005E9130 /* GGAlert.m in Sources */,
+				EA9A1C421791C477005E9130 /* GGAnimation.m in Sources */,
+				EA9A1C431791C477005E9130 /* GGColor.m in Sources */,
+				EA9A1C441791C477005E9130 /* GGDefine.m in Sources */,
+				EA9A1C471791C477005E9130 /* GGFont.m in Sources */,
+				EA9A1C481791C477005E9130 /* GGImagePool.m in Sources */,
+				EA9A1C491791C477005E9130 /* GGLayout.m in Sources */,
+				EA9A1C4A1791C477005E9130 /* GGNib.m in Sources */,
+				EA9A1C4B1791C477005E9130 /* GGOrientation.m in Sources */,
+				EA9A1C4C1791C477005E9130 /* GGPath.m in Sources */,
+				EA9A1C4D1791C477005E9130 /* GGPredicate.m in Sources */,
+				EA9A1C4F1791C477005E9130 /* GGStringFormatter.m in Sources */,
+				EA9A1C501791C477005E9130 /* GGStringPool.m in Sources */,
+				EA9A1C511791C477005E9130 /* GGTableViewExpandHelper.m in Sources */,
+				EA9A1C521791C477005E9130 /* GGTagetActionPair.m in Sources */,
+				EA9A1C531791C477005E9130 /* GGUtils.m in Sources */,
+				EA9A1C571791C5C1005E9130 /* MBProgressHUD.m in Sources */,
+				EA9A1C631791C614005E9130 /* YRDropdownView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
