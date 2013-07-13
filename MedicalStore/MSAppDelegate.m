@@ -8,15 +8,41 @@
 
 #import "MSAppDelegate.h"
 
+#import "AKTabBarController.h"
+#import "MSHomeVC.h"
+#import "MSCategoryVC.h"
+#import "MSCartVC.h"
+#import "MSAccountVC.h"
+
 @implementation MSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // If the device is an iPad, we make it taller.
+    _tabBarController = [[AKTabBarController alloc] initWithTabBarHeight:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 70 : 50];
+    [_tabBarController setMinimumHeightToDisplayTitle:40.0];
+
+    
+
+    NSMutableArray *vcs = [NSMutableArray array];
+    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSHomeVC new]]];
+    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCategoryVC new]]];
+    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCartVC new]]];
+    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSAccountVC new]]];
+    
+    [_tabBarController setViewControllers:vcs];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor darkGrayColor]];
+    
+    _window.rootViewController = _tabBarController;
+    [_window makeKeyAndVisible];
     return YES;
+    
+    
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

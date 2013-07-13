@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class AKTabBarController;
+
 @interface MSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, strong) AKTabBarController *tabBarController;
 @end
