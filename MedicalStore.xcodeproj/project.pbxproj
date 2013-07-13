@@ -36,6 +36,10 @@
 		EA9A1BD11791B591005E9130 /* flixel-app-icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BCE1791B591005E9130 /* flixel-app-icon1.png */; };
 		EA9A1BD51791B5A4005E9130 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BD41791B5A4005E9130 /* Icon.png */; };
 		EA9A1BD71791B5AD005E9130 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BD61791B5AD005E9130 /* Icon@2x.png */; };
+		EA9A1BDB1791B72D005E9130 /* KASlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BDA1791B72D005E9130 /* KASlideShow.m */; };
+		EA9A1BE01791BD3D005E9130 /* sample_adv1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BDD1791BD3D005E9130 /* sample_adv1.jpg */; };
+		EA9A1BE11791BD3D005E9130 /* sample_adv2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BDE1791BD3D005E9130 /* sample_adv2.jpg */; };
+		EA9A1BE21791BD3D005E9130 /* sample_adv3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1BDF1791BD3D005E9130 /* sample_adv3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +87,11 @@
 		EA9A1BCE1791B591005E9130 /* flixel-app-icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flixel-app-icon1.png"; sourceTree = "<group>"; };
 		EA9A1BD41791B5A4005E9130 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		EA9A1BD61791B5AD005E9130 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		EA9A1BD91791B72D005E9130 /* KASlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASlideShow.h; sourceTree = "<group>"; };
+		EA9A1BDA1791B72D005E9130 /* KASlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASlideShow.m; sourceTree = "<group>"; };
+		EA9A1BDD1791BD3D005E9130 /* sample_adv1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_adv1.jpg; sourceTree = "<group>"; };
+		EA9A1BDE1791BD3D005E9130 /* sample_adv2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_adv2.jpg; sourceTree = "<group>"; };
+		EA9A1BDF1791BD3D005E9130 /* sample_adv3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_adv3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +170,7 @@
 		EA9A1B9B179199E7005E9130 /* OpenSource */ = {
 			isa = PBXGroup;
 			children = (
+				EA9A1BD81791B72D005E9130 /* KASlideShow */,
 				EA9A1B9C179199E7005E9130 /* AKTabBarController */,
 			);
 			path = OpenSource;
@@ -206,6 +216,7 @@
 		EA9A1BC41791AACF005E9130 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EA9A1BDC1791BD3D005E9130 /* Advertise */,
 				EA9A1BC51791AACF005E9130 /* Tabbar */,
 			);
 			path = Images;
@@ -220,6 +231,25 @@
 				EA9A1BC91791AACF005E9130 /* tab_home@2x.png */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		EA9A1BD81791B72D005E9130 /* KASlideShow */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1BD91791B72D005E9130 /* KASlideShow.h */,
+				EA9A1BDA1791B72D005E9130 /* KASlideShow.m */,
+			);
+			path = KASlideShow;
+			sourceTree = "<group>";
+		};
+		EA9A1BDC1791BD3D005E9130 /* Advertise */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A1BDD1791BD3D005E9130 /* sample_adv1.jpg */,
+				EA9A1BDE1791BD3D005E9130 /* sample_adv2.jpg */,
+				EA9A1BDF1791BD3D005E9130 /* sample_adv3.jpg */,
+			);
+			path = Advertise;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +316,9 @@
 				EA9A1BD11791B591005E9130 /* flixel-app-icon1.png in Resources */,
 				EA9A1BD51791B5A4005E9130 /* Icon.png in Resources */,
 				EA9A1BD71791B5AD005E9130 /* Icon@2x.png in Resources */,
+				EA9A1BE01791BD3D005E9130 /* sample_adv1.jpg in Resources */,
+				EA9A1BE11791BD3D005E9130 /* sample_adv2.jpg in Resources */,
+				EA9A1BE21791BD3D005E9130 /* sample_adv3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +342,7 @@
 				EA9A1BBF17919A44005E9130 /* MSAccountVC.m in Sources */,
 				EA9A1BC017919A44005E9130 /* MSCategoryVC.m in Sources */,
 				EA9A1BC117919A44005E9130 /* MSCartVC.m in Sources */,
+				EA9A1BDB1791B72D005E9130 /* KASlideShow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
