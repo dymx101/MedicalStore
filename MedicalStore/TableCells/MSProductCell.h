@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblSubTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblMarketPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddCart;
 
 @end

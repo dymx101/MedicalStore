@@ -100,6 +100,7 @@
     if (cell == nil)
     {
         cell = [MSProductCell viewFromNibWithOwner:self];
+        cell.btnAddCart.hidden = YES;
     }
     
     return cell;

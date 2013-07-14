@@ -17,6 +17,7 @@
 #import "GGDefine.h"
 #import "GGAnimation.h"
 #import "GGColor.h"
+#import "MSBaseModel.h"
 
 #import "NSMutableArray+AddOn.h"
 #import "UIView+AddOn.h"
@@ -24,7 +25,6 @@
 #import "UIButton+GGAddOn.h"
 
 #import "MBProgressHUD.h"
-
 #import "GGAlert.h"
 
 #import "MSBaseVC.h"

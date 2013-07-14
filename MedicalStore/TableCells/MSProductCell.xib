@@ -12,6 +12,7 @@
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
+			<string>IBUIButton</string>
 			<string>IBUIImageView</string>
 			<string>IBUILabel</string>
 			<string>IBUITableViewCell</string>
@@ -165,9 +166,10 @@
 									<object class="IBUILabel" id="122019833">
 										<reference key="NSNextResponder" ref="895942852"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{180, 40}, {110, 21}}</string>
+										<string key="NSFrame">{{152, 40}, {110, 21}}</string>
 										<reference key="NSSuperview" ref="895942852"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="1018428072"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -184,6 +186,43 @@
 										<reference key="IBUIFontDescription" ref="504503745"/>
 										<reference key="IBUIFont" ref="1044120124"/>
 										<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+									</object>
+									<object class="IBUIButton" id="1018428072">
+										<reference key="NSNextResponder" ref="895942852"/>
+										<int key="NSvFlags">289</int>
+										<string key="NSFrame">{{266, 34}, {32, 32}}</string>
+										<reference key="NSSuperview" ref="895942852"/>
+										<reference key="NSWindow"/>
+										<string key="NSReuseIdentifierKey">_NS:9</string>
+										<bool key="IBUIOpaque">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIContentHorizontalAlignment">0</int>
+										<int key="IBUIContentVerticalAlignment">0</int>
+										<object class="NSColor" key="IBUIHighlightedTitleColor">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MQA</bytes>
+										</object>
+										<object class="NSColor" key="IBUINormalTitleColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+										</object>
+										<object class="NSColor" key="IBUINormalTitleShadowColor">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MC41AA</bytes>
+										</object>
+										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">addRed@2x.png</string>
+										</object>
+										<object class="IBUIFontDescription" key="IBUIFontDescription">
+											<int key="type">2</int>
+											<double key="pointSize">15</double>
+										</object>
+										<object class="NSFont" key="IBUIFont">
+											<string key="NSName">Helvetica-Bold</string>
+											<double key="NSSize">15</double>
+											<int key="NSfFlags">16</int>
+										</object>
 									</object>
 								</array>
 								<string key="NSFrame">{{5, 5}, {310, 70}}</string>
@@ -271,6 +310,14 @@
 					</object>
 					<int key="connectionID">17</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">btnAddCart</string>
+						<reference key="source" ref="1017800965"/>
+						<reference key="destination" ref="1018428072"/>
+					</object>
+					<int key="connectionID">20</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -309,6 +356,7 @@
 							<reference ref="1059420562"/>
 							<reference ref="873180514"/>
 							<reference ref="122019833"/>
+							<reference ref="1018428072"/>
 						</array>
 						<reference key="parent" ref="1017800965"/>
 						<string key="objectName">viewContent</string>
@@ -349,6 +397,12 @@
 						<reference key="parent" ref="895942852"/>
 						<string key="objectName">lblPrice</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">19</int>
+						<reference key="object" ref="1018428072"/>
+						<reference key="parent" ref="895942852"/>
+						<string key="objectName">btnAddCart</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -357,6 +411,7 @@
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.CustomClassName">MSProductCell</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -369,7 +424,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">17</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -377,6 +432,7 @@
 					<string key="className">MSProductCell</string>
 					<string key="superclassName">UITableViewCell</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="btnAddCart">UIButton</string>
 						<string key="ivLog">UIImageView</string>
 						<string key="lblMarketPrice">UILabel</string>
 						<string key="lblPrice">UILabel</string>
@@ -385,6 +441,10 @@
 						<string key="viewContent">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="btnAddCart">
+							<string key="name">btnAddCart</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="ivLog">
 							<string key="name">ivLog</string>
 							<string key="candidateClassName">UIImageView</string>
@@ -421,10 +481,10 @@
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">sample_product.jpg</string>
-			<string key="NS.object.0">{200, 200}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="addRed@2x.png">{64, 64}</string>
+			<string key="sample_product.jpg">{200, 200}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

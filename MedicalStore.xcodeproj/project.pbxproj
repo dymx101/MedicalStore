@@ -80,6 +80,11 @@
 		EA9A1C651791C7A4005E9130 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1C641791C7A4005E9130 /* MessageUI.framework */; };
 		EAA618FF1792FEFA007C6915 /* MSProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA618FD1792FEFA007C6915 /* MSProductDetailVC.m */; };
 		EAA619001792FEFA007C6915 /* MSProductDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA618FE1792FEFA007C6915 /* MSProductDetailVC.xib */; };
+		EAABC45E17933327001661FC /* orangeBtnBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAABC45D17933327001661FC /* orangeBtnBg@2x.png */; };
+		EAABC460179333C3001661FC /* addRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAABC45F179333C3001661FC /* addRed@2x.png */; };
+		EAABC46417933500001661FC /* MSBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAABC46317933500001661FC /* MSBaseModel.m */; };
+		EAABC46717933537001661FC /* MSProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EAABC46617933537001661FC /* MSProduct.m */; };
+		EAABC46A17933671001661FC /* MSDummyDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = EAABC46917933671001661FC /* MSDummyDataFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -203,6 +208,14 @@
 		EAA618FC1792FEFA007C6915 /* MSProductDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSProductDetailVC.h; sourceTree = "<group>"; };
 		EAA618FD1792FEFA007C6915 /* MSProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSProductDetailVC.m; sourceTree = "<group>"; };
 		EAA618FE1792FEFA007C6915 /* MSProductDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSProductDetailVC.xib; sourceTree = "<group>"; };
+		EAABC45D17933327001661FC /* orangeBtnBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeBtnBg@2x.png"; sourceTree = "<group>"; };
+		EAABC45F179333C3001661FC /* addRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addRed@2x.png"; sourceTree = "<group>"; };
+		EAABC46217933500001661FC /* MSBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBaseModel.h; sourceTree = "<group>"; };
+		EAABC46317933500001661FC /* MSBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBaseModel.m; sourceTree = "<group>"; };
+		EAABC46517933537001661FC /* MSProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSProduct.h; sourceTree = "<group>"; };
+		EAABC46617933537001661FC /* MSProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSProduct.m; sourceTree = "<group>"; };
+		EAABC46817933671001661FC /* MSDummyDataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDummyDataFactory.h; sourceTree = "<group>"; };
+		EAABC46917933671001661FC /* MSDummyDataFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDummyDataFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +268,7 @@
 		EA9A1B8417919769005E9130 /* MedicalStore */ = {
 			isa = PBXGroup;
 			children = (
+				EAABC461179334D7001661FC /* Model */,
 				EA9A1C0D1791C476005E9130 /* Utilities */,
 				EA9A1BEE1791C423005E9130 /* Categories */,
 				EA9A1BE31791BED1005E9130 /* TableCells */,
@@ -387,6 +401,8 @@
 		EA9A1BE91791C027005E9130 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				EAABC45F179333C3001661FC /* addRed@2x.png */,
+				EAABC45D17933327001661FC /* orangeBtnBg@2x.png */,
 				EA9A1BEC1791C084005E9130 /* shadowedBgWhite@2x.png */,
 				EA9A1BEA1791C027005E9130 /* sample_product.jpg */,
 			);
@@ -491,6 +507,19 @@
 			path = YRDropdownView;
 			sourceTree = "<group>";
 		};
+		EAABC461179334D7001661FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAABC46217933500001661FC /* MSBaseModel.h */,
+				EAABC46317933500001661FC /* MSBaseModel.m */,
+				EAABC46517933537001661FC /* MSProduct.h */,
+				EAABC46617933537001661FC /* MSProduct.m */,
+				EAABC46817933671001661FC /* MSDummyDataFactory.h */,
+				EAABC46917933671001661FC /* MSDummyDataFactory.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -566,6 +595,8 @@
 				EA9A1C611791C614005E9130 /* dropdown-alert.png in Resources */,
 				EA9A1C621791C614005E9130 /* dropdown-alert@2x.png in Resources */,
 				EAA619001792FEFA007C6915 /* MSProductDetailVC.xib in Resources */,
+				EAABC45E17933327001661FC /* orangeBtnBg@2x.png in Resources */,
+				EAABC460179333C3001661FC /* addRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +652,9 @@
 				EA9A1C571791C5C1005E9130 /* MBProgressHUD.m in Sources */,
 				EA9A1C631791C614005E9130 /* YRDropdownView.m in Sources */,
 				EAA618FF1792FEFA007C6915 /* MSProductDetailVC.m in Sources */,
+				EAABC46417933500001661FC /* MSBaseModel.m in Sources */,
+				EAABC46717933537001661FC /* MSProduct.m in Sources */,
+				EAABC46A17933671001661FC /* MSDummyDataFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
