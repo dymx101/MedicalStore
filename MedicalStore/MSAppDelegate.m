@@ -34,7 +34,7 @@
     
     [_tabBarController setViewControllers:vcs];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor darkGrayColor]];
+    [[UINavigationBar appearance] setTintColor:GGSharedColor.darkRed];
     
     _window.rootViewController = _tabBarController;
     [_window makeKeyAndVisible];

@@ -10,7 +10,7 @@
 
 #import "KASlideShow.h"
 #import "MSProductCell.h"
-
+#import "MSProductDetailVC.h"
 
 @interface MSHomeVC () <KASlideShowDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -102,6 +102,12 @@
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80.f;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MSProductDetailVC *vc = [MSProductDetailVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - KASlideShow delegate

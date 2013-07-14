@@ -174,6 +174,20 @@ static MBProgressHUD * hud;
     self.frame = thisRc;
 }
 
+-(void)setX:(float)x
+{
+    CGRect thisRc = self.frame;
+    thisRc.origin.x = x;
+    self.frame = thisRc;
+}
+
+-(void)setY:(float)y
+{
+    CGRect thisRc = self.frame;
+    thisRc.origin.y = y;
+    self.frame = thisRc;
+}
+
 -(void)setHeight:(float)aNewHeight
 {
     CGRect thisRc = self.frame;
