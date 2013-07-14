@@ -44,6 +44,8 @@
         [_contentView removeFromSuperview];
         _contentView = contentView;
         _contentView.frame = CGRectMake(0, 0, self.bounds.size.width, self.tabBar.frame.origin.y);
+        DLog(@"%@", NSStringFromCGRect(_contentView.frame));
+        //_contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:_contentView];
         [self sendSubviewToBack:_contentView];
         [_contentView setNeedsDisplay];

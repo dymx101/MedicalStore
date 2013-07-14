@@ -75,8 +75,32 @@
 {
     CGRect rect = [self frameWithOrientation:anOrient rect:[self screenFrame]];
     rect.size.height -= [self statusHeight];
-   
+    
     return rect;
+}
+
+
+
++(CGRect)pageRectWithLayoutElement:(EMSLayoutElement)aLayoutElement
+{
+    CGRect theRect = [UIScreen mainScreen].bounds;
+    
+    if (aLayoutElement & kLayoutElementStatusBar)
+    {
+        theRect.size.height -= 20;
+    }
+    
+    if (aLayoutElement & kLayoutElementNaviBar)
+    {
+        theRect.size.height -= 44;
+    }
+    
+    if (aLayoutElement & kLayoutElementTabBar)
+    {
+        theRect.size.height -= 49;
+    }
+    
+    return theRect;
 }
 
 @end

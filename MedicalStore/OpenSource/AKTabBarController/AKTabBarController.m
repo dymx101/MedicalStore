@@ -284,6 +284,7 @@ typedef enum {
 
 - (void)setSelectedViewController:(UIViewController *)selectedViewController
 {
+    DLog(@"selected tab vc:%@", NSStringFromClass([selectedViewController class]));
     UIViewController *previousSelectedViewController = _selectedViewController;
     NSInteger selectedIndex = [self.viewControllers indexOfObject:selectedViewController];
     

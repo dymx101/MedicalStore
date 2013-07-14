@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad
 {
+    //self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
@@ -37,17 +38,6 @@
     [label sizeToFit];
     label.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
     [self.view addSubview:label];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
 }
 
 @end

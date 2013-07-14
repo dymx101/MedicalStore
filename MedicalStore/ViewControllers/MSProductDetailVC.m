@@ -8,6 +8,7 @@
 
 #import "MSProductDetailVC.h"
 
+
 @interface MSProductDetailVC ()
 @property (weak, nonatomic) IBOutlet UIScrollView *svContent;
 @property (weak, nonatomic) IBOutlet UIImageView *ivLogo;

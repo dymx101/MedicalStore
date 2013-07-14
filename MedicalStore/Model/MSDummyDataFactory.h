@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class MSProduct;
+
 @interface MSDummyDataFactory : NSObject
 AS_SINGLETON(MSDummyDataFactory)
 
 -(NSArray *)productStore;
-
+-(MSProduct *)randomProduct;
 @end

@@ -15,3 +15,5 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) AKTabBarController *tabBarController;
 @end
+
+#define SharedAppDelegate      ((MSAppDelegate *)[UIApplication sharedApplication].delegate)

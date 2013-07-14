@@ -27,7 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"购物车";
-        _rowCount = 5;
+        _rowCount = 10;
     }
     return self;
 }
@@ -50,8 +50,8 @@
 
 -(void)_initLayout
 {
-    CGSize viewportSize = self.view.bounds.size;
-    _tvProducts = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, viewportSize.width, viewportSize.height) style:UITableViewStylePlain];
+    CGRect viewportRc = [GGLayout pageRectWithLayoutElement:kLayoutElementAll];
+    _tvProducts = [[UITableView alloc] initWithFrame:viewportRc style:UITableViewStylePlain];
     [self.view addSubview:_tvProducts];
     _tvProducts.delegate = self;
     _tvProducts.dataSource = self;
