@@ -30,9 +30,12 @@
     
     //[vcs addObject:[MSHomeVC new]];
     [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[[MSHomeVC alloc] init]]];
-    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCategoryVC new]]];
-    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCartVC new]]];
-    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSAccountVC new]]];
+    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[[MSHomeVC alloc] init]]];
+    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[[MSHomeVC alloc] init]]];
+    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[[MSHomeVC alloc] init]]];
+//    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCategoryVC new]]];
+//    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCartVC new]]];
+//    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSAccountVC new]]];
     
     _tabBarController.viewControllers = vcs;
     

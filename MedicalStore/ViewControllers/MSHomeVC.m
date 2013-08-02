@@ -44,7 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"开心药房";
+    self.navigationItem.title = @"区直部门";
     
     [self _initLayout];
 }
@@ -54,40 +54,43 @@
     CGRect viewportRect = [GGLayout pageRectWithLayoutElement:kLayoutElementAll];
     float offY = 0.f;
     
-    _viewSlideShow = [[KASlideShow alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-    [self.view addSubview:_viewSlideShow];
+//    _viewSlideShow = [[KASlideShow alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+//    [self.view addSubview:_viewSlideShow];
+//    
+//    _viewSlideShow.delegate = self;
+//    [_viewSlideShow setDelay:3]; 
+//    [_viewSlideShow setTransitionDuration:.5f]; 
+//    [_viewSlideShow setTransitionType:KASlideShowTransitionSlide];
+//    [_viewSlideShow setImagesContentMode:UIViewContentModeScaleAspectFill]; 
+//    [_viewSlideShow addImagesFromResources:@[@"sample_adv1.jpg",@"sample_adv2.jpg",@"sample_adv3.jpg"]];
+//    [_viewSlideShow start];
+//    
+//    // add efect
+//    UIView *shadowView = [[UIView alloc] initWithFrame:_viewSlideShow.frame];
+//    shadowView.backgroundColor = GGSharedColor.orangeGageinDark;
+//    [self.view insertSubview:shadowView belowSubview:_viewSlideShow];
+//    
+//    shadowView.layer.shadowOffset = CGSizeMake(0, 2);
+//    shadowView.layer.shadowColor = GGSharedColor.black.CGColor;
+//    shadowView.layer.shadowOpacity = .3f;
+//    shadowView.layer.shadowRadius = 3.f;
+//    shadowView.clipsToBounds = NO;
+//    
+//    // table view
+//    offY = CGRectGetMaxY(_viewSlideShow.frame);
     
-    _viewSlideShow.delegate = self;
-    [_viewSlideShow setDelay:3]; 
-    [_viewSlideShow setTransitionDuration:.5f]; 
-    [_viewSlideShow setTransitionType:KASlideShowTransitionSlide];
-    [_viewSlideShow setImagesContentMode:UIViewContentModeScaleAspectFill]; 
-    [_viewSlideShow addImagesFromResources:@[@"sample_adv1.jpg",@"sample_adv2.jpg",@"sample_adv3.jpg"]];
-    [_viewSlideShow start];
-    
-    // add efect
-    UIView *shadowView = [[UIView alloc] initWithFrame:_viewSlideShow.frame];
-    shadowView.backgroundColor = GGSharedColor.orangeGageinDark;
-    [self.view insertSubview:shadowView belowSubview:_viewSlideShow];
-    
-    shadowView.layer.shadowOffset = CGSizeMake(0, 2);
-    shadowView.layer.shadowColor = GGSharedColor.black.CGColor;
-    shadowView.layer.shadowOpacity = .3f;
-    shadowView.layer.shadowRadius = 3.f;
-    shadowView.clipsToBounds = NO;
-    
-    // table view
-    offY = CGRectGetMaxY(_viewSlideShow.frame);
     CGRect tvRc = CGRectMake(0, offY, 320, viewportRect.size.height - offY);
     _tvProducts = [[UITableView alloc] initWithFrame:tvRc style:UITableViewStylePlain];
     //_tvProducts.autoresizingMask = UIViewAutoresizingFixLeftTop;
 
-    [self.view insertSubview:_tvProducts belowSubview:shadowView];
+//    [self.view insertSubview:_tvProducts belowSubview:shadowView];
+    [self.view addSubview:_tvProducts];
     _tvProducts.delegate = self;
     _tvProducts.dataSource = self;
     _tvProducts.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     _tvProducts.backgroundColor = GGSharedColor.silver;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
