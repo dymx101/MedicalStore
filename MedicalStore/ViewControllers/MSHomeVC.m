@@ -16,80 +16,53 @@
 #import "MSProduct.h"
 #import "MSAppDelegate.h"
 
-@interface MSHomeVC () <KASlideShowDelegate, UITableViewDelegate, UITableViewDataSource>
+#import <QuartzCore/QuartzCore.h>
+#import <objc/message.h>
 
+@interface MSHomeVC ()
+{
+    BOOL _mayUsePrivateAPI;
+}
 @end
 
 @implementation MSHomeVC
 {
-    KASlideShow         *_viewSlideShow;
-    UITableView         *_tvProducts;
-    NSMutableArray      *_products;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if ((self = [super initWithSectionIndexes:showSectionIndexes])) {
         self.title = @"";
-        _products = [NSMutableArray array];
-        for (int i = 0; i < 10; i++)
-        {
-            [_products addObject:[MSDummyDataFactory sharedInstance].randomProduct];
-        }
     }
+    
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.navigationItem.title = @"区直部门";
     
     [self _initLayout];
 }
 
 -(void)_initLayout
 {
-    CGRect viewportRect = [GGLayout pageRectWithLayoutElement:kLayoutElementAll];
-    float offY = 0.f;
-    
-//    _viewSlideShow = [[KASlideShow alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-//    [self.view addSubview:_viewSlideShow];
-//    
-//    _viewSlideShow.delegate = self;
-//    [_viewSlideShow setDelay:3]; 
-//    [_viewSlideShow setTransitionDuration:.5f]; 
-//    [_viewSlideShow setTransitionType:KASlideShowTransitionSlide];
-//    [_viewSlideShow setImagesContentMode:UIViewContentModeScaleAspectFill]; 
-//    [_viewSlideShow addImagesFromResources:@[@"sample_adv1.jpg",@"sample_adv2.jpg",@"sample_adv3.jpg"]];
-//    [_viewSlideShow start];
-//    
-//    // add efect
-//    UIView *shadowView = [[UIView alloc] initWithFrame:_viewSlideShow.frame];
-//    shadowView.backgroundColor = GGSharedColor.orangeGageinDark;
-//    [self.view insertSubview:shadowView belowSubview:_viewSlideShow];
-//    
-//    shadowView.layer.shadowOffset = CGSizeMake(0, 2);
-//    shadowView.layer.shadowColor = GGSharedColor.black.CGColor;
-//    shadowView.layer.shadowOpacity = .3f;
-//    shadowView.layer.shadowRadius = 3.f;
-//    shadowView.clipsToBounds = NO;
-//    
-//    // table view
-//    offY = CGRectGetMaxY(_viewSlideShow.frame);
-    
-    CGRect tvRc = CGRectMake(0, offY, 320, viewportRect.size.height - offY);
-    _tvProducts = [[UITableView alloc] initWithFrame:tvRc style:UITableViewStylePlain];
-    //_tvProducts.autoresizingMask = UIViewAutoresizingFixLeftTop;
+    if (_mayUsePrivateAPI) {
+        self.tableView.tableHeaderView = self.searchBar;
+        
+        SEL setPinsTableHeaderViewSelector = NSSelectorFromString(@"_setPinsTableHeaderView:");
+        if ([self.tableView respondsToSelector:setPinsTableHeaderViewSelector]) {
+            objc_msgSend(self.tableView, setPinsTableHeaderViewSelector, YES);
+        }
+    } else {
+        [self.tableView addSubview:self.searchBar];
+        
+        self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.searchBar.bounds), 0, 0, 0);
+        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(CGRectGetHeight(self.searchBar.bounds), 0, 0, 0);
+    }
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.backgroundColor = GGSharedColor.silverLight;
 
-//    [self.view insertSubview:_tvProducts belowSubview:shadowView];
-    [self.view addSubview:_tvProducts];
-    _tvProducts.delegate = self;
-    _tvProducts.dataSource = self;
-    _tvProducts.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    _tvProducts.backgroundColor = GGSharedColor.silver;
     
 }
 
@@ -101,16 +74,56 @@
 }
 
 
+- (void)scrollTableViewToSearchBarAnimated:(BOOL)animated
+{
+    // The search bar is always visible, so just scroll to the first section
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:NSNotFound inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == self.tableView) { // Don't do anything if the search table view get's scrolled
+        if (!_mayUsePrivateAPI) {
+            if (scrollView.contentOffset.y < -CGRectGetHeight(self.searchBar.bounds)) {
+                self.searchBar.layer.zPosition = 0; // Make sure the search bar is below the section index titles control when scrolling up
+            } else {
+                self.searchBar.layer.zPosition = 1; // Make sure the search bar is above the section headers when scrolling down
+            }
+            
+            CGRect searchBarFrame = self.searchBar.frame;
+            searchBarFrame.origin.y = MAX(scrollView.contentOffset.y, -CGRectGetHeight(searchBarFrame));
+            
+            self.searchBar.frame = searchBarFrame;
+        }
+    }
+}
+
+#pragma mark - Overrides
+
+/*
+ Override these methods so that the search symbol isn't shown in the section index titles control.
+ */
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    if (tableView == self.tableView && self.showSectionIndexes) {
+        return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles]; // Don't show the search symbol
+    } else {
+        return nil;
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
+}
+
 - (NSString *)tabImageName
 {
 	return @"tab_category";
 }
 
 #pragma mark - UITableViewDataSource
--(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _products.count;
-}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -118,6 +131,16 @@
     if (cell == nil)
     {
         cell = [MSProductCell viewFromNibWithOwner:self];
+    }
+    
+    if (tableView == self.tableView) {
+        if (self.showSectionIndexes) {
+            cell.lblTitle.text = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        } else {
+            cell.lblTitle.text = [self.famousPersons objectAtIndex:indexPath.row];
+        }
+    } else {
+        cell.lblTitle.text = [self.filteredPersons objectAtIndex:indexPath.row];
     }
     
     return cell;
@@ -136,14 +159,14 @@
 
 #pragma mark - KASlideShow delegate
 
-- (void)kaSlideShowDidNext
-{
-    //NSLog(@"kaSlideShowDidNext");
-}
-
--(void)kaSlideShowDidPrevious
-{
-    //NSLog(@"kaSlideShowDidPrevious");
-}
+//- (void)kaSlideShowDidNext
+//{
+//    //NSLog(@"kaSlideShowDidNext");
+//}
+//
+//-(void)kaSlideShowDidPrevious
+//{
+//    //NSLog(@"kaSlideShowDidPrevious");
+//}
 
 @end

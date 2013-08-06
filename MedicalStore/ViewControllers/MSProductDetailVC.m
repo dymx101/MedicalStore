@@ -14,8 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivLogo;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblSubTitle;
-@property (weak, nonatomic) IBOutlet UILabel *lblMarketPrice;
-@property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 @property (weak, nonatomic) IBOutlet UIView *viewBrief;
 @property (weak, nonatomic) IBOutlet UILabel *lblBrief;
 @property (weak, nonatomic) IBOutlet UIView *viewHead;
