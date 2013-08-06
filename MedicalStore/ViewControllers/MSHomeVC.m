@@ -31,7 +31,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"首页";
+        self.title = @"";
         _products = [NSMutableArray array];
         for (int i = 0; i < 10; i++)
         {
@@ -44,7 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"区直部门";
+//    self.navigationItem.title = @"区直部门";
     
     [self _initLayout];
 }
@@ -103,7 +103,7 @@
 
 - (NSString *)tabImageName
 {
-	return @"tab_home";
+	return @"tab_category";
 }
 
 #pragma mark - UITableViewDataSource

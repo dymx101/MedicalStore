@@ -29,10 +29,25 @@
     NSMutableArray *vcs = [NSMutableArray array];
     
     //[vcs addObject:[MSHomeVC new]];
-    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[[MSHomeVC alloc] init]]];
-    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[[MSHomeVC alloc] init]]];
-    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[[MSHomeVC alloc] init]]];
-    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[[MSHomeVC alloc] init]]];
+    MSHomeVC * homeVc1 = [MSHomeVC new];
+    homeVc1.navigationItem.title = @"区直部门";
+    UINavigationController * nc1  = [[UINavigationController alloc] initWithRootViewController:homeVc1];
+    
+    MSHomeVC * homeVc2 = [MSHomeVC new];
+    homeVc2.navigationItem.title = @"市直部门";
+    UINavigationController * nc2  = [[UINavigationController alloc] initWithRootViewController:homeVc2];
+    
+    MSHomeVC * homeVc3 = [MSHomeVC new];
+    homeVc3.navigationItem.title = @"县直部门";
+    UINavigationController * nc3  = [[UINavigationController alloc] initWithRootViewController:homeVc3];
+    
+    MSHomeVC * homeVc4 = [MSHomeVC new];
+    homeVc4.navigationItem.title = @"乡直部门";
+    UINavigationController * nc4  = [[UINavigationController alloc] initWithRootViewController:homeVc4];
+    
+    [vcs addObjectsFromArray:@[nc1,nc2,nc3,nc4]];
+    
+
 //    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCategoryVC new]]];
 //    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCartVC new]]];
 //    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSAccountVC new]]];
