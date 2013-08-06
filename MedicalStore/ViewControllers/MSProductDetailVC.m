@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"商品详情";
+    self.navigationItem.title = @"联系人";
     
     [_viewHead applyEffectShadowAndBorder];
     [_viewBrief applyEffectShadowAndBorder];

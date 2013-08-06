@@ -27,6 +27,9 @@
         NSString *path = [[NSBundle mainBundle] pathForResource:@"Persons" ofType:@"plist"];
         _famousPersons = [[NSArray alloc] initWithContentsOfFile:path];
         
+        path = [[NSBundle mainBundle] pathForResource:@"Posts" ofType:@"plist"];
+        _posts = [[NSArray alloc]initWithContentsOfFile:path];
+        
         if (showSectionIndexes) {
             UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
             

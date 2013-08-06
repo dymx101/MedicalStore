@@ -136,11 +136,14 @@
     if (tableView == self.tableView) {
         if (self.showSectionIndexes) {
             cell.lblTitle.text = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+            cell.lblSubTitle.text = [self.posts objectAtIndex:[self.famousPersons indexOfObject:cell.lblTitle.text]];
         } else {
             cell.lblTitle.text = [self.famousPersons objectAtIndex:indexPath.row];
+            cell.lblSubTitle.text = [self.posts objectAtIndex:indexPath.row];
         }
     } else {
         cell.lblTitle.text = [self.filteredPersons objectAtIndex:indexPath.row];
+        cell.lblSubTitle.text = [self.posts objectAtIndex:indexPath.row];
     }
     
     return cell;

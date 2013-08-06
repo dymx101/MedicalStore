@@ -23,6 +23,7 @@ static NSString * const kFKRSearchBarTableViewControllerDefaultTableViewCellIden
 
 
 @property(nonatomic, copy) NSArray *famousPersons;
+@property(nonatomic, copy) NSArray *posts;
 @property(nonatomic, copy) NSArray *sections;
 
 @property(nonatomic, copy) NSArray *filteredPersons;
