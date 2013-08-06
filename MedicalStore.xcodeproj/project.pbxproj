@@ -11,6 +11,7 @@
 		4CD6A00717B145D600B66739 /* Persons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6A00617B145D600B66739 /* Persons.plist */; };
 		4CD6A00917B1550600B66739 /* Posts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6A00817B1550600B66739 /* Posts.plist */; };
 		4CD6A00B17B15A3500B66739 /* sample_product2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6A00A17B15A3400B66739 /* sample_product2.jpg */; };
+		4CD6A00D17B15F4400B66739 /* btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6A00C17B15F4300B66739 /* btn@2x.png */; };
 		EA9A1B7F17919769005E9130 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B7E17919769005E9130 /* UIKit.framework */; };
 		EA9A1B8117919769005E9130 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B8017919769005E9130 /* Foundation.framework */; };
 		EA9A1B8317919769005E9130 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B8217919769005E9130 /* CoreGraphics.framework */; };
@@ -111,6 +112,7 @@
 		4CD6A00617B145D600B66739 /* Persons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Persons.plist; sourceTree = "<group>"; };
 		4CD6A00817B1550600B66739 /* Posts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Posts.plist; sourceTree = "<group>"; };
 		4CD6A00A17B15A3400B66739 /* sample_product2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_product2.jpg; sourceTree = "<group>"; };
+		4CD6A00C17B15F4300B66739 /* btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn@2x.png"; sourceTree = "<group>"; };
 		EA9A1B7B17919769005E9130 /* MedicalStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9A1B7E17919769005E9130 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA9A1B8017919769005E9130 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -457,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				EAABC45F179333C3001661FC /* addRed@2x.png */,
+				4CD6A00C17B15F4300B66739 /* btn@2x.png */,
 				EAABC45D17933327001661FC /* orangeBtnBg@2x.png */,
 				EA9A1BEC1791C084005E9130 /* shadowedBgWhite@2x.png */,
 				4CD6A00A17B15A3400B66739 /* sample_product2.jpg */,
@@ -692,6 +695,7 @@
 				4CD6A00717B145D600B66739 /* Persons.plist in Resources */,
 				4CD6A00917B1550600B66739 /* Posts.plist in Resources */,
 				4CD6A00B17B15A3500B66739 /* sample_product2.jpg in Resources */,
+				4CD6A00D17B15F4400B66739 /* btn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +796,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -807,6 +812,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -823,6 +829,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -831,6 +838,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -839,11 +847,13 @@
 		EA9A1B991791976A005E9130 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MedicalStore/MedicalStore-Prefix.pch";
 				INFOPLIST_FILE = "MedicalStore/MedicalStore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -851,11 +861,13 @@
 		EA9A1B9A1791976A005E9130 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MedicalStore/MedicalStore-Prefix.pch";
 				INFOPLIST_FILE = "MedicalStore/MedicalStore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
