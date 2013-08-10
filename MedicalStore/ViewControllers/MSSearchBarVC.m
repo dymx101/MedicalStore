@@ -69,7 +69,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)-130) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)) style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -85,29 +85,6 @@
     self.searchDisplayController.searchResultsDataSource = self;
     self.searchDisplayController.searchResultsDelegate = self;
     self.searchDisplayController.delegate = self;
-    
-    UILabel * labelShow = [[UILabel alloc] initWithFrame:CGRectMake(0,  CGRectGetHeight(self.view.bounds)-130, 320, 10)];
-
-    
-    [labelShow setBackgroundColor:[UIColor yellowColor]];
-    [labelShow sizeToFit];
-    CGRect frame = labelShow.frame;
-    frame.origin.x = 320;
-    labelShow.frame = frame;
-    
-    [UIView beginAnimations:@"testAnimation" context:NULL];
-    [UIView setAnimationDuration:8.8f];
-    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationRepeatAutoreverses:NO];
-    [UIView setAnimationRepeatCount:999999];
-    
-    frame = labelShow.frame;
-    frame.origin.x = -frame.size.width;
-    labelShow.frame = frame;
-    [UIView commitAnimations];
-    
-    [self.view addSubview:labelShow];
 }
 
 - (void)viewDidAppear:(BOOL)animated

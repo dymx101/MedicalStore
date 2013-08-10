@@ -194,6 +194,9 @@ Stuff; \
 _Pragma("clang diagnostic pop") \
 } while (0)
 
+#define PATH_OF_APP_HOME    NSHomeDirectory()
+#define PATH_OF_TEMP        NSTemporaryDirectory()
+#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
 //
 @interface GGDefine : NSObject
