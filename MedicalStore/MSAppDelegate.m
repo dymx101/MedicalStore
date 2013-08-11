@@ -11,6 +11,7 @@
 #import "AKTabBarController.h"
 #import "MSHomeVC.h"
 #import "MSNavigationController.h"
+#import "GGLeftDrawerVC.h"
 
 @implementation MSAppDelegate
 
@@ -27,22 +28,22 @@
     
     //[vcs addObject:[MSHomeVC new]];
     MSHomeVC * homeVc1 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
-    homeVc1.navigationItem.title = @"区直部门";
+    homeVc1.navigationItem.title = @"区'四大家'领导";
     homeVc1.MSTabImageName = @"tab_account";
     UINavigationController * nc1  = [[UINavigationController alloc] initWithRootViewController:homeVc1];
     
     MSHomeVC * homeVc2 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
-    homeVc2.navigationItem.title = @"市直部门";
+    homeVc2.navigationItem.title = @"区直部门";
     homeVc2.MSTabImageName = @"tab_cart";
     UINavigationController * nc2  = [[UINavigationController alloc] initWithRootViewController:homeVc2];
     
     MSHomeVC * homeVc3 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
-    homeVc3.navigationItem.title = @"县直部门";
+    homeVc3.navigationItem.title = @"乡镇开发区";
     homeVc3.MSTabImageName = @"tab_home";
     UINavigationController * nc3  = [[UINavigationController alloc] initWithRootViewController:homeVc3];
     
     MSHomeVC * homeVc4 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
-    homeVc4.navigationItem.title = @"乡直部门";
+    homeVc4.navigationItem.title = @"学校医院";
     homeVc4.MSTabImageName = @"tab_home";
     UINavigationController * nc4  = [[UINavigationController alloc] initWithRootViewController:homeVc4];
     
@@ -57,7 +58,25 @@
     
     [[UINavigationBar appearance] setTintColor:GGSharedColor.darkRed];
     
-    _window.rootViewController = _tabBarController;
+    UINavigationController * root = [[UINavigationController alloc] initWithRootViewController:_tabBarController
+                                     ];
+    [root.navigationBar setHidden:YES];
+    
+    UIViewController *leftDrawerVC = [[GGLeftDrawerVC alloc] init];
+    
+    _drawerVC = [[MMDrawerController alloc] initWithCenterViewController:root rightDrawerViewController:leftDrawerVC];
+    
+    [_drawerVC setMaximumLeftDrawerWidth:100];
+    [_drawerVC setMaximumRightDrawerWidth:200];
+    [_drawerVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [_drawerVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    //    [self setupViewControllers];
+    //    self.window.rootViewController = _tabBarController;
+    self.window.rootViewController = _drawerVC;
+    
+    
+//    _window.rootViewController = _tabBarController;
     [_window makeKeyAndVisible];
     return YES;
 }

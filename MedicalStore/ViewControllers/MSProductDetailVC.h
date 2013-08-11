@@ -13,4 +13,9 @@
 @property(nonatomic,strong) NSString *lblTString;
 @property(nonatomic,strong) NSString *lblSTString;
 
+
+-(IBAction)m1:(id)sender;
+-(IBAction)m2:(id)sender;
+-(IBAction)m3:(id)sender;
+-(IBAction)m4:(id)sender;
 @end

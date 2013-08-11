@@ -32,6 +32,7 @@
 {
     if ((self = [super initWithSectionIndexes:showSectionIndexes])) {
         self.title = @"";
+        [self setMenuButton];;
     }
     
     return self;
@@ -64,6 +65,16 @@
 
     
 }
+
+/**
+ * 功能:左键设菜单
+ */
+-(void)setMenuButton
+{
+    UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setRightBarButtonItem:leftDrawerButton animated:YES];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -174,5 +185,11 @@
 //{
 //    //NSLog(@"kaSlideShowDidPrevious");
 //}
+
+
+#pragma mark - Button Handlers
+-(void)leftDrawerButtonPress:(id)sender{
+    [SharedAppDelegate.drawerVC toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+}
 
 @end

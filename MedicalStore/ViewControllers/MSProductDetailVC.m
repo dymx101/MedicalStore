@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivLogo;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblSubTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblTelTitle;
 @property (weak, nonatomic) IBOutlet UIView *viewBrief;
 @property (weak, nonatomic) IBOutlet UILabel *lblBrief;
 @property (weak, nonatomic) IBOutlet UIView *viewHead;
@@ -44,5 +45,24 @@
     [_ivLogo applyEffectRoundRectSilverBorder];
 }
 
+-(IBAction)m1:(id)sender
+{
+    NSLog(@"method_1");
+}
 
+
+-(IBAction)m2:(id)sender
+{
+    NSLog(@"method_2");
+}
+
+-(IBAction)m3:(id)sender
+{
+    NSLog(@"method_3");
+}
+
+-(IBAction)m4:(id)sender
+{
+    NSLog(@"method_4");
+}
 @end

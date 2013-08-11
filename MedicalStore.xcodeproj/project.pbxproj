@@ -52,6 +52,15 @@
 		4CDBDD0517B5FA9500682F21 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0417B5FA9500682F21 /* libsqlite3.dylib */; };
 		4CDBDD0717B5FAD400682F21 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0617B5FAD400682F21 /* MobileCoreServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		4CDBDD0917B5FAE000682F21 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0817B5FAE000682F21 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		4CDBDD0D17B773E000682F21 /* GGLeftDrawerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD0B17B773E000682F21 /* GGLeftDrawerVC.m */; };
+		4CDBDD0E17B773E000682F21 /* GGLeftDrawerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CDBDD0C17B773E000682F21 /* GGLeftDrawerVC.xib */; };
+		4CDBDD1517B7778300682F21 /* GGProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD1017B7777F00682F21 /* GGProfileVC.m */; };
+		4CDBDD1617B7778300682F21 /* GGProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CDBDD1117B7777F00682F21 /* GGProfileVC.xib */; };
+		4CDBDD1717B7778300682F21 /* GGSettingCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD1317B7778100682F21 /* GGSettingCenterVC.m */; };
+		4CDBDD1817B7778300682F21 /* GGSettingCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CDBDD1417B7778200682F21 /* GGSettingCenterVC.xib */; };
+		4CDBDD1B17B7781900682F21 /* GGArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD1A17B7781900682F21 /* GGArchive.m */; };
+		4CDBDD1E17B7788E00682F21 /* GGUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD1D17B7788E00682F21 /* GGUserDefault.m */; };
+		4CDBDD2117B77DBF00682F21 /* GGPhoneMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD2017B77DBD00682F21 /* GGPhoneMask.m */; };
 		EA9A1B7F17919769005E9130 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B7E17919769005E9130 /* UIKit.framework */; };
 		EA9A1B8117919769005E9130 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B8017919769005E9130 /* Foundation.framework */; };
 		EA9A1B8317919769005E9130 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B8217919769005E9130 /* CoreGraphics.framework */; };
@@ -231,6 +240,21 @@
 		4CDBDD0417B5FA9500682F21 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4CDBDD0617B5FAD400682F21 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4CDBDD0817B5FAE000682F21 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4CDBDD0A17B773E000682F21 /* GGLeftDrawerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLeftDrawerVC.h; sourceTree = "<group>"; };
+		4CDBDD0B17B773E000682F21 /* GGLeftDrawerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGLeftDrawerVC.m; sourceTree = "<group>"; };
+		4CDBDD0C17B773E000682F21 /* GGLeftDrawerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGLeftDrawerVC.xib; sourceTree = "<group>"; };
+		4CDBDD0F17B7777E00682F21 /* GGProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGProfileVC.h; sourceTree = "<group>"; };
+		4CDBDD1017B7777F00682F21 /* GGProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGProfileVC.m; sourceTree = "<group>"; };
+		4CDBDD1117B7777F00682F21 /* GGProfileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGProfileVC.xib; sourceTree = "<group>"; };
+		4CDBDD1217B7778100682F21 /* GGSettingCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSettingCenterVC.h; sourceTree = "<group>"; };
+		4CDBDD1317B7778100682F21 /* GGSettingCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSettingCenterVC.m; sourceTree = "<group>"; };
+		4CDBDD1417B7778200682F21 /* GGSettingCenterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGSettingCenterVC.xib; sourceTree = "<group>"; };
+		4CDBDD1917B7781900682F21 /* GGArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGArchive.h; sourceTree = "<group>"; };
+		4CDBDD1A17B7781900682F21 /* GGArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGArchive.m; sourceTree = "<group>"; };
+		4CDBDD1C17B7788E00682F21 /* GGUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GGUserDefault.h; path = MedicalStore/ViewControllers/GGUserDefault.h; sourceTree = SOURCE_ROOT; };
+		4CDBDD1D17B7788E00682F21 /* GGUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GGUserDefault.m; path = MedicalStore/ViewControllers/GGUserDefault.m; sourceTree = SOURCE_ROOT; };
+		4CDBDD1F17B77DBC00682F21 /* GGPhoneMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPhoneMask.h; sourceTree = "<group>"; };
+		4CDBDD2017B77DBD00682F21 /* GGPhoneMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPhoneMask.m; sourceTree = "<group>"; };
 		EA9A1B7B17919769005E9130 /* MedicalStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9A1B7E17919769005E9130 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA9A1B8017919769005E9130 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -631,6 +655,17 @@
 		EA9A1BB217919A44005E9130 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4CDBDD1F17B77DBC00682F21 /* GGPhoneMask.h */,
+				4CDBDD2017B77DBD00682F21 /* GGPhoneMask.m */,
+				4CDBDD0F17B7777E00682F21 /* GGProfileVC.h */,
+				4CDBDD1017B7777F00682F21 /* GGProfileVC.m */,
+				4CDBDD1117B7777F00682F21 /* GGProfileVC.xib */,
+				4CDBDD1217B7778100682F21 /* GGSettingCenterVC.h */,
+				4CDBDD1317B7778100682F21 /* GGSettingCenterVC.m */,
+				4CDBDD1417B7778200682F21 /* GGSettingCenterVC.xib */,
+				4CDBDD0A17B773E000682F21 /* GGLeftDrawerVC.h */,
+				4CDBDD0B17B773E000682F21 /* GGLeftDrawerVC.m */,
+				4CDBDD0C17B773E000682F21 /* GGLeftDrawerVC.xib */,
 				EA9A1BB317919A44005E9130 /* MSBaseVC.h */,
 				EA9A1BB417919A44005E9130 /* MSBaseVC.m */,
 				EA9A1BB517919A44005E9130 /* MSHomeVC.h */,
@@ -755,6 +790,10 @@
 				EA9A1C241791C477005E9130 /* GGFont.m */,
 				EA9A1C251791C477005E9130 /* GGImagePool.h */,
 				EA9A1C261791C477005E9130 /* GGImagePool.m */,
+				4CDBDD1C17B7788E00682F21 /* GGUserDefault.h */,
+				4CDBDD1D17B7788E00682F21 /* GGUserDefault.m */,
+				4CDBDD1917B7781900682F21 /* GGArchive.h */,
+				4CDBDD1A17B7781900682F21 /* GGArchive.m */,
 				EA9A1C271791C477005E9130 /* GGLayout.h */,
 				EA9A1C281791C477005E9130 /* GGLayout.m */,
 				EA9A1C291791C477005E9130 /* GGNib.h */,
@@ -943,6 +982,9 @@
 				4CD6A00917B1550600B66739 /* Posts.plist in Resources */,
 				4CD6A00B17B15A3500B66739 /* sample_product2.jpg in Resources */,
 				4CD6A00D17B15F4400B66739 /* btn@2x.png in Resources */,
+				4CDBDD0E17B773E000682F21 /* GGLeftDrawerVC.xib in Resources */,
+				4CDBDD1617B7778300682F21 /* GGProfileVC.xib in Resources */,
+				4CDBDD1817B7778300682F21 /* GGSettingCenterVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,6 +1092,12 @@
 				4CD6A08B17B5EFB900B66739 /* UIViewController+MMDrawerController.m in Sources */,
 				4CD6A08E17B5F29E00B66739 /* GGDataModel.m in Sources */,
 				4CD6A09317B5F40B00B66739 /* GTMBase64.m in Sources */,
+				4CDBDD0D17B773E000682F21 /* GGLeftDrawerVC.m in Sources */,
+				4CDBDD1517B7778300682F21 /* GGProfileVC.m in Sources */,
+				4CDBDD1717B7778300682F21 /* GGSettingCenterVC.m in Sources */,
+				4CDBDD1B17B7781900682F21 /* GGArchive.m in Sources */,
+				4CDBDD1E17B7788E00682F21 /* GGUserDefault.m in Sources */,
+				4CDBDD2117B77DBF00682F21 /* GGPhoneMask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
