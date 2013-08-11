@@ -9,4 +9,6 @@
 
 @interface MSHomeVC : MSSearchBarVC
 
+@property(nonatomic,strong) NSString * MSTabImageName;
+
 @end

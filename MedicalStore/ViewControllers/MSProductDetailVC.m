@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIView *viewBrief;
 @property (weak, nonatomic) IBOutlet UILabel *lblBrief;
 @property (weak, nonatomic) IBOutlet UIView *viewHead;
-
 @end
 
 @implementation MSProductDetailVC
@@ -36,6 +35,9 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"联系人";
+    
+    self.lblTitle.text = _lblTString;
+    self.lblSubTitle.text = _lblSTString;
     
     [_viewHead applyEffectShadowAndBorder];
     [_viewBrief applyEffectShadowAndBorder];

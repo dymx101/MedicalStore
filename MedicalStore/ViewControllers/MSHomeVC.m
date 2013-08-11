@@ -23,11 +23,10 @@
 {
     BOOL _mayUsePrivateAPI;
 }
+
 @end
 
 @implementation MSHomeVC
-{
-}
 
 - (id)initWithSectionIndexes:(BOOL)showSectionIndexes
 {
@@ -120,7 +119,7 @@
 
 - (NSString *)tabImageName
 {
-	return @"tab_category";
+	return _MSTabImageName;
 }
 
 #pragma mark - UITableViewDataSource
@@ -157,6 +156,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MSProductDetailVC *vc = [MSProductDetailVC new];
+    
+    vc.lblTString = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    vc.lblSTString = [self.posts objectAtIndex:[self.famousPersons indexOfObject:vc.lblTString]];
+
     [self.navigationController pushViewController:vc animated:YES];
 }
 

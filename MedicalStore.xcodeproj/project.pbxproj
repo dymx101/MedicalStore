@@ -50,8 +50,8 @@
 		4CD6A09317B5F40B00B66739 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6A09117B5F40B00B66739 /* GTMBase64.m */; };
 		4CD6A09517B5F99E00B66739 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD6A09417B5F99D00B66739 /* libsqlite3.dylib */; };
 		4CDBDD0517B5FA9500682F21 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0417B5FA9500682F21 /* libsqlite3.dylib */; };
-		4CDBDD0717B5FAD400682F21 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0617B5FAD400682F21 /* MobileCoreServices.framework */; };
-		4CDBDD0917B5FAE000682F21 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0817B5FAE000682F21 /* SystemConfiguration.framework */; };
+		4CDBDD0717B5FAD400682F21 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0617B5FAD400682F21 /* MobileCoreServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		4CDBDD0917B5FAE000682F21 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0817B5FAE000682F21 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		EA9A1B7F17919769005E9130 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B7E17919769005E9130 /* UIKit.framework */; };
 		EA9A1B8117919769005E9130 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B8017919769005E9130 /* Foundation.framework */; };
 		EA9A1B8317919769005E9130 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B8217919769005E9130 /* CoreGraphics.framework */; };
@@ -522,8 +522,6 @@
 		EA9A1B7217919769005E9130 = {
 			isa = PBXGroup;
 			children = (
-				4CDBDD0817B5FAE000682F21 /* SystemConfiguration.framework */,
-				4CDBDD0617B5FAD400682F21 /* MobileCoreServices.framework */,
 				4CD6A09417B5F99D00B66739 /* libsqlite3.dylib */,
 				EA9A1BD61791B5AD005E9130 /* Icon@2x.png */,
 				EA9A1BD41791B5A4005E9130 /* Icon.png */,
@@ -545,6 +543,8 @@
 			isa = PBXGroup;
 			children = (
 				4CDBDD0417B5FA9500682F21 /* libsqlite3.dylib */,
+				4CDBDD0817B5FAE000682F21 /* SystemConfiguration.framework */,
+				4CDBDD0617B5FAD400682F21 /* MobileCoreServices.framework */,
 				EAABC49A17933AF5001661FC /* MapKit.framework */,
 				EAABC49817933AEB001661FC /* ImageIO.framework */,
 				EA9A1C641791C7A4005E9130 /* MessageUI.framework */,
