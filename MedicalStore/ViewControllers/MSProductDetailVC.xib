@@ -68,7 +68,7 @@
 										<string key="NSFrame">{{183, 10}, {100, 70}}</string>
 										<reference key="NSSuperview" ref="890265412"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="840871209"/>
+										<reference key="NSNextKeyView" ref="453430283"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -102,10 +102,10 @@
 									<object class="IBUILabel" id="91106236">
 										<reference key="NSNextResponder" ref="890265412"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{218, 83}, {45, 22}}</string>
+										<string key="NSFrame">{{228, 83}, {45, 22}}</string>
 										<reference key="NSSuperview" ref="890265412"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="421118756"/>
+										<reference key="NSNextKeyView" ref="1020709362"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -151,7 +151,7 @@
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
 										<int key="IBUITextAlignment">1</int>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="5112228">
+										<object class="IBUIFontDescription" key="IBUIFontDescription">
 											<string key="name">HelveticaNeue-Medium</string>
 											<string key="family">Helvetica Neue</string>
 											<int key="traits">0</int>
@@ -201,10 +201,10 @@
 											<int key="NSfFlags">16</int>
 										</object>
 									</object>
-									<object class="IBUILabel" id="840871209">
+									<object class="IBUILabel" id="453430283">
 										<reference key="NSNextResponder" ref="890265412"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{188, 83}, {42, 21}}</string>
+										<string key="NSFrame">{{199, 83}, {42, 21}}</string>
 										<reference key="NSSuperview" ref="890265412"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="91106236"/>
@@ -214,15 +214,24 @@
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText">职务：</string>
+										<string key="IBUIText">职务</string>
 										<reference key="IBUITextColor" ref="961026160"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
-										<reference key="IBUIFontDescription" ref="5112228"/>
-										<reference key="IBUIFont" ref="994392049"/>
+										<object class="IBUIFontDescription" key="IBUIFontDescription" id="149537969">
+											<string key="name">HelveticaNeue-Bold</string>
+											<string key="family">Helvetica Neue</string>
+											<int key="traits">2</int>
+											<double key="pointSize">13</double>
+										</object>
+										<object class="NSFont" key="IBUIFont" id="1049689860">
+											<string key="NSName">HelveticaNeue-Bold</string>
+											<double key="NSSize">13</double>
+											<int key="NSfFlags">16</int>
+										</object>
 										<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 									</object>
-									<object class="IBUILabel" id="421118756">
+									<object class="IBUILabel" id="1020709362">
 										<reference key="NSNextResponder" ref="890265412"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{20, 124}, {32, 21}}</string>
@@ -239,8 +248,8 @@
 										<reference key="IBUITextColor" ref="961026160"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
-										<reference key="IBUIFontDescription" ref="5112228"/>
-										<reference key="IBUIFont" ref="994392049"/>
+										<reference key="IBUIFontDescription" ref="149537969"/>
+										<reference key="IBUIFont" ref="1049689860"/>
 										<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 									</object>
 								</array>
@@ -523,10 +532,10 @@
 							<reference ref="509280755"/>
 							<reference ref="973237353"/>
 							<reference ref="957205846"/>
-							<reference ref="840871209"/>
 							<reference ref="91106236"/>
-							<reference ref="421118756"/>
+							<reference ref="1020709362"/>
 							<reference ref="825810709"/>
+							<reference ref="453430283"/>
 						</array>
 						<reference key="parent" ref="334684131"/>
 						<string key="objectName">viewHead</string>
@@ -587,12 +596,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">38</int>
-						<reference key="object" ref="840871209"/>
+						<reference key="object" ref="453430283"/>
 						<reference key="parent" ref="890265412"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">39</int>
-						<reference key="object" ref="421118756"/>
+						<reference key="object" ref="1020709362"/>
 						<reference key="parent" ref="890265412"/>
 					</object>
 				</array>
