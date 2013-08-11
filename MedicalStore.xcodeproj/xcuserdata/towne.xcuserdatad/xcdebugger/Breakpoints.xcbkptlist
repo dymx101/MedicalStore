@@ -20,26 +20,39 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MedicalStore/ViewControllers/GGLeftDrawerVC.m"
-         timestampString = "397901977.888491"
+         filePath = "MedicalStore/ViewControllers/MSFavoritesListVC.m"
+         timestampString = "397913533.571923"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
-         landmarkName = "-settingCenter:"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
+         landmarkName = "-setMenuButton"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MedicalStore/ViewControllers/GGLeftDrawerVC.m"
-         timestampString = "397911133.128347"
+         filePath = "MedicalStore/ViewControllers/MSFavoritesListVC.m"
+         timestampString = "397913594.13375"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
-         landmarkName = "-settingCenter:"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "MedicalStore/ViewControllers/MSFavoritesListVC.m"
+         timestampString = "397913594.13375"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "26"
+         endingLineNumber = "26"
+         landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -10,6 +10,8 @@
 #import "MSAppDelegate.h"
 #import "GGSettingCenterVC.h"
 #import "AKTabBarController.h"
+#import "MSHomeVC.h"
+#import "MSFavoritesListVC.h"
 
 @interface GGLeftDrawerVC ()
 
@@ -40,10 +42,15 @@
     
     UINavigationController *centerVC = (UINavigationController *)[SharedAppDelegate.drawerVC centerViewController];
     
-//    GGClueReportVC *vc = [GGClueReportVC new];
-//    GGCluesVC *vc = [GGCluesVC new];
-//    [centerVC pushViewController:vc animated:YES];
+    [centerVC.navigationBar setHidden:NO];
+    
+    MSFavoritesListVC *FavoritVc = [[MSFavoritesListVC alloc] initWithSectionIndexes:YES];
+ 
+    FavoritVc.navigationItem.title = @"收藏列表";
+    
+    [centerVC pushViewController:FavoritVc animated:YES];
 }
+
 
 #pragma mark - 设置中心
 -(IBAction)settingCenter:(id)sender

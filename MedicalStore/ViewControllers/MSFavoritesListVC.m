@@ -1,47 +1,38 @@
 //
-//  FirstViewController.m
-//  AKTabBar Example
+//  MSFavoritesListVC.m
+//  MedicalStore
 //
-//  Created by Ali KARAGOZ on 04/05/12.
-//  Copyright (c) 2012 Ali Karagoz. All rights reserved.
+//  Created by towne on 13-8-11.
+//  Copyright (c) 2013年 Dong Yiming. All rights reserved.
 //
 
-#import "MSHomeVC.h"
-
-#import "KASlideShow.h"
+#import "MSFavoritesListVC.h"
 #import "MSProductCell.h"
 #import "MSProductDetailVC.h"
 
-#import "MSDummyDataFactory.h"
-#import "MSProduct.h"
-#import "MSAppDelegate.h"
-
-#import <QuartzCore/QuartzCore.h>
-#import <objc/message.h>
-
-@interface MSHomeVC ()
+@interface MSFavoritesListVC ()
 {
     BOOL _mayUsePrivateAPI;
 }
-
 @end
 
-@implementation MSHomeVC
+@implementation MSFavoritesListVC
 
-- (id)initWithSectionIndexes:(BOOL)showSectionIndexes
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if ((self = [super initWithSectionIndexes:showSectionIndexes])) {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
         self.title = @"";
-        [self setMenuButton];;
     }
-    
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self setMenuButton];
+	// Do any additional setup after loading the view.
     [self _initLayout];
 }
 
@@ -69,10 +60,9 @@
  */
 -(void)setMenuButton
 {
-    UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setRightBarButtonItem:leftDrawerButton animated:YES];
+    UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -126,11 +116,6 @@
     return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
 }
 
-- (NSString *)tabImageName
-{
-	return _MSTabImageName;
-}
-
 #pragma mark - UITableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,26 +153,19 @@
     
     vc.lblTString = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     vc.lblSTString = [self.posts objectAtIndex:[self.famousPersons indexOfObject:vc.lblTString]];
-
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-#pragma mark - KASlideShow delegate
-
-//- (void)kaSlideShowDidNext
-//{
-//    //NSLog(@"kaSlideShowDidNext");
-//}
-//
-//-(void)kaSlideShowDidPrevious
-//{
-//    //NSLog(@"kaSlideShowDidPrevious");
-//}
-
-
-#pragma mark - Button Handlers
 -(void)leftDrawerButtonPress:(id)sender{
-    [SharedAppDelegate.drawerVC toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

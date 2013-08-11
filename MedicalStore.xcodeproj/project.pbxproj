@@ -61,6 +61,7 @@
 		4CDBDD1B17B7781900682F21 /* GGArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD1A17B7781900682F21 /* GGArchive.m */; };
 		4CDBDD1E17B7788E00682F21 /* GGUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD1D17B7788E00682F21 /* GGUserDefault.m */; };
 		4CDBDD2117B77DBF00682F21 /* GGPhoneMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD2017B77DBD00682F21 /* GGPhoneMask.m */; };
+		4CDBDD2417B7ABCF00682F21 /* MSFavoritesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD2317B7ABCE00682F21 /* MSFavoritesListVC.m */; };
 		EA9A1B7F17919769005E9130 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B7E17919769005E9130 /* UIKit.framework */; };
 		EA9A1B8117919769005E9130 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B8017919769005E9130 /* Foundation.framework */; };
 		EA9A1B8317919769005E9130 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A1B8217919769005E9130 /* CoreGraphics.framework */; };
@@ -255,6 +256,8 @@
 		4CDBDD1D17B7788E00682F21 /* GGUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GGUserDefault.m; path = MedicalStore/ViewControllers/GGUserDefault.m; sourceTree = SOURCE_ROOT; };
 		4CDBDD1F17B77DBC00682F21 /* GGPhoneMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPhoneMask.h; sourceTree = "<group>"; };
 		4CDBDD2017B77DBD00682F21 /* GGPhoneMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPhoneMask.m; sourceTree = "<group>"; };
+		4CDBDD2217B7ABCD00682F21 /* MSFavoritesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFavoritesListVC.h; sourceTree = "<group>"; };
+		4CDBDD2317B7ABCE00682F21 /* MSFavoritesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFavoritesListVC.m; sourceTree = "<group>"; };
 		EA9A1B7B17919769005E9130 /* MedicalStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9A1B7E17919769005E9130 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA9A1B8017919769005E9130 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -677,6 +680,8 @@
 				EAABC49D17934375001661FC /* MSNavigationController.m */,
 				4CD6A00317B1459A00B66739 /* MSSearchBarVC.h */,
 				4CD6A00417B1459A00B66739 /* MSSearchBarVC.m */,
+				4CDBDD2217B7ABCD00682F21 /* MSFavoritesListVC.h */,
+				4CDBDD2317B7ABCE00682F21 /* MSFavoritesListVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1098,6 +1103,7 @@
 				4CDBDD1B17B7781900682F21 /* GGArchive.m in Sources */,
 				4CDBDD1E17B7788E00682F21 /* GGUserDefault.m in Sources */,
 				4CDBDD2117B77DBF00682F21 /* GGPhoneMask.m in Sources */,
+				4CDBDD2417B7ABCF00682F21 /* MSFavoritesListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
