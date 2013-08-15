@@ -12,6 +12,7 @@
 #import "MSHomeVC.h"
 #import "MSNavigationController.h"
 #import "GGLeftDrawerVC.h"
+#import "MSTestVC.h"
 
 @implementation MSAppDelegate
 
@@ -22,11 +23,9 @@
     // If the device is an iPad, we make it taller.
     _tabBarController = [[AKTabBarController alloc] initWithTabBarHeight:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 70 : 50];
     [_tabBarController setMinimumHeightToDisplayTitle:40.0];
-    
 
     NSMutableArray *vcs = [NSMutableArray array];
-    
-    //[vcs addObject:[MSHomeVC new]];
+
     MSHomeVC * homeVc1 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
     homeVc1.navigationItem.title = @"区'四大家'领导";
     homeVc1.MSTabImageName = @"tab_account";
@@ -49,11 +48,6 @@
     
     [vcs addObjectsFromArray:@[nc1,nc2,nc3,nc4]];
     
-
-//    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCategoryVC new]]];
-//    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSCartVC new]]];
-//    [vcs addObject:[[UINavigationController alloc] initWithRootViewController:[MSAccountVC new]]];
-    
     _tabBarController.viewControllers = vcs;
     
     [[UINavigationBar appearance] setTintColor:GGSharedColor.darkRed];
@@ -71,12 +65,13 @@
     [_drawerVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [_drawerVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
-    //    [self setupViewControllers];
-    //    self.window.rootViewController = _tabBarController;
+#if 1       // for test
+    self.window.rootViewController = [[MSTestVC alloc] initWithNibName:@"MSTestVC" bundle:nil];
+#else       // for real
     self.window.rootViewController = _drawerVC;
+#endif
+
     
-    
-//    _window.rootViewController = _tabBarController;
     [_window makeKeyAndVisible];
     return YES;
 }

@@ -13,7 +13,6 @@
 
 @implementation GGAPITest
 {
-    NSMutableArray  *_policemans;
 }
 DEF_SINGLETON(GGAPITest)
 
@@ -21,18 +20,29 @@ DEF_SINGLETON(GGAPITest)
 {
     self = [super init];
     if (self) {
-        _policemans = [NSMutableArray array];
+
     }
     return self;
 }
 
 -(void)run
 {
-//    [self _testGetWantedRootCategory];
+    [self testgetTel];
 //    [self testInsertWanted];
 //    [self _testchooseAreaIos];
 //    [self _testgetCluesRootCategory];
 //    [self _testgetFunctionsAll];
 }
+
+-(void)testgetTel
+{
+
+    [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
+        
+        DLog(@">> %@",aResultObject);
+        
+    }];
+}
+
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CAED09C17BD3CE70022B08D /* MSTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED09A17BD3CE70022B08D /* MSTestVC.m */; };
+		4CAED09D17BD3CE70022B08D /* MSTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAED09B17BD3CE70022B08D /* MSTestVC.xib */; };
 		4CD6A00517B1459B00B66739 /* MSSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6A00417B1459A00B66739 /* MSSearchBarVC.m */; };
 		4CD6A00717B145D600B66739 /* Persons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6A00617B145D600B66739 /* Persons.plist */; };
 		4CD6A00917B1550600B66739 /* Posts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6A00817B1550600B66739 /* Posts.plist */; };
@@ -48,7 +50,6 @@
 		4CD6A08B17B5EFB900B66739 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6A07917B5EFB900B66739 /* UIViewController+MMDrawerController.m */; };
 		4CD6A08E17B5F29E00B66739 /* GGDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6A08D17B5F29D00B66739 /* GGDataModel.m */; };
 		4CD6A09317B5F40B00B66739 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6A09117B5F40B00B66739 /* GTMBase64.m */; };
-		4CD6A09517B5F99E00B66739 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD6A09417B5F99D00B66739 /* libsqlite3.dylib */; };
 		4CDBDD0517B5FA9500682F21 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0417B5FA9500682F21 /* libsqlite3.dylib */; };
 		4CDBDD0717B5FAD400682F21 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0617B5FAD400682F21 /* MobileCoreServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		4CDBDD0917B5FAE000682F21 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDBDD0817B5FAE000682F21 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -156,6 +157,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CAED09917BD3CE70022B08D /* MSTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestVC.h; sourceTree = "<group>"; };
+		4CAED09A17BD3CE70022B08D /* MSTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTestVC.m; sourceTree = "<group>"; };
+		4CAED09B17BD3CE70022B08D /* MSTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSTestVC.xib; sourceTree = "<group>"; };
 		4CD6A00317B1459A00B66739 /* MSSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchBarVC.h; sourceTree = "<group>"; };
 		4CD6A00417B1459A00B66739 /* MSSearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchBarVC.m; sourceTree = "<group>"; };
 		4CD6A00617B145D600B66739 /* Persons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Persons.plist; sourceTree = "<group>"; };
@@ -237,7 +241,6 @@
 		4CD6A09017B5F40B00B66739 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		4CD6A09117B5F40B00B66739 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		4CD6A09217B5F40B00B66739 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		4CD6A09417B5F99D00B66739 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4CDBDD0417B5FA9500682F21 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4CDBDD0617B5FAD400682F21 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4CDBDD0817B5FAE000682F21 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -421,7 +424,6 @@
 			files = (
 				4CDBDD0917B5FAE000682F21 /* SystemConfiguration.framework in Frameworks */,
 				4CDBDD0717B5FAD400682F21 /* MobileCoreServices.framework in Frameworks */,
-				4CD6A09517B5F99E00B66739 /* libsqlite3.dylib in Frameworks */,
 				EAABC49B17933AF5001661FC /* MapKit.framework in Frameworks */,
 				EAABC49917933AEB001661FC /* ImageIO.framework in Frameworks */,
 				EA9A1C651791C7A4005E9130 /* MessageUI.framework in Frameworks */,
@@ -549,7 +551,6 @@
 		EA9A1B7217919769005E9130 = {
 			isa = PBXGroup;
 			children = (
-				4CD6A09417B5F99D00B66739 /* libsqlite3.dylib */,
 				EA9A1BD61791B5AD005E9130 /* Icon@2x.png */,
 				EA9A1BD41791B5A4005E9130 /* Icon.png */,
 				EA9A1B8417919769005E9130 /* MedicalStore */,
@@ -597,6 +598,9 @@
 				EA9A1B8D1791976A005E9130 /* MSAppDelegate.h */,
 				EA9A1B8E1791976A005E9130 /* MSAppDelegate.m */,
 				EA9A1B8517919769005E9130 /* Supporting Files */,
+				4CAED09917BD3CE70022B08D /* MSTestVC.h */,
+				4CAED09A17BD3CE70022B08D /* MSTestVC.m */,
+				4CAED09B17BD3CE70022B08D /* MSTestVC.xib */,
 			);
 			path = MedicalStore;
 			sourceTree = "<group>";
@@ -990,6 +994,7 @@
 				4CDBDD0E17B773E000682F21 /* GGLeftDrawerVC.xib in Resources */,
 				4CDBDD1617B7778300682F21 /* GGProfileVC.xib in Resources */,
 				4CDBDD1817B7778300682F21 /* GGSettingCenterVC.xib in Resources */,
+				4CAED09D17BD3CE70022B08D /* MSTestVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,6 +1109,7 @@
 				4CDBDD1E17B7788E00682F21 /* GGUserDefault.m in Sources */,
 				4CDBDD2117B77DBF00682F21 /* GGPhoneMask.m in Sources */,
 				4CDBDD2417B7ABCF00682F21 /* MSFavoritesListVC.m in Sources */,
+				4CAED09C17BD3CE70022B08D /* MSTestVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

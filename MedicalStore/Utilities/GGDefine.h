@@ -60,11 +60,8 @@ typedef enum {
 
 
 //////////////////////////// server environment /////////////////////////////////////////
-#define GGN_STR_PRODUCTION_SERVER_URL               @"https://www.gagein.com"
-#define GGN_STR_DEMO_SERVER_URL                     @"http://gageindemo.dyndns.org"
-#define GGN_STR_CN_SERVER_URL                       @"http://gageincn.dyndns.org:3031"
-#define GGN_STR_STAGING_SERVER_URL                  @"http://gageinstaging.dyndns.org"
-#define GGN_STR_ROSHEN_SERVER_URL                   @"http://192.168.137.1:8080"
+#define GGN_STR_TEST_SERVER_URL     @"http://rhtsoft.gnway.net:8888/tel"
+
 
 #define CURRENT_ENV 1
 
