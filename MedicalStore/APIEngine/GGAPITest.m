@@ -37,11 +37,6 @@ DEF_SINGLETON(GGAPITest)
 -(void)testgetTel
 {
 
-    [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
-        
-        DLog(@">> %@",aResultObject);
-        
-    }];
 }
 
 
