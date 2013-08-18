@@ -111,7 +111,7 @@
 }
 
 //申请验证接口
-//接口地址：http://rhtsoft.gnway.net:8888/tel/telBook-askChecking.rht
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-askChecking.rht
 //参数：name  姓名
 //phone 手机号
 //code  机器码
@@ -120,10 +120,10 @@
 //0 申请成功
 //1 申请失败
 
--(void)askChecking:(NSString*)aName Phone:(long long)aPhone Code:(NSString*)aCode callback:(GGApiBlock)aCallback
+-(void)askChecking:(NSString*)aName Phone:(long long)aPhone callback:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-askChecking.rht";
-    
+    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aName forKey:@"name"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
@@ -133,25 +133,26 @@
 
 //验证码验证接口
 //
-//接口地址：http://rhtsoft.gnway.net:8888/tel/telBook-checkCode.rht
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-checkCode.rht
 //参数：code              机器码
 //securityCode    验证码
 //返回参数：(json格式)
 //返回：flag
 //0 验证成功
 //1 验证失败
--(void)checkCode:(NSString *)aCode SecurityCode:(long long)aSecurityCode callback:(GGApiBlock)aCallback
+-(void)checkCode:(NSString *)aSecurityCode callback:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-checkCode.rht";
+    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
-    [parameters setObject:__LONGLONG(aSecurityCode) forKey:@"securityCode"];
+    [parameters setObject:aSecurityCode forKey:@"securityCode"];
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
 //部门信息接口
 //
-//接口地址：http://rhtsoft.gnway.net:8888/tel/telBook-getDepartMent.rht
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-getDepartMent.rht
 //返回参数：(json格式)
 //返回：departmentId  部门id
 //name            部门名称
@@ -160,13 +161,21 @@
 //superId         模块id
 -(void)getDepartMent:(GGApiBlock)aCallback
 {
-     NSString *path = @"telBook-getDepartMent.rht";
-     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-     [self _execGetWithPath:path params:parameters callback:aCallback];
+    [self getDepartMent:@"all" callback:aCallback];
 }
 
+-(void)getDepartMent:(NSString *)superId callback:(GGApiBlock)aCallback;
+{
+    NSString *path = @"telBook-getDepartMent.rht";
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (![superId isEqualToString:@"all"]) {
+        [parameters setObject:superId forKey:@"superId"];
+    }
+
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
 //人员信息接口
-//接口地址：http://rhtsoft.gnway.net:8888/tel/telBook-getTel.rht
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-getTel.rht
 //参数： code   机器码
 //返回参数：(json格式)
 //返回：telId         人员id
@@ -177,26 +186,36 @@
 //officePhone  办公电话
 //mobilePhone  移动电话
 //homePhone    住宅电话
--(void)getTel:(NSString *)aCode callback:(GGApiBlock)aCallback
+-(void)getTel:(NSString *)aDepartment callback:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-getTel.rht";
+    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
+    if (![aDepartment isEqualToString:@"all"]) {
+        [parameters setObject:aDepartment forKey:@"departmentId"];
+    }
     [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
+-(void)getTel:(GGApiBlock)aCallback
+{
+    [self getTel:@"all" callback:aCallback];
 }
 
 //手机变更接口
 //
-//接口地址：http://rhtsoft.gnway.net:8888/tel/telBook-changePhone.rht
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-changePhone.rht
 //参数：code    机器码
 //phone   手机号
 //返回参数：(json格式)
 //返回：flag
 //0 变更成功
 //1 变更失败
--(void)changePhone:(NSString *)aCode Phone:(long long)aPhone callback:(GGApiBlock)aCallback
+-(void)changePhone:(long long)aPhone callback:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-changePhone.rht";
+    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
@@ -205,20 +224,22 @@
 
 //用户信息接口
 //
-//接口地址：http://rhtsoft.gnway.net:8888/tel/telBook-getUserInfo.rht
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-getUserInfo.rht
 //返回参数：(json格式)
 //返回：name 姓名
 //phone 手机号
 -(void)getUserInfo:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-getUserInfo.rht";
+    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:aCode forKey:@"code"];
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
 //检查更新接口
 //
-//接口地址：http://rhtsoft.gnway.net:8888/tel/telBook-checkUpdate.rht
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-checkUpdate.rht
 //返回参数：(json格式)
 //返回：state 更新标识
 //客户端检查自己的更新标识是否与服务器端一样，一样无需进行更新，不一样需要更新

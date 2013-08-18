@@ -65,7 +65,7 @@
     [_drawerVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [_drawerVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
-#if 0       // for test
+#if 1       // for test
     self.window.rootViewController = [[MSTestVC alloc] initWithNibName:@"MSTestVC" bundle:nil];
 #else       // for real
     self.window.rootViewController = _drawerVC;

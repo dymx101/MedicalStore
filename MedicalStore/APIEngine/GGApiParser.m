@@ -9,6 +9,9 @@
 #import "GGApiParser.h"
 #import "SBJsonParser.h"
 #import "GGDataModel.h"
+#import "MSDepartMent.h"
+#import "MSUserInfo.h"
+#import "MSTelBook.h"
 
 #define GG_ASSERT_API_DATA_IS_DIC   NSAssert([_apiData isKindOfClass:[NSDictionary class]], @"Api Data should be a NSDictionary");
 
@@ -118,5 +121,21 @@
     return array;
 }
 
+-(NSMutableArray *)parseMSDepartMent
+{
+    return [self _parseArrForClass:[MSDepartMent class]];
+}
+
+-(NSMutableArray *)parseMSTelBook
+{
+    return [self _parseArrForClass:[MSTelBook class]];
+}
+
+-(MSUserInfo *)parseMSUserInfo
+{
+    MSUserInfo * user = [MSUserInfo model];
+    [user parseWithData:_apiData];
+    return user;
+}
 
 @end

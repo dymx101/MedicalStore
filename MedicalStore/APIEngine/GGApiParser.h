@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class MSUserInfo;
+
 @interface GGApiParser : NSObject
 @property (strong)  NSDictionary    *apiData;
 @property (strong)  NSArray    *apiArray;
@@ -24,4 +26,8 @@
 -(id)initWithApiData:(NSDictionary *)anApiData;
 
 -(long)typeID;
+
+-(NSMutableArray *)parseMSDepartMent;
+-(MSUserInfo *)parseMSUserInfo;
+-(NSMutableArray *)parseMSTelBook;
 @end

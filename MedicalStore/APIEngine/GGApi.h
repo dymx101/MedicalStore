@@ -27,15 +27,17 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(NSString *)uniqueNumber;
 
 //申请验证接口
--(void)askChecking:(NSString*)aName Phone:(long long)aPhone Code:(NSString*)aCode callback:(GGApiBlock)aCallback;
+-(void)askChecking:(NSString*)aName Phone:(long long)aPhone callback:(GGApiBlock)aCallback;
 //验证码验证接口
--(void)checkCode:(NSString *)aCode SecurityCode:(long long)aSecurityCode callback:(GGApiBlock)aCallback;
+-(void)checkCode:(NSString *)aSecurityCode callback:(GGApiBlock)aCallback;
 //部门信息接口
 -(void)getDepartMent:(GGApiBlock)aCallback;
+-(void)getDepartMent:(NSString *)superId callback:(GGApiBlock)aCallback;
 //人员信息接口
--(void)getTel:(NSString *)aCode callback:(GGApiBlock)aCallback;
+-(void)getTel:(GGApiBlock)aCallback;
+-(void)getTel:(NSString *)aDepartment callback:(GGApiBlock)aCallback;
 //手机变更接口
--(void)changePhone:(NSString *)aCode Phone:(long long)aPhone callback:(GGApiBlock)aCallback;
+-(void)changePhone:(long long)aPhone callback:(GGApiBlock)aCallback;
 //用户信息接口
 -(void)getUserInfo:(GGApiBlock)aCallback;
 //检查更新接口
