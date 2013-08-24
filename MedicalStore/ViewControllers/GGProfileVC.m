@@ -9,6 +9,7 @@
 #import "GGProfileVC.h"
 #import "GGArchive.h"
 #import "GGUserDefault.h"
+#import "GGImagePool.h"
 
 @interface GGProfileVC ()
 @property (weak, nonatomic) IBOutlet UITextField *tfName;
@@ -46,6 +47,7 @@
     
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)]];
     
+    [_btnValiate setBackgroundImage:GGSharedImagePool.bgBtnOrange forState:UIControlStateNormal];
     [self.btnGetValidCode addTarget:self action:@selector(getValidateCodeAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.btnValiate addTarget:self action:@selector(validateAction:) forControlEvents:UIControlEventTouchUpInside];
 }

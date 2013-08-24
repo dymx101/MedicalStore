@@ -80,7 +80,7 @@
 						<string key="NSFrame">{{20, 59}, {280, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="586820239"/>
+						<reference key="NSNextKeyView" ref="70526805"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -103,13 +103,13 @@
 						<reference key="IBUIFontDescription" ref="233462081"/>
 						<reference key="IBUIFont" ref="555894834"/>
 					</object>
-					<object class="IBUITextField" id="586820239">
+					<object class="IBUITextField" id="70526805">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 102}, {137, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="805928670"/>
+						<reference key="NSNextKeyView" ref="146304370"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -233,13 +233,13 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIButton" id="805928670">
+					<object class="IBUIButton" id="146304370">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{165, 98}, {135, 38}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="178372298"/>
+						<reference key="NSNextKeyView" ref="73590397"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -247,7 +247,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">获取验证码</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="594835198">
+						<object class="NSColor" key="IBUIHighlightedTitleColor" id="688089968">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
@@ -255,21 +255,21 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MAA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleShadowColor" id="811149158">
+						<object class="NSColor" key="IBUINormalTitleShadowColor" id="652424798">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="445294995">
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
 							<double key="pointSize">15</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="1001029850">
+						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIButton" id="178372298">
+					<object class="IBUIButton" id="73590397">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 145}, {280, 38}}</string>
@@ -287,14 +287,20 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">验证</string>
-						<reference key="IBUIHighlightedTitleColor" ref="594835198"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yMTcxNzkwMDgyIDAuMjE3MTc5MDA4MiAwLjIxNzE3OTAwODIAA</bytes>
+						<reference key="IBUIHighlightedTitleColor" ref="688089968"/>
+						<reference key="IBUINormalTitleColor" ref="688089968"/>
+						<reference key="IBUINormalTitleShadowColor" ref="652424798"/>
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
+							<string key="name">HelveticaNeue-CondensedBold</string>
+							<string key="family">Helvetica Neue</string>
+							<int key="traits">2</int>
+							<double key="pointSize">17</double>
 						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="811149158"/>
-						<reference key="IBUIFontDescription" ref="445294995"/>
-						<reference key="IBUIFont" ref="1001029850"/>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">HelveticaNeue-Bold</string>
+							<double key="NSSize">17</double>
+							<int key="NSfFlags">16</int>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 548}}</string>
@@ -365,7 +371,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">tfValidate</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="586820239"/>
+						<reference key="destination" ref="70526805"/>
 					</object>
 					<int key="connectionID">19</int>
 				</object>
@@ -373,7 +379,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">btnGetValidCode</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="805928670"/>
+						<reference key="destination" ref="146304370"/>
 					</object>
 					<int key="connectionID">20</int>
 				</object>
@@ -381,7 +387,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">btnValiate</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="178372298"/>
+						<reference key="destination" ref="73590397"/>
 					</object>
 					<int key="connectionID">21</int>
 				</object>
@@ -401,9 +407,9 @@
 							<reference ref="479814401"/>
 							<reference ref="422069978"/>
 							<reference ref="406463653"/>
-							<reference ref="586820239"/>
-							<reference ref="805928670"/>
-							<reference ref="178372298"/>
+							<reference ref="70526805"/>
+							<reference ref="146304370"/>
+							<reference ref="73590397"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -458,19 +464,19 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">16</int>
-						<reference key="object" ref="586820239"/>
+						<reference key="object" ref="70526805"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">tfValidate</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
-						<reference key="object" ref="805928670"/>
+						<reference key="object" ref="146304370"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">btnGetValidCode</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">18</int>
-						<reference key="object" ref="178372298"/>
+						<reference key="object" ref="73590397"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">btnValidate</string>
 					</object>
