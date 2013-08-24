@@ -88,7 +88,7 @@ DEF_SINGLETON(GGAPITest)
         NSString *string = [[NSString alloc] initWithData:aResultObject encoding:NSUTF8StringEncoding];
         NSLog(@"decoded:%@", string);
         NSData *decoded = [GTMBase64 decodeString:string];
-        decoded =[GTMBase64 decodeString:@"e25hbWU6InRvd25lIixxcToiMTIzNDU2In0="];
+//        decoded =[GTMBase64 decodeString:@"eyJuYW1lIjoidG93bmUiLCJxcSI6IjEyMzQ1NiJ9"];
         
         NSString *s2 = [[NSString alloc] initWithData:decoded encoding:NSUTF8StringEncoding];
          NSLog(@"decoded1:%@", s2);
