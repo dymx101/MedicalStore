@@ -11,6 +11,7 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "MSUserInfo.h"
 #import "MSTelBook.h"
+#import "GTMBase64.h"
 
 
 @implementation GGAPITest
@@ -83,7 +84,17 @@ DEF_SINGLETON(GGAPITest)
 -(void)_TestgetDep1
 {
     [GGSharedAPI getDepartMent:@"4" callback:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+
+        NSString *string = [[NSString alloc] initWithData:aResultObject encoding:NSUTF8StringEncoding];
+        NSLog(@"decoded:%@", string);
+        NSData *decoded = [GTMBase64 decodeString:string];
+        decoded =[GTMBase64 decodeString:@"e25hbWU6InRvd25lIixxcToiMTIzNDU2In0="];
+        
+        NSString *s2 = [[NSString alloc] initWithData:decoded encoding:NSUTF8StringEncoding];
+         NSLog(@"decoded1:%@", s2);
+        
+        
+        GGApiParser *parser = [GGApiParser parserWithRawData:decoded];
         NSMutableArray *array = [parser parseMSDepartMent];
         NSLog(@">>>>> %@",array);
     }];

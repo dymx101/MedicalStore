@@ -26,6 +26,8 @@ static NSString * const kFKRSearchBarTableViewControllerDefaultTableViewCellIden
 @property(nonatomic, copy) NSArray *posts;
 @property(nonatomic, copy) NSArray *sections;
 
+@property(nonatomic,assign) int     typeId;
+
 @property(nonatomic, copy) NSArray *filteredPersons;
 @property(nonatomic, copy) NSString *currentSearchString;
 

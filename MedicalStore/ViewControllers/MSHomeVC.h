@@ -9,6 +9,9 @@
 
 @interface MSHomeVC : MSSearchBarVC
 
-@property(nonatomic,strong) NSString * MSTabImageName;
+@property(nonatomic,strong) NSString *MSTabImageName;
+
+
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes TypeId:(int)typeId;
 
 @end

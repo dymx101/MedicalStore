@@ -26,22 +26,22 @@
 
     NSMutableArray *vcs = [NSMutableArray array];
 
-    MSHomeVC * homeVc1 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
+    MSHomeVC * homeVc1 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:1];
     homeVc1.navigationItem.title = @"区'四大家'领导";
     homeVc1.MSTabImageName = @"tab_account";
     UINavigationController * nc1  = [[UINavigationController alloc] initWithRootViewController:homeVc1];
     
-    MSHomeVC * homeVc2 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
+    MSHomeVC * homeVc2 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:2];
     homeVc2.navigationItem.title = @"区直部门";
     homeVc2.MSTabImageName = @"tab_cart";
     UINavigationController * nc2  = [[UINavigationController alloc] initWithRootViewController:homeVc2];
     
-    MSHomeVC * homeVc3 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
+    MSHomeVC * homeVc3 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:3];
     homeVc3.navigationItem.title = @"乡镇开发区";
     homeVc3.MSTabImageName = @"tab_home";
     UINavigationController * nc3  = [[UINavigationController alloc] initWithRootViewController:homeVc3];
     
-    MSHomeVC * homeVc4 = [[MSHomeVC alloc] initWithSectionIndexes:YES];
+    MSHomeVC * homeVc4 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:4];
     homeVc4.navigationItem.title = @"学校医院";
     homeVc4.MSTabImageName = @"tab_home";
     UINavigationController * nc4  = [[UINavigationController alloc] initWithRootViewController:homeVc4];

@@ -7,9 +7,14 @@
 //
 
 #import "MSSearchBarVC.h"
+#import "MSDepartMent.h"
+#import "MSTelBook.h"
 
 @interface MSSearchBarVC ()
 
+@property(nonatomic,strong) NSMutableArray       *departArray;
+
+@property(nonatomic,strong) NSMutableDictionary  *departTelDict;
 
 @end
 
@@ -24,35 +29,80 @@
         
         _showSectionIndexes = showSectionIndexes;
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"Persons" ofType:@"plist"];
-        _famousPersons = [[NSArray alloc] initWithContentsOfFile:path];
+        _departArray    = [NSMutableArray new];
+        _departTelDict  = [NSMutableDictionary new];
         
-        path = [[NSBundle mainBundle] pathForResource:@"Posts" ofType:@"plist"];
-        _posts = [[NSArray alloc]initWithContentsOfFile:path];
+        NSLog(@">>> %d",self.typeId);
         
-        if (showSectionIndexes) {
-            UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
-            
-            NSMutableArray *unsortedSections = [[NSMutableArray alloc] initWithCapacity:[[collation sectionTitles] count]];
-            for (NSUInteger i = 0; i < [[collation sectionTitles] count]; i++) {
-                [unsortedSections addObject:[NSMutableArray array]];
+        [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            NSMutableArray *array = [parser parseMSDepartMent];
+            NSLog(@"%@",array);
+            for (MSDepartMent *department in array) {
+                if (self.typeId == [department.superid intValue]) {
+                    [_departArray addObject:department];
+                }
             }
+            [self getTelData];
             
-            for (NSString *personName in self.famousPersons) {
-                NSInteger index = [collation sectionForObject:personName collationStringSelector:@selector(description)];
-                [[unsortedSections objectAtIndex:index] addObject:personName];
-            }
-            
-            NSMutableArray *sortedSections = [[NSMutableArray alloc] initWithCapacity:unsortedSections.count];
-            for (NSMutableArray *section in unsortedSections) {
-                [sortedSections addObject:[collation sortedArrayFromArray:section collationStringSelector:@selector(description)]];
-            }
-            
-            self.sections = sortedSections;
-        }
+        }];
     }
     
     return self;
+}
+
+- (void) getTelData
+{
+    [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *array =[parser parseMSTelBook];
+        NSLog(@"%@",array);
+        NSMutableArray *dep_tel = [NSMutableArray new];
+        
+        for (MSDepartMent *dep in _departArray) {
+            for (MSTelBook *telbook in array) {
+                if ([telbook.departmentId intValue] == dep.ID) {
+                    [dep_tel addObject:telbook];
+                }
+                if ([dep_tel count] > 0) {
+                    [_departTelDict setObject:[NSArray arrayWithArray:dep_tel] forKey:telbook.departmentId];
+                    [dep_tel removeAllObjects];
+                }
+            }
+            
+        }
+        [self initUseInterface];
+    }];
+}
+
+- (void) initUseInterface
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Persons" ofType:@"plist"];
+    _famousPersons = [[NSArray alloc] initWithContentsOfFile:path];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"Posts" ofType:@"plist"];
+    _posts = [[NSArray alloc]initWithContentsOfFile:path];
+    
+    if (_showSectionIndexes) {
+        UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
+        
+        NSMutableArray *unsortedSections = [[NSMutableArray alloc] initWithCapacity:[[collation sectionTitles] count]];
+        for (NSUInteger i = 0; i < [[collation sectionTitles] count]; i++) {
+            [unsortedSections addObject:[NSMutableArray array]];
+        }
+        
+        for (NSString *personName in self.famousPersons) {
+            NSInteger index = [collation sectionForObject:personName collationStringSelector:@selector(description)];
+            [[unsortedSections objectAtIndex:index] addObject:personName];
+        }
+        
+        NSMutableArray *sortedSections = [[NSMutableArray alloc] initWithCapacity:unsortedSections.count];
+        for (NSMutableArray *section in unsortedSections) {
+            [sortedSections addObject:[collation sortedArrayFromArray:section collationStringSelector:@selector(description)]];
+        }
+        
+        self.sections = sortedSections;
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

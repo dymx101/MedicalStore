@@ -28,11 +28,13 @@
 
 @implementation MSHomeVC
 
-- (id)initWithSectionIndexes:(BOOL)showSectionIndexes
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes TypeId:(int)typeId
 {
+    self.typeId = typeId;
+    
     if ((self = [super initWithSectionIndexes:showSectionIndexes])) {
         self.title = @"";
-        [self setMenuButton];;
+        [self setMenuButton];
     }
     
     return self;
@@ -42,10 +44,10 @@
 {
     [super viewDidLoad];
     
-    [self _initLayout];
+    [self _Layout];
 }
 
--(void)_initLayout
+-(void)_Layout
 {
     if (_mayUsePrivateAPI) {
         self.tableView.tableHeaderView = self.searchBar;
