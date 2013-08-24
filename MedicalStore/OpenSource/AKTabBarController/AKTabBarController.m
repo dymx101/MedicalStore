@@ -22,6 +22,7 @@
 
 #import "AKTabBarController.h"
 #import "UIViewController+AKTabBarController.h"
+#import "MSAppDelegate.h"
 
 // Default height of the tab bar
 static const int kDefaultTabBarHeight = 50;
@@ -381,6 +382,7 @@ typedef enum {
         [self.selectedViewController viewWillAppear:animated];
     
     [self.navigationController.navigationBar setHidden:YES];
+    [SharedAppDelegate.drawerVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
 }
 
 - (void)viewDidAppear:(BOOL)animated
