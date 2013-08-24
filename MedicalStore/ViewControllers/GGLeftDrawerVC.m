@@ -44,7 +44,7 @@
     
     UINavigationController *centerVC = (UINavigationController *)[SharedAppDelegate.drawerVC centerViewController];
     
-    [centerVC.navigationBar setHidden:NO];
+    //[centerVC.navigationBar setHidden:NO];
     
     MSFavoritesListVC *FavoritVc = [[MSFavoritesListVC alloc] initWithSectionIndexes:YES];
  

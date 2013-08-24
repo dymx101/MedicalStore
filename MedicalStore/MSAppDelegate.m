@@ -54,7 +54,7 @@
     
     UINavigationController * root = [[UINavigationController alloc] initWithRootViewController:_tabBarController
                                      ];
-    [root.navigationBar setHidden:YES];
+    //[root.navigationBar setHidden:YES];
     
     UIViewController *leftDrawerVC = [[GGLeftDrawerVC alloc] init];
     
@@ -73,6 +73,11 @@
 
     
     [_window makeKeyAndVisible];
+    
+    // to correct the layout problem of naivigation controller in tab 1  -- Dong
+    _tabBarController.selectedIndex = 1;
+    _tabBarController.selectedIndex = 0;
+    
     return YES;
 }
 

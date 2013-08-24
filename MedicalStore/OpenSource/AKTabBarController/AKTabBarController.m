@@ -379,6 +379,8 @@ typedef enum {
     
     if ((self.childViewControllers == nil || !self.childViewControllers.count))
         [self.selectedViewController viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar setHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated

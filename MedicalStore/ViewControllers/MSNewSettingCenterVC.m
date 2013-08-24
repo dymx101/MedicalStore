@@ -8,6 +8,7 @@
 
 #import "MSNewSettingCenterVC.h"
 #import "MSAppDelegate.h"
+#import "GGProfileVC.h"
 
 @interface MSNewSettingCenterVC () <UITableViewDataSource, UITableViewDelegate>
 
@@ -71,7 +72,6 @@
     [super viewWillDisappear:animated];
     
     [SharedAppDelegate.drawerVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [self.navigationController.navigationBar setHidden:YES];
 }
 
 #pragma mark -
@@ -121,6 +121,27 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    int row = indexPath.row;
+    int section = indexPath.section;
+    
+    if (section == 0)
+    {
+        if (row == 0)
+        {
+            [GGAlert alertWithMessage:@"姓名:Towne\n手机号:18887654321" title:@"查看"];
+        }
+        else if (row == 1)
+        {
+            GGProfileVC *vc = [[GGProfileVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+    else if (section == 1)
+    {
+        
+    }
 }
+
 
 @end

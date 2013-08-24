@@ -44,6 +44,15 @@
 {
     [super viewDidLoad];
     
+    //[self.navigationController.view printViewsTree];
+    
+    self.navigationController.view.backgroundColor = GGSharedColor.random;
+    self.view.backgroundColor = GGSharedColor.random;
+    //self.navigationController.navigationBar.tintColor = GGSharedColor.random;
+    //[self.navigationController.navigationBar setPos:CGPointZero];
+    //[self.view.superview setPos:CGPointMake(0, 100)];
+    //[self.navigationController.view setPos:CGPointMake(0, -20)];
+    
     [self _Layout];
 }
 
