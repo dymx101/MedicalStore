@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSTelBook.h"
 
 @interface MSProductDetailVC : MSBaseVC
 
 @property(nonatomic,strong) NSString *lblTString;
 @property(nonatomic,strong) NSString *lblSTString;
+@property(nonatomic,strong) MSTelBook *msTelbook;
 
 
 -(IBAction)m1:(id)sender;

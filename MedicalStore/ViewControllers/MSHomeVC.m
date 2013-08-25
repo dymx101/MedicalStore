@@ -162,7 +162,7 @@
   
         } 
     } else {
-        msTelbook = self.filteredMSTelName[indexPath.row];
+        msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
         cell.lblTitle.text = msTelbook.name;
         cell.lblSubTitle.text = msTelbook.post;
     }
@@ -177,9 +177,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MSProductDetailVC *vc = [MSProductDetailVC new];
-    MSTelBook *msTelbook = self.sections[indexPath.section][indexPath.row];
+    MSTelBook *msTelbook;
+    if (tableView == self.tableView) 
+        msTelbook = self.sections[indexPath.section][indexPath.row];
+    else
+        msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
     vc.lblTString = msTelbook.name;
     vc.lblSTString = msTelbook.post;
+    vc.msTelbook = msTelbook;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

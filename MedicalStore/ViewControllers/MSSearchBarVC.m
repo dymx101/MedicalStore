@@ -39,11 +39,14 @@
         NSMutableArray *array =[parser parseMSTelBook];
         NSLog(@"%@",array);
         
-        self.filteredMSTelName =  [[NSMutableArray alloc] init];
+        self.filteredMSTelName =  [NSMutableArray new];
+        self.primevalMSTelName =  [NSMutableArray new];
+        self.filteredMSTelMSG  =  [NSMutableDictionary new];
         for (MSTelBook *book in array) {
             [_filteredMSTelName addObject:book.name];
+            [_filteredMSTelMSG setObject:book forKey:book.name];
         }
-        
+        self.primevalMSTelName = [NSMutableArray arrayWithArray:_filteredMSTelName];
         NSMutableArray *dep_tel = [NSMutableArray new];
         
         for (MSDepartMent *dep in _departArray) {
@@ -251,12 +254,12 @@
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     if (searchString.length > 0) { // Should always be the case
-        NSMutableArray *personsToSearch = nil;
+        NSMutableArray *personsToSearch = [NSMutableArray arrayWithArray:self.primevalMSTelName];
         if (self.currentSearchString.length > 0 && [searchString rangeOfString:self.currentSearchString].location == 0) { // If the new search string starts with the last search string, reuse the already filtered array so searching is faster
             personsToSearch = self.filteredMSTelName;
         }
         
-        self.filteredMSTelName = [NSMutableArray arrayWithArray:[personsToSearch filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF contains[cd] %@", searchString]]];
+        self.filteredMSTelName = [NSMutableArray arrayWithArray:[personsToSearch filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(SELF CONTAINS[cd] %@) OR (SELF BEGINSWITH[cd] %@) OR (SELF ENDSWITH[cd] %@)", searchString,searchString,searchString]]];
     }
     
     self.currentSearchString = searchString;
