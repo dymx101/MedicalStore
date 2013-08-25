@@ -11,8 +11,6 @@
 
 @interface MSProductDetailVC : MSBaseVC
 
-@property(nonatomic,strong) NSString *lblTString;
-@property(nonatomic,strong) NSString *lblSTString;
 @property(nonatomic,strong) MSTelBook *msTelbook;
 
 

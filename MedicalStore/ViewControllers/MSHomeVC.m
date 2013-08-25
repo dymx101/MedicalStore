@@ -182,8 +182,6 @@
         msTelbook = self.sections[indexPath.section][indexPath.row];
     else
         msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
-    vc.lblTString = msTelbook.name;
-    vc.lblSTString = msTelbook.post;
     vc.msTelbook = msTelbook;
     [self.navigationController pushViewController:vc animated:YES];
 }

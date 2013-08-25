@@ -37,8 +37,9 @@
     
     self.navigationItem.title = @"联系人";
     
-    self.lblTitle.text = _lblTString;
-    self.lblSubTitle.text = _lblSTString;
+    self.lblTitle.text = _msTelbook.name;
+    self.lblSubTitle.text = _msTelbook.post;
+    self.lblTelTitle.text = _msTelbook.mobilePhone;
     
     [_viewHead applyEffectShadowAndBorder];
     [_viewBrief applyEffectShadowAndBorder];

@@ -154,9 +154,7 @@
     MSProductDetailVC *vc = [MSProductDetailVC new];
     
     MSTelBook *msTelbook = self.sections[indexPath.section][indexPath.row];
-    vc.lblTString = msTelbook.name;
-    vc.lblSTString = msTelbook.post;
-    
+    vc.msTelbook = msTelbook;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
