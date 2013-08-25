@@ -15,6 +15,7 @@
 #import "MSDummyDataFactory.h"
 #import "MSProduct.h"
 #import "MSAppDelegate.h"
+#import "MSTelBook.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <objc/message.h>
@@ -147,6 +148,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MSProductCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MSProductCell"];
+    MSTelBook * msTelbook = nil;
     if (cell == nil)
     {
         cell = [MSProductCell viewFromNibWithOwner:self];
@@ -154,17 +156,16 @@
     
     if (tableView == self.tableView) {
         if (self.showSectionIndexes) {
-            cell.lblTitle.text = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-            cell.lblSubTitle.text = [self.posts objectAtIndex:[self.famousPersons indexOfObject:cell.lblTitle.text]];
-        } else {
-            cell.lblTitle.text = [self.famousPersons objectAtIndex:indexPath.row];
-            cell.lblSubTitle.text = [self.posts objectAtIndex:indexPath.row];
-        }
+            msTelbook = self.sections[indexPath.section][indexPath.row];
+            cell.lblTitle.text = msTelbook.name;
+            cell.lblSubTitle.text = msTelbook.post;
+  
+        } 
     } else {
-        cell.lblTitle.text = [self.filteredPersons objectAtIndex:indexPath.row];
-        cell.lblSubTitle.text = [self.posts objectAtIndex:indexPath.row];
+        msTelbook = self.filteredMSTelName[indexPath.row];
+        cell.lblTitle.text = msTelbook.name;
+        cell.lblSubTitle.text = msTelbook.post;
     }
-    
     return cell;
 }
 
@@ -176,10 +177,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MSProductDetailVC *vc = [MSProductDetailVC new];
-    
-    vc.lblTString = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    vc.lblSTString = [self.posts objectAtIndex:[self.famousPersons indexOfObject:vc.lblTString]];
-
+    MSTelBook *msTelbook = self.sections[indexPath.section][indexPath.row];
+    vc.lblTString = msTelbook.name;
+    vc.lblSTString = msTelbook.post;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

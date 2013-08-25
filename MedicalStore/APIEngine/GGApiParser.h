@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class MSUserInfo;
+@class NSData;
 
 @interface GGApiParser : NSObject
 @property (strong)  NSDictionary    *apiData;
@@ -18,6 +19,8 @@
 #pragma mark - init
 +(id)parserWithRawData:(NSData *)aRawData;
 -(id)initWithRawData:(NSData *)aRawData;
+
++(NSData *) dealwithencode:(NSData *)aRawData;
 
 +(id)parserWithArray:(NSArray *)anApiData;
 -(id)initWithArray:(NSArray *)anApiData;
@@ -30,4 +33,5 @@
 -(NSMutableArray *)parseMSDepartMent;
 -(MSUserInfo *)parseMSUserInfo;
 -(NSMutableArray *)parseMSTelBook;
+
 @end

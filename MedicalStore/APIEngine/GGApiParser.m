@@ -12,6 +12,7 @@
 #import "MSDepartMent.h"
 #import "MSUserInfo.h"
 #import "MSTelBook.h"
+#import "GTMBase64.h"
 
 #define GG_ASSERT_API_DATA_IS_DIC   NSAssert([_apiData isKindOfClass:[NSDictionary class]], @"Api Data should be a NSDictionary");
 
@@ -25,6 +26,8 @@
     if (aRawData == nil || ![aRawData isKindOfClass:[NSData class]]) {
         return nil;
     }
+    
+   aRawData = [GGApiParser dealwithencode:aRawData];
     
     GGApiParser * parser = nil;
     SBJsonParser *jsonParser = [[SBJsonParser alloc] init];
@@ -42,6 +45,23 @@
     
     return parser;
 }
+
+/**
+ *  功能:返回值的转码处理
+ */
++(NSData *) dealwithencode:(NSData *)aRawData
+{
+    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    
+    NSString *pageSource = [[NSString alloc] initWithData:aRawData encoding:gbkEncoding];
+    
+    NSData *decoded = [GTMBase64 decodeString:pageSource];
+    
+    NSString *str = [[NSString alloc] initWithData:decoded encoding:gbkEncoding];
+
+    return [str dataUsingEncoding:NSUTF8StringEncoding];
+}
+
 
 -(id)initWithRawData:(NSData *)aRawData
 {

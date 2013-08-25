@@ -26,26 +26,7 @@
 {
     if ((self = [super initWithNibName:nil bundle:nil])) {
         self.title = @"Search Bar";
-        
         _showSectionIndexes = showSectionIndexes;
-        
-        _departArray    = [NSMutableArray new];
-        _departTelDict  = [NSMutableDictionary new];
-        
-        NSLog(@">>> %d",self.typeId);
-        
-        [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
-            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-            NSMutableArray *array = [parser parseMSDepartMent];
-            NSLog(@"%@",array);
-            for (MSDepartMent *department in array) {
-                if (self.typeId == [department.superid intValue]) {
-                    [_departArray addObject:department];
-                }
-            }
-            [self getTelData];
-            
-        }];
     }
     
     return self;
@@ -57,6 +38,12 @@
         GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
         NSMutableArray *array =[parser parseMSTelBook];
         NSLog(@"%@",array);
+        
+        self.filteredMSTelName =  [[NSMutableArray alloc] init];
+        for (MSTelBook *book in array) {
+            [_filteredMSTelName addObject:book.name];
+        }
+        
         NSMutableArray *dep_tel = [NSMutableArray new];
         
         for (MSDepartMent *dep in _departArray) {
@@ -64,10 +51,10 @@
                 if ([telbook.departmentId intValue] == dep.ID) {
                     [dep_tel addObject:telbook];
                 }
-                if ([dep_tel count] > 0) {
-                    [_departTelDict setObject:[NSArray arrayWithArray:dep_tel] forKey:telbook.departmentId];
-                    [dep_tel removeAllObjects];
-                }
+            }
+            if ([dep_tel count] > 0) {
+                [_departTelDict setObject:[NSArray arrayWithArray:dep_tel] forKey:[NSString stringWithFormat:@"%lld",dep.ID]];
+                [dep_tel removeAllObjects];
             }
             
         }
@@ -77,31 +64,20 @@
 
 - (void) initUseInterface
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Persons" ofType:@"plist"];
-    _famousPersons = [[NSArray alloc] initWithContentsOfFile:path];
-    
-    path = [[NSBundle mainBundle] pathForResource:@"Posts" ofType:@"plist"];
-    _posts = [[NSArray alloc]initWithContentsOfFile:path];
+    [self.view hideLoadingHUD];
     
     if (_showSectionIndexes) {
-        UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
+//        UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
+//        
+        NSMutableArray *unsortedSections = [[NSMutableArray alloc] initWithCapacity:[_departArray count]];
         
-        NSMutableArray *unsortedSections = [[NSMutableArray alloc] initWithCapacity:[[collation sectionTitles] count]];
-        for (NSUInteger i = 0; i < [[collation sectionTitles] count]; i++) {
-            [unsortedSections addObject:[NSMutableArray array]];
+        for (NSUInteger i = 0; i < [_departArray count]; i++) {
+            MSDepartMent *dep = _departArray[i];
+            NSArray * telbooks = [_departTelDict objectForKey:[NSString stringWithFormat:@"%lld",dep.ID]];
+            [unsortedSections addObject:telbooks];
         }
-        
-        for (NSString *personName in self.famousPersons) {
-            NSInteger index = [collation sectionForObject:personName collationStringSelector:@selector(description)];
-            [[unsortedSections objectAtIndex:index] addObject:personName];
-        }
-        
-        NSMutableArray *sortedSections = [[NSMutableArray alloc] initWithCapacity:unsortedSections.count];
-        for (NSMutableArray *section in unsortedSections) {
-            [sortedSections addObject:[collation sortedArrayFromArray:section collationStringSelector:@selector(description)]];
-        }
-        
-        self.sections = sortedSections;
+        self.sections = unsortedSections;
+        [self.tableView reloadData];
     }
 }
 
@@ -135,6 +111,26 @@
     self.searchDisplayController.searchResultsDataSource = self;
     self.searchDisplayController.searchResultsDelegate = self;
     self.searchDisplayController.delegate = self;
+    
+    _departArray    = [NSMutableArray new];
+    _departTelDict  = [NSMutableDictionary new];
+    
+    NSLog(@">>> %d",self.typeId);
+    
+    [self.view showLoadingHUDWithText:@"数据加载中..."];
+    
+    [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *array = [parser parseMSDepartMent];
+        NSLog(@"%@",array);
+        for (MSDepartMent *department in array) {
+            if (self.typeId == [department.superid intValue] ) {
+                [_departArray addObject:department];
+            }
+        }
+        [self getTelData];
+        
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -157,6 +153,7 @@
 {
     if (tableView == self.tableView && self.showSectionIndexes) {
         return [[NSArray arrayWithObject:UITableViewIndexSearch] arrayByAddingObjectsFromArray:[[UILocalizedIndexedCollation currentCollation] sectionIndexTitles]];
+        return nil;
     } else {
         return nil;
     }
@@ -166,7 +163,8 @@
 {
     if (tableView == self.tableView && self.showSectionIndexes) {
         if ([[self.sections objectAtIndex:section] count] > 0) {
-            return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+            MSDepartMent *_depart = _departArray[section];
+            return _depart.name;
         } else {
             return nil;
         }
@@ -204,10 +202,10 @@
         if (self.showSectionIndexes) {
             return [[self.sections objectAtIndex:section] count];
         } else {
-            return self.famousPersons.count;
+            return [_sections[section] count];
         }
     } else {
-        return self.filteredPersons.count;
+        return self.filteredMSTelName.count;
     }
 }
 
@@ -222,10 +220,10 @@
         if (self.showSectionIndexes) {
             cell.textLabel.text = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         } else {
-            cell.textLabel.text = [self.famousPersons objectAtIndex:indexPath.row];
+            cell.textLabel.text = [_sections[indexPath.section] objectAtIndex:indexPath.row];
         }
     } else {
-        cell.textLabel.text = [self.filteredPersons objectAtIndex:indexPath.row];
+        cell.textLabel.text = [self.filteredMSTelName objectAtIndex:indexPath.row];
     }
     
     return cell;
@@ -240,27 +238,25 @@
 
 - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
 {
-    self.filteredPersons = nil;
+    self.filteredMSTelName = nil;
     self.currentSearchString = @"";
 }
 
 - (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
 {
-    self.filteredPersons = nil;
+    self.filteredMSTelName = nil;
     self.currentSearchString = nil;
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     if (searchString.length > 0) { // Should always be the case
-        NSArray *personsToSearch = self.famousPersons;
+        NSMutableArray *personsToSearch = nil;
         if (self.currentSearchString.length > 0 && [searchString rangeOfString:self.currentSearchString].location == 0) { // If the new search string starts with the last search string, reuse the already filtered array so searching is faster
-            personsToSearch = self.filteredPersons;
+            personsToSearch = self.filteredMSTelName;
         }
         
-        self.filteredPersons = [personsToSearch filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF contains[cd] %@", searchString]];
-    } else {
-        self.filteredPersons = self.famousPersons;
+        self.filteredMSTelName = [NSMutableArray arrayWithArray:[personsToSearch filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF contains[cd] %@", searchString]]];
     }
     
     self.currentSearchString = searchString;

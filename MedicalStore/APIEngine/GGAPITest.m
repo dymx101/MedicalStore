@@ -85,16 +85,19 @@ DEF_SINGLETON(GGAPITest)
 {
     [GGSharedAPI getDepartMent:@"4" callback:^(id operation, id aResultObject, NSError *anError) {
 
-        NSString *string = [[NSString alloc] initWithData:aResultObject encoding:NSUTF8StringEncoding];
-        NSLog(@"decoded:%@", string);
-        NSData *decoded = [GTMBase64 decodeString:string];
-//        decoded =[GTMBase64 decodeString:@"eyJuYW1lIjoidG93bmUiLCJxcSI6IjEyMzQ1NiJ9"];
+//        NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+//        NSString *pageSource = [[NSString alloc] initWithData:aResultObject encoding:gbkEncoding];
+//        
+////        NSString *string = [[NSString alloc] initWithData:aResultObject encoding:NSUTF8StringEncoding];
+//        NSLog(@"decoded:%@", pageSource);
+//        NSData *decoded = [GTMBase64 decodeString:pageSource];
+////        decoded =[GTMBase64 decodeString:@"eyJuYW1lIjoidG93bmUiLCJxcSI6IjEyMzQ1NiJ9"];
+//        
+//        NSString *s2 = [[NSString alloc] initWithData:decoded encoding:gbkEncoding];
+//         NSLog(@"decoded1:%@", s2);
+//        NSData* data1=[s2 dataUsingEncoding:NSUTF8StringEncoding];
         
-        NSString *s2 = [[NSString alloc] initWithData:decoded encoding:NSUTF8StringEncoding];
-         NSLog(@"decoded1:%@", s2);
-        
-        
-        GGApiParser *parser = [GGApiParser parserWithRawData:decoded];
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
         NSMutableArray *array = [parser parseMSDepartMent];
         NSLog(@">>>>> %@",array);
     }];
