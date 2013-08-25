@@ -50,7 +50,9 @@
     
     _tabBarController.viewControllers = vcs;
     
-    [[UINavigationBar appearance] setTintColor:GGSharedColor.darkRed];
+    //71,142,200
+    UIColor *tintColor = [UIColor colorWithRed:71.f / 255 green:142.f / 255 blue:200.f / 255 alpha:1];
+    [[UINavigationBar appearance] setTintColor:tintColor];
     
     UINavigationController * root = [[UINavigationController alloc] initWithRootViewController:_tabBarController
                                      ];
