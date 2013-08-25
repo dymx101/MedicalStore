@@ -52,13 +52,13 @@
 +(NSData *) dealwithencode:(NSData *)aRawData
 {
     NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-    
     NSString *pageSource = [[NSString alloc] initWithData:aRawData encoding:gbkEncoding];
-    
+    BOOL bl = [pageSource hasPrefix:@"{"];
+    if (bl) {
+        return aRawData;
+    }
     NSData *decoded = [GTMBase64 decodeString:pageSource];
-    
     NSString *str = [[NSString alloc] initWithData:decoded encoding:gbkEncoding];
-
     return [str dataUsingEncoding:NSUTF8StringEncoding];
 }
 

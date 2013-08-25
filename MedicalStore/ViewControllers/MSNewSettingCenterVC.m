@@ -9,6 +9,7 @@
 #import "MSNewSettingCenterVC.h"
 #import "MSAppDelegate.h"
 #import "GGProfileVC.h"
+#import "MSUserInfo.h"
 
 @interface MSNewSettingCenterVC () <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,6 +19,7 @@
 {
     NSArray         *_dataSource;
     UITableView     *_tv;
+    MSUserInfo      *_user;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,6 +31,7 @@
                         @[@"查看绑定", @"号码变更", @"数据更新"]
                         , @[@"版本更新", @"新手引导", @"关于"]
                         ];
+        _user = [MSUserInfo new];
         self.navigationItem.title = @"设置中心";
         
     }
@@ -49,6 +52,12 @@
     bgView.backgroundColor = GGSharedColor.silver;
     _tv.backgroundView = bgView;
     [self.view addSubview:_tv];
+    
+    [GGSharedAPI getUserInfo:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        _user = [parser parseMSUserInfo];
+        [_tv reloadData];
+    }];
 }
 
 -(void)naviBackAction
@@ -109,9 +118,10 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    
+    UIFont  *font = [UIFont fontWithName:@"Futura-Medium" size:15.0f];
     NSArray *dataSource = [self dataSourceWithSection:section];
     cell.textLabel.text = dataSource[row];
+    cell.textLabel.font = font;
     
     return cell;
 }
@@ -127,7 +137,8 @@
     {
         if (row == 0)
         {
-            [GGAlert alertWithMessage:@"姓名:Towne\n手机号:18887654321" title:@"查看"];
+
+            [GGAlert alertWithMessage:[NSString stringWithFormat:@"姓名:%@\n手机号:%@",_user.name,_user.phone] title:@"查看"];
         }
         else if (row == 1)
         {
