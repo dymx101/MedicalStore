@@ -74,7 +74,7 @@
         for (NSUInteger i = 0; i < [_departArray count]; i++) {
             MSDepartMent *dep = _departArray[i];
             NSArray * telbooks = [_departTelDict objectForKey:[NSString stringWithFormat:@"%lld",dep.ID]];
-            [unsortedSections addObject:telbooks];
+            [unsortedSections addObjectIfNotNil:telbooks];
         }
         self.sections = unsortedSections;
         [self.tableView reloadData];
