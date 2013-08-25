@@ -22,12 +22,12 @@ static NSString * const kFKRSearchBarTableViewControllerDefaultTableViewCellIden
 @property(nonatomic, strong, readwrite) UISearchBar *searchBar;
 
 
-@property(nonatomic, copy) NSArray *sections;
+@property(nonatomic, strong) NSArray *sections;
 
 @property(nonatomic,assign) int     typeId;
 
-@property(nonatomic, copy) NSMutableArray           *filteredMSTelName;
-@property(nonatomic, copy) NSString                 *currentSearchString;
+@property(nonatomic, strong) NSMutableArray           *filteredMSTelName;
+@property(nonatomic, strong) NSString                 *currentSearchString;
 
 @property(nonatomic, strong) UISearchDisplayController *strongSearchDisplayController; // UIViewController doesn't retain the search display controller if it's created programmatically: http://openradar.appspot.com/10254897
 
