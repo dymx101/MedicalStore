@@ -33,7 +33,9 @@
 
 - (void)layoutSubviews {
     
-    self.backgroundColor = GGSharedColor.white;
+    //0,180,255
+    UIColor *tintColor = [UIColor colorWithRed:0.f / 255 green:180.f / 255 blue:255.f / 255 alpha:1];
+    self.backgroundColor = tintColor;
     if ([self edgeContentInset]) {
         [self setItemWidth:(CGRectGetWidth(self.frame) - 2 * [self edgeContentInset]) / [[self items] count]];
     } else {

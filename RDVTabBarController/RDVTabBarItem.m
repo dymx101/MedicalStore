@@ -32,6 +32,7 @@
     [super layoutSubviews];
     
     self.imageView.frame = self.bounds;
+    self.imageView.frame = CGRectMake(20, 0, 46, 40);
     
 //    if ([[[self titleLabel] text] length]) {
 //        CGFloat width = CGRectGetWidth(self.frame);

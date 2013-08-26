@@ -103,11 +103,13 @@
     RDVTabBar *tabBar = [tabBarController tabBar];
     tabBar.edgeContentInset = 0.f;
     
-    [tabBar setFrame:CGRectMake(CGRectGetMinX(tabBar.frame), CGRectGetMinY(tabBar.frame), CGRectGetWidth(tabBar.frame), 63)];
+    
+    [tabBar setFrame:CGRectMake(CGRectGetMinX(tabBar.frame), CGRectGetMinY(tabBar.frame), CGRectGetWidth(tabBar.frame), 40)];
     
     for (int i = 0; i < 4; i++)
     {
         RDVTabBarItem *item = tabBarController.tabBar.items[i];
+   
         UIImage *finishedImg, *unfinishedImg;
         switch (i)
         {
