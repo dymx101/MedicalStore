@@ -10,11 +10,12 @@
 #import "MMDrawerController.h"
 
 @class AKTabBarController;
+@class RDVTabBarController;
 
 @interface MSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) AKTabBarController *tabBarController;
+@property (nonatomic, strong) RDVTabBarController *tabBarController;
 @property (strong, nonatomic) MMDrawerController *drawerVC;
 @end
 

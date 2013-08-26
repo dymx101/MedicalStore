@@ -14,6 +14,9 @@
 #import "GGLeftDrawerVC.h"
 #import "MSTestVC.h"
 
+#import "RDVTabBarController.h"
+#import "RDVTabBarItem.h"
+
 @implementation MSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -21,34 +24,40 @@
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // If the device is an iPad, we make it taller.
-    _tabBarController = [[AKTabBarController alloc] initWithTabBarHeight:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 70 : 50];
-    [_tabBarController setMinimumHeightToDisplayTitle:40.0];
+    //_tabBarController = [[AKTabBarController alloc] initWithTabBarHeight:(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 70 : 50];
+    //[_tabBarController setMinimumHeightToDisplayTitle:40.0];
+    
+    _tabBarController = [[RDVTabBarController alloc] init];
+    
 
     NSMutableArray *vcs = [NSMutableArray array];
 
     MSHomeVC * homeVc1 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:1];
     homeVc1.navigationItem.title = @"区'四大家'领导";
-    homeVc1.MSTabImageName = @"tab_account";
+    homeVc1.MSTabImageName = @"tab1";
+    [homeVc1.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tab1s"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab1"]];
     UINavigationController * nc1  = [[UINavigationController alloc] initWithRootViewController:homeVc1];
     
     MSHomeVC * homeVc2 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:2];
     homeVc2.navigationItem.title = @"区直部门";
-    homeVc2.MSTabImageName = @"tab_cart";
+    homeVc2.MSTabImageName = @"tab2";
     UINavigationController * nc2  = [[UINavigationController alloc] initWithRootViewController:homeVc2];
     
     MSHomeVC * homeVc3 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:3];
     homeVc3.navigationItem.title = @"乡镇开发区";
-    homeVc3.MSTabImageName = @"tab_home";
+    homeVc3.MSTabImageName = @"tab3";
     UINavigationController * nc3  = [[UINavigationController alloc] initWithRootViewController:homeVc3];
     
     MSHomeVC * homeVc4 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:4];
     homeVc4.navigationItem.title = @"学校医院";
-    homeVc4.MSTabImageName = @"tab_home";
+    homeVc4.MSTabImageName = @"tab4";
     UINavigationController * nc4  = [[UINavigationController alloc] initWithRootViewController:homeVc4];
     
     [vcs addObjectsFromArray:@[nc1,nc2,nc3,nc4]];
     
     _tabBarController.viewControllers = vcs;
+    //0,161,225
+    //_tabBarController.tabBar.tintColor = [UIColor colorWithRed:0 green:161.f / 255 blue:225.f / 255 alpha:1];
     
     //71,142,200
     UIColor *tintColor = [UIColor colorWithRed:71.f / 255 green:142.f / 255 blue:200.f / 255 alpha:1];
@@ -56,7 +65,7 @@
     
     UINavigationController * root = [[UINavigationController alloc] initWithRootViewController:_tabBarController
                                      ];
-    //[root.navigationBar setHidden:YES];
+    [root.navigationBar setHidden:YES];
     
     UIViewController *leftDrawerVC = [[GGLeftDrawerVC alloc] init];
     
@@ -77,10 +86,73 @@
     [_window makeKeyAndVisible];
     
     // to correct the layout problem of naivigation controller in tab 1  -- Dong
-    _tabBarController.selectedIndex = 1;
+    //_tabBarController.selectedIndex = 1;
     _tabBarController.selectedIndex = 0;
     
+    [self customizeTabBarForController:_tabBarController];
+    
     return YES;
+}
+
+- (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {
+    //UIImage *finishedImage = [[UIImage imageNamed:@"tabbar_selected_background"]
+      //                        resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 0)];
+    //UIImage *unfinishedImage = [[UIImage imageNamed:@"tabbar_unselected_background"]
+      //                          resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 0)];
+    
+    RDVTabBar *tabBar = [tabBarController tabBar];
+    tabBar.edgeContentInset = 0.f;
+    
+    [tabBar setFrame:CGRectMake(CGRectGetMinX(tabBar.frame), CGRectGetMinY(tabBar.frame), CGRectGetWidth(tabBar.frame), 63)];
+    
+    for (int i = 0; i < 4; i++)
+    {
+        RDVTabBarItem *item = tabBarController.tabBar.items[i];
+        UIImage *finishedImg, *unfinishedImg;
+        switch (i)
+        {
+            case 0:
+            {
+                finishedImg = [UIImage imageNamed:@"tab1s"];
+                unfinishedImg = [UIImage imageNamed:@"tab1"];
+            }
+                break;
+                
+            case 1:
+            {
+                finishedImg = [UIImage imageNamed:@"tab2s"];
+                unfinishedImg = [UIImage imageNamed:@"tab2"];
+            }
+                break;
+                
+            case 2:
+            {
+                finishedImg = [UIImage imageNamed:@"tab3s"];
+                unfinishedImg = [UIImage imageNamed:@"tab3"];
+            }
+                break;
+                
+            case 3:
+            {
+                finishedImg = [UIImage imageNamed:@"tab4s"];
+                unfinishedImg = [UIImage imageNamed:@"tab4"];
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
+        [item setFinishedSelectedImage:finishedImg withFinishedUnselectedImage:unfinishedImg];
+    }
+
+    
+    
+//    for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
+//        [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
+//        UIImage *image = [UIImage imageNamed:@"first"];
+//        [item setFinishedSelectedImage:image withFinishedUnselectedImage:image];
+//    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

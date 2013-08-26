@@ -36,6 +36,8 @@
     if ((self = [super initWithSectionIndexes:showSectionIndexes])) {
         self.title = @"";
         [self setMenuButton];
+        
+        
     }
     
     return self;
