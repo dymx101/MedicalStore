@@ -17,6 +17,9 @@
 #import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
 
+#import "GGDataStore.h"
+#import "NSObject+BeeNotification.h"
+
 @implementation MSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -91,7 +94,28 @@
     
     [self customizeTabBarForController:_tabBarController];
     
+    [self refreshData];
+    
     return YES;
+}
+
+-(void)refreshData
+{
+    [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
+        
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *departments = [parser parseMSDepartMent];
+        [GGDataStore saveDepartments:departments];
+        
+        [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            NSMutableArray *telbooks =[parser parseMSTelBook];
+            [GGDataStore saveTelbooks:telbooks];
+            
+            [self postNotification:MS_NOTIFY_DATA_REFRESHED];
+        }];
+        
+    }];
 }
 
 - (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {

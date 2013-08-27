@@ -8,7 +8,7 @@
 
 #import "GGDataModel.h"
 
-@interface MSTelBook : GGDataModel
+@interface MSTelBook : GGDataModel <NSCoding>
 
 @property (copy) NSString *departmentId;
 @property (copy) NSString *moduleId;

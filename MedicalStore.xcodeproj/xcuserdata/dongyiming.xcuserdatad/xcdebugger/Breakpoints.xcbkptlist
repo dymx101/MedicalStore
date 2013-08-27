@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MedicalStore/ViewControllers/MSSearchBarVC.m"
-         timestampString = "399287057.286034"
+         timestampString = "399305468.833235"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "153"
-         endingLineNumber = "153"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
+         landmarkName = "-handleNotification:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -21,25 +21,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MedicalStore/ViewControllers/MSSearchBarVC.m"
-         timestampString = "399287060.745587"
+         timestampString = "399305522.042571"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "167"
-         endingLineNumber = "167"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "210"
+         endingLineNumber = "210"
+         landmarkName = "-_updateNeverGetTelDataWithDepartments:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MedicalStore/Utilities/GGDataStore.m"
-         timestampString = "399287018.669721"
+         filePath = "MedicalStore/ViewControllers/MSSearchBarVC.m"
+         timestampString = "399305532.127872"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
-         landmarkName = "+saveDepartments:"
+         startingLineNumber = "75"
+         endingLineNumber = "75"
+         landmarkName = "-_updateWithTelbooks:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

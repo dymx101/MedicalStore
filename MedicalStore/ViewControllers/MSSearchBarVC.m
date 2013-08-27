@@ -13,6 +13,7 @@
 #import "GGDbManager.h"
 
 #define ReloadTelBookList  @"ReloadTelBookList"
+#import "NSObject+BeeNotification.h"
 
 @interface MSSearchBarVC ()
 
@@ -31,6 +32,8 @@
     if ((self = [super initWithNibName:nil bundle:nil])) {
         self.title = @"Search Bar";
         _showSectionIndexes = showSectionIndexes;
+        
+        [self extraInit];
     }
     
     return self;
@@ -43,22 +46,40 @@
         _showSectionIndexes = showSectionIndexes;
         _isfavor = isfavor;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadtelbooklist) name:ReloadTelBookList object:nil];
+        
+        [self extraInit];
     }
     
     return self;
 }
 
-- (void) getTelData
+-(void)extraInit
 {
-    [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-        NSMutableArray *array =[parser parseMSTelBook];
-        NSLog(@"%@",array);
-        
+    [self observeNotification:MS_NOTIFY_DATA_REFRESHED];
+}
+
+-(void)handleNotification:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:MS_NOTIFY_DATA_REFRESHED])
+    {
+        [self _updateNeverGetTelDataWithDepartments:[GGDataStore loadDepartments]];
+        [self _updateWithTelbooks:[GGDataStore loadTelbooks]];
+    }
+}
+
+-(void)dealloc
+{
+    [self unobserveAllNotifications];
+}
+
+-(void)_updateWithTelbooks:(NSArray *)aTelbooks
+{
+    if (aTelbooks)
+    {
         self.filteredMSTelName =  [NSMutableArray new];
         self.primevalMSTelName =  [NSMutableArray new];
         self.filteredMSTelMSG  =  [NSMutableDictionary new];
-        for (MSTelBook *book in array) {
+        for (MSTelBook *book in aTelbooks) {
             [_filteredMSTelName addObject:book.name];
             [_filteredMSTelMSG setObject:book forKey:book.name];
         }
@@ -66,7 +87,7 @@
         NSMutableArray *dep_tel = [NSMutableArray new];
         
         for (MSDepartMent *dep in _departArray) {
-            for (MSTelBook *telbook in array) {
+            for (MSTelBook *telbook in aTelbooks) {
                 if ([telbook.departmentId intValue] == dep.ID) {
                     [dep_tel addObject:telbook];
                 }
@@ -78,7 +99,28 @@
             
         }
         [self initUseInterface];
-    }];
+    }
+}
+
+- (void) getTelData
+{
+    NSArray *telbooks = [GGDataStore loadTelbooks];
+    
+    if (telbooks.count)
+    {
+        [self _updateWithTelbooks:telbooks];
+    }
+    else
+    {
+        [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            NSMutableArray *array =[parser parseMSTelBook];
+            [GGDataStore saveTelbooks:array];
+            //NSLog(@"%@",array);
+            
+            [self _updateWithTelbooks:array];
+        }];
+    }
 }
 
 - (void) initUseInterface
@@ -148,12 +190,7 @@
         
         if (departments.count)
         {
-            for (MSDepartMent *department in departments) {
-                if (self.typeId == [department.superid intValue] ) {
-                    [_departArray addObject:department];
-                }
-            }
-            [self getTelData];
+            [self _updateWithDepartments:departments];
         }
         else
         {
@@ -162,14 +199,35 @@
                 NSMutableArray *array = [parser parseMSDepartMent];
                 [GGDataStore saveDepartments:array];
                 NSLog(@"%@",array);
-                for (MSDepartMent *department in array) {
-                    if (self.typeId == [department.superid intValue] ) {
-                        [_departArray addObject:department];
-                    }
-                }
-                [self getTelData];
+                
+                [self _updateWithDepartments:array];
             }];
         }
+    }
+}
+
+-(void)_updateNeverGetTelDataWithDepartments:(NSArray *)aDepartments
+{
+    if (aDepartments)
+    {
+        for (MSDepartMent *department in aDepartments) {
+            if (self.typeId == [department.superid intValue] ) {
+                [_departArray addObject:department];
+            }
+        }
+    }
+}
+
+-(void)_updateWithDepartments:(NSArray *)aDepartments
+{
+    if (aDepartments)
+    {
+        for (MSDepartMent *department in aDepartments) {
+            if (self.typeId == [department.superid intValue] ) {
+                [_departArray addObject:department];
+            }
+        }
+        [self getTelData];
     }
 }
 

@@ -13,8 +13,10 @@ AS_SINGLETON(GGDataStore)
 
 
 +(void)saveDepartments:(NSArray *)aDepartments;
-
 +(NSArray *)loadDepartments;
+
++(void)saveTelbooks:(NSArray *)aTelbooks;
++(NSArray *)loadTelbooks;
 
 
 @end
