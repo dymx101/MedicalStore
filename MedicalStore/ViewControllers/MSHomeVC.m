@@ -188,7 +188,6 @@
 {
     MSProductDetailVC *vc = [MSProductDetailVC new];
     MSTelBook *msTelbook;
-    vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
     if (tableView == self.tableView) 
         msTelbook = self.sections[indexPath.section][indexPath.row];
     else if (self.isfavor)
@@ -196,6 +195,7 @@
     else
         msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
     vc.msTelbook = msTelbook;
+    vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

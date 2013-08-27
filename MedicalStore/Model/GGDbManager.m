@@ -103,7 +103,7 @@ DEF_SINGLETON(GGDbManager)
     FMDatabase *db = [self _db];
     if ([db open])
     {
-        NSString *sql = [NSString stringWithFormat:selectTelbookSQL, aTelbookID];
+        NSString *sql = [NSString stringWithFormat:selectTelbookWithIdSQL, aTelbookID];
         FMResultSet *rs = [db executeQuery:sql];
         while ([rs next])
         {

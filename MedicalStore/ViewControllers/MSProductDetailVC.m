@@ -90,8 +90,10 @@
     if (_keep) {
         BOOL success = [[GGDbManager sharedInstance] insertTelbook:_msTelbook];
         if (success == YES) {
-            [self showError:@"收藏成功"];
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self showError:@"收藏成功"];
+                [self.addfavorite setTitle:@"取消收藏" forState:UIControlStateNormal];
+                self.keep = NO;
                 [[NSNotificationCenter defaultCenter] postNotificationName:ReloadTelBookList object:nil];
             });
         }
@@ -104,8 +106,10 @@
     {
         BOOL success = [[GGDbManager sharedInstance] deleteTelbookByID:_msTelbook.ID];
         if (success == YES) {
-            [self showError:@"取消成功"];
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self showError:@"取消成功"];
+                [self.addfavorite setTitle:@"收藏" forState:UIControlStateNormal];
+                self.keep = YES;
                 [[NSNotificationCenter defaultCenter] postNotificationName:ReloadTelBookList object:nil];
             });
         }        

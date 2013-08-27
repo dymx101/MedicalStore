@@ -169,7 +169,7 @@
     MSProductDetailVC *vc = [MSProductDetailVC new];
     MSTelBook *msTelbook =[self.favoriteArray objectAtIndex:indexPath.row];
     vc.msTelbook = msTelbook;
-    vc.keep = NO;
+    vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
