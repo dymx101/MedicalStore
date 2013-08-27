@@ -7,39 +7,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MedicalStore/ViewControllers/MSSearchBarVC.m"
-         timestampString = "399305468.833235"
+         filePath = "MedicalStore/MSAppDelegate.m"
+         timestampString = "399305708.542604"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
-         landmarkName = "-handleNotification:"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "-refreshData"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MedicalStore/ViewControllers/MSSearchBarVC.m"
-         timestampString = "399305522.042571"
+         filePath = "MedicalStore/MSAppDelegate.m"
+         timestampString = "399305767.468443"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "210"
-         endingLineNumber = "210"
-         landmarkName = "-_updateNeverGetTelDataWithDepartments:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MedicalStore/ViewControllers/MSSearchBarVC.m"
-         timestampString = "399305532.127872"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
-         landmarkName = "-_updateWithTelbooks:"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
+         landmarkName = "-refreshData"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

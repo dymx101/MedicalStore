@@ -101,6 +101,11 @@
 
 -(void)refreshData
 {
+    if ([GGDataStore loadDepartments].count <= 0 && [GGDataStore loadTelbooks].count <= 0)
+    {
+        return;
+    }
+    
     [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
         
         GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
