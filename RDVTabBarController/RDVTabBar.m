@@ -34,8 +34,8 @@
 - (void)layoutSubviews {
     
     //0,180,255
-    UIColor *tintColor = [UIColor colorWithRed:0.f / 255 green:180.f / 255 blue:255.f / 255 alpha:1];
-    self.backgroundColor = tintColor;
+    //UIColor *tintColor = [UIColor colorWithRed:0.f / 255 green:180.f / 255 blue:255.f / 255 alpha:1];
+    //self.backgroundColor = tintColor;
     if ([self edgeContentInset]) {
         [self setItemWidth:(CGRectGetWidth(self.frame) - 2 * [self edgeContentInset]) / [[self items] count]];
     } else {
@@ -45,6 +45,7 @@
     
     for (NSInteger i = 0; i < [[self items] count]; i++) {
         RDVTabBarItem *item = [[self items] objectAtIndex:i];
+        item.contentMode = UIViewContentModeScaleToFill;
         [item setFrame:CGRectMake(self.edgeContentInset + (i * self.itemWidth), 0, self.itemWidth, CGRectGetHeight(self.frame))];
     }
 }

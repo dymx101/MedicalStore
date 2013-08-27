@@ -103,8 +103,11 @@
     RDVTabBar *tabBar = [tabBarController tabBar];
     tabBar.edgeContentInset = 0.f;
     
+    // 67,140,202
+    UIColor *tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tabBg"]];
+    tabBar.backgroundColor = tintColor;//[UIColor colorWithRed:67.f / 255 green:140.f / 255 blue:202.f / 255 alpha:1];
     
-    [tabBar setFrame:CGRectMake(CGRectGetMinX(tabBar.frame), CGRectGetMinY(tabBar.frame), CGRectGetWidth(tabBar.frame), 40)];
+    [tabBar setFrame:CGRectMake(CGRectGetMinX(tabBar.frame), CGRectGetMinY(tabBar.frame), CGRectGetWidth(tabBar.frame), 60)];
     
     for (int i = 0; i < 4; i++)
     {
@@ -145,7 +148,7 @@
                 break;
         }
         
-        [item setFinishedSelectedImage:finishedImg withFinishedUnselectedImage:unfinishedImg];
+        [item setBackgroundSelectedImage:finishedImg withUnselectedImage:unfinishedImg];
     }
 
     

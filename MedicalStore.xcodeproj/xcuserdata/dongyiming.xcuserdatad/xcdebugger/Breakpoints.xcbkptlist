@@ -8,13 +8,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RDVTabBarController/RDVTabBar.m"
-         timestampString = "399221488.652635"
+         timestampString = "399275960.671199"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "53"
-         endingLineNumber = "53"
-         landmarkName = "-setItemWidth:"
-         landmarkType = "5">
+         startingLineNumber = "54"
+         endingLineNumber = "54"
+         landmarkName = "@implementation RDVTabBar"
+         landmarkType = "3">
       </FileBreakpoint>
    </FileBreakpoints>
    <ExceptionBreakpoints>
