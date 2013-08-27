@@ -42,7 +42,9 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonSystemItemCancel target:self action:@selector(naviBackAction)];
+    [self setMenuButton];
+    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonSystemItemCancel target:self action:@selector(naviBackAction)];
 	
     _tv = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _tv.dataSource = self;
@@ -58,6 +60,21 @@
         _user = [parser parseMSUserInfo];
         [_tv reloadData];
     }];
+}
+
+/**
+ * 功能:左键设菜单
+ */
+-(void)setMenuButton
+{
+    UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    [self.navigationController.navigationBar setHidden:NO];
+}
+
+-(void)leftDrawerButtonPress:(id)sender{
+    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)naviBackAction

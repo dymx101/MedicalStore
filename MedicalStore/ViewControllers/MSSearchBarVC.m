@@ -16,6 +16,8 @@
 
 @property(nonatomic,strong) NSMutableDictionary  *departTelDict;
 
+@property(nonatomic,assign) BOOL                 isfavor;
+
 @end
 
 
@@ -27,6 +29,17 @@
     if ((self = [super initWithNibName:nil bundle:nil])) {
         self.title = @"Search Bar";
         _showSectionIndexes = showSectionIndexes;
+    }
+    
+    return self;
+}
+
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor
+{
+    if ((self = [super initWithNibName:nil bundle:nil])) {
+        self.title = @"Search Bar";
+        _showSectionIndexes = showSectionIndexes;
+        _isfavor = isfavor;
     }
     
     return self;
@@ -115,25 +128,30 @@
     self.searchDisplayController.searchResultsDelegate = self;
     self.searchDisplayController.delegate = self;
     
-    _departArray    = [NSMutableArray new];
-    _departTelDict  = [NSMutableDictionary new];
-    
-    NSLog(@">>> %d",self.typeId);
-    
-    [self.view showLoadingHUDWithText:@"数据加载中..."];
-    
-    [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-        NSMutableArray *array = [parser parseMSDepartMent];
-        NSLog(@"%@",array);
-        for (MSDepartMent *department in array) {
-            if (self.typeId == [department.superid intValue] ) {
-                [_departArray addObject:department];
-            }
-        }
-        [self getTelData];
+    if (_isfavor) {
+        NSLog(@"isfavor");
+    }
+    else
+    {
+        _departArray    = [NSMutableArray new];
+        _departTelDict  = [NSMutableDictionary new];
         
-    }];
+        NSLog(@">>> %d",self.typeId);
+        
+        [self.view showLoadingHUDWithText:@"数据加载中..."];
+        
+        [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            NSMutableArray *array = [parser parseMSDepartMent];
+            NSLog(@"%@",array);
+            for (MSDepartMent *department in array) {
+                if (self.typeId == [department.superid intValue] ) {
+                    [_departArray addObject:department];
+                }
+            }
+            [self getTelData];
+        }];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -29,6 +29,18 @@
     return self;
 }
 
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor
+{
+  
+    self = [super initWithSectionIndexes:showSectionIndexes isFavorites:isfavor];
+    if (self) {
+        
+    }
+    
+    return self;
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,6 +75,7 @@
 {
     UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    [self.navigationController.navigationBar setHidden:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated

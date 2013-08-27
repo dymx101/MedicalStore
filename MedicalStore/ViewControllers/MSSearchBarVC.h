@@ -32,4 +32,6 @@ static NSString * const kFKRSearchBarTableViewControllerDefaultTableViewCellIden
 
 @property(nonatomic, strong) UISearchDisplayController *strongSearchDisplayController; // UIViewController doesn't retain the search display controller if it's created programmatically: http://openradar.appspot.com/10254897
 
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor;
+
 @end

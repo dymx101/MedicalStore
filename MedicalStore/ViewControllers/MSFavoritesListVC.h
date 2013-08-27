@@ -12,4 +12,6 @@
 
 @interface MSFavoritesListVC : MSSearchBarVC
 
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor;
+
 @end
