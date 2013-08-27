@@ -10,7 +10,6 @@
 #import "MSAppDelegate.h"
 #import "GGProfileVC.h"
 #import "MSUserInfo.h"
-
 @interface MSNewSettingCenterVC () <UITableViewDataSource, UITableViewDelegate>
 
 @end
@@ -165,9 +164,58 @@
     }
     else if (section == 1)
     {
+        if (row == 0) {
+            [self checkVersionUpdate:@"1"];
+        }
         
     }
 }
 
+-(void)checkVersionUpdate:(NSString *) currentVersion
+{
+    [GGSharedAPI checkUpdate:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        long state = [[[parser apiData] objectForKey:@"state"] longValue];
+        DLog(@">>>> %ld",state);
+        if (state > [currentVersion intValue]) {
+            NSMutableString * updateString = [[NSMutableString alloc]initWithString:@"版本更新版本更新版本更新版本更新版本更新版本更新版本更新版本更新版本"] ;
+            NSRange range = NSMakeRange(0, [updateString length]);
+            [updateString replaceOccurrencesOfString:@"#" withString:@"\r" options:NSCaseInsensitiveSearch range:range];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示" message:updateString delegate:self cancelButtonTitle:@"稍后" otherButtonTitles:@"更新", nil];
+            [alert show];
+            alert.tag = 7789;
+        }
+        else
+        {
+            [self alertNetError];
+        }
+    }];
+}
+
+- (void)alertNetError{
+    
+    UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:nil message:@"网络繁忙，请稍后重试..." delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView setTag:110];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 7788 && buttonIndex == 0)
+    {
+        [self enterITunesToUpdate];
+    }
+    else if (alertView.tag == 7789 && buttonIndex == 1)
+    {
+        [self enterITunesToUpdate];
+    }
+}
+
+
+-(void)enterITunesToUpdate
+{
+    NSURL * iTunesUrl = [NSURL URLWithString:@"http://itunes.apple.com/cn/app/id427457043?mt=8&ls=1"];
+    [[UIApplication	sharedApplication] openURL:iTunesUrl];
+}
 
 @end
