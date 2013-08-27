@@ -65,6 +65,8 @@
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(CGRectGetHeight(self.searchBar.bounds), 0, 0, 0);
     }
+    CGRect rc = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 44);
+    self.tableView.frame = rc;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.backgroundColor = GGSharedColor.silverLight;
 }
