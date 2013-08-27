@@ -124,6 +124,7 @@
 {
     NSString *path = @"telBook-askChecking.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aName forKey:@"name"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
@@ -144,6 +145,7 @@
 {
     NSString *path = @"telBook-checkCode.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     [parameters setObject:aSecurityCode forKey:@"securityCode"];
@@ -190,6 +192,7 @@
 {
     NSString *path = @"telBook-getTel.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     if (![aDepartment isEqualToString:@"all"]) {
@@ -216,6 +219,7 @@
 {
     NSString *path = @"telBook-changePhone.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
@@ -232,6 +236,7 @@
 {
     NSString *path = @"telBook-getUserInfo.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     [self _execGetWithPath:path params:parameters callback:aCallback];
