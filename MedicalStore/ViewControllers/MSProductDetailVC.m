@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewBrief;
 @property (weak, nonatomic) IBOutlet UILabel *lblBrief;
 @property (weak, nonatomic) IBOutlet UIView *viewHead;
+@property (weak, nonatomic) IBOutlet UIButton *addfavorite;
 @end
 
 @implementation MSProductDetailVC
@@ -51,6 +52,10 @@
     [_viewHead applyEffectShadowAndBorder];
     [_viewBrief applyEffectShadowAndBorder];
     [_ivLogo applyEffectRoundRectSilverBorder];
+    if (_keep)
+        [self.addfavorite setTitle:@"收藏" forState:UIControlStateNormal];
+    else
+        [self.addfavorite setTitle:@"取消收藏" forState:UIControlStateNormal];
 }
 
 -(IBAction)call:(id)sender

@@ -46,8 +46,6 @@
         _showSectionIndexes = showSectionIndexes;
         _isfavor = isfavor;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadtelbooklist) name:ReloadTelBookList object:nil];
-        
-        [self extraInit];
     }
     
     return self;
@@ -262,7 +260,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (tableView == self.tableView && self.showSectionIndexes) {
+    if (tableView == self.tableView && self.showSectionIndexes && !_isfavor) {
         if ([[self.sections objectAtIndex:section] count] > 0) {
             MSDepartMent *_depart = _departArray[section];
             return _depart.name;
@@ -286,7 +284,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (tableView == self.tableView) {
+    if (tableView == self.tableView && !_isfavor) {
         if (self.showSectionIndexes) {
             return self.sections.count;
         } else {
@@ -299,7 +297,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.tableView) {
+    if (tableView == self.tableView && !_isfavor) {
         if (self.showSectionIndexes) {
             return [[self.sections objectAtIndex:section] count];
         } else {
@@ -380,7 +378,10 @@
 {
     [_favoriteArray removeAllObjects];
     _favoriteArray = [NSMutableArray arrayWithArray:[[GGDbManager sharedInstance] getAllTelbooks]];
-    [_tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+
 }
 
 
