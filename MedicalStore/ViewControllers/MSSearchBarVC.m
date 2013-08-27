@@ -156,7 +156,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)) style:UITableViewStylePlain];
+    CGRect rc = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 44 - 60);
+    self.tableView = [[UITableView alloc] initWithFrame:rc style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
