@@ -119,4 +119,44 @@ DEF_SINGLETON(GGDataStore)
     return nil;
 }
 
+
++(void)saveTelbooks:(NSArray *)aTelbooks
+{
+    [self ensurePathExists:[self savedDataPath]];
+    
+    
+    if (aTelbooks)
+    {
+        NSMutableArray *archiveArr = [NSMutableArray array];
+        for (id object in aTelbooks)
+        {
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
+            [archiveArr addObjectIfNotNil:data];
+        }
+        
+        BOOL ok = [archiveArr writeToFile:[self pathTelbooks] atomically:YES];
+        DLog(@"%d", ok);
+    }
+
+}
+
++(NSArray *)loadTelbooks
+{
+    NSArray *unarchiveArr = [[NSArray alloc] initWithContentsOfFile:[self pathTelbooks]];
+    
+    if (unarchiveArr)
+    {
+        NSMutableArray *departments = [NSMutableArray array];
+        for (NSData *data in unarchiveArr)
+        {
+            id object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            [departments addObjectIfNotNil:object];
+        }
+        
+        return departments;
+    }
+    
+    return nil;
+}
+
 @end

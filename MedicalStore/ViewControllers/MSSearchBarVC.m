@@ -48,15 +48,14 @@
 
 - (void) getTelData
 {
-    [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-        NSMutableArray *array =[parser parseMSTelBook];
-        NSLog(@"%@",array);
-        
+    NSArray *telbooks = [GGDataStore loadTelbooks];
+    
+    if (telbooks.count)
+    {
         self.filteredMSTelName =  [NSMutableArray new];
         self.primevalMSTelName =  [NSMutableArray new];
         self.filteredMSTelMSG  =  [NSMutableDictionary new];
-        for (MSTelBook *book in array) {
+        for (MSTelBook *book in telbooks) {
             [_filteredMSTelName addObject:book.name];
             [_filteredMSTelMSG setObject:book forKey:book.name];
         }
@@ -64,7 +63,7 @@
         NSMutableArray *dep_tel = [NSMutableArray new];
         
         for (MSDepartMent *dep in _departArray) {
-            for (MSTelBook *telbook in array) {
+            for (MSTelBook *telbook in telbooks) {
                 if ([telbook.departmentId intValue] == dep.ID) {
                     [dep_tel addObject:telbook];
                 }
@@ -76,7 +75,40 @@
             
         }
         [self initUseInterface];
-    }];
+    }
+    else
+    {
+        [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            NSMutableArray *array =[parser parseMSTelBook];
+            [GGDataStore saveTelbooks:array];
+            NSLog(@"%@",array);
+            
+            self.filteredMSTelName =  [NSMutableArray new];
+            self.primevalMSTelName =  [NSMutableArray new];
+            self.filteredMSTelMSG  =  [NSMutableDictionary new];
+            for (MSTelBook *book in array) {
+                [_filteredMSTelName addObject:book.name];
+                [_filteredMSTelMSG setObject:book forKey:book.name];
+            }
+            self.primevalMSTelName = [NSMutableArray arrayWithArray:_filteredMSTelName];
+            NSMutableArray *dep_tel = [NSMutableArray new];
+            
+            for (MSDepartMent *dep in _departArray) {
+                for (MSTelBook *telbook in array) {
+                    if ([telbook.departmentId intValue] == dep.ID) {
+                        [dep_tel addObject:telbook];
+                    }
+                }
+                if ([dep_tel count] > 0) {
+                    [_departTelDict setObject:[NSArray arrayWithArray:dep_tel] forKey:[NSString stringWithFormat:@"%lld",dep.ID]];
+                    [dep_tel removeAllObjects];
+                }
+                
+            }
+            [self initUseInterface];
+        }];
+    }
 }
 
 - (void) initUseInterface
