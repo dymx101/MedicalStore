@@ -46,16 +46,14 @@
     return self;
 }
 
-- (void) getTelData
+-(void)_updateWithTelbooks:(NSArray *)aTelbooks
 {
-    NSArray *telbooks = [GGDataStore loadTelbooks];
-    
-    if (telbooks.count)
+    if (aTelbooks)
     {
         self.filteredMSTelName =  [NSMutableArray new];
         self.primevalMSTelName =  [NSMutableArray new];
         self.filteredMSTelMSG  =  [NSMutableDictionary new];
-        for (MSTelBook *book in telbooks) {
+        for (MSTelBook *book in aTelbooks) {
             [_filteredMSTelName addObject:book.name];
             [_filteredMSTelMSG setObject:book forKey:book.name];
         }
@@ -63,7 +61,7 @@
         NSMutableArray *dep_tel = [NSMutableArray new];
         
         for (MSDepartMent *dep in _departArray) {
-            for (MSTelBook *telbook in telbooks) {
+            for (MSTelBook *telbook in aTelbooks) {
                 if ([telbook.departmentId intValue] == dep.ID) {
                     [dep_tel addObject:telbook];
                 }
@@ -76,37 +74,25 @@
         }
         [self initUseInterface];
     }
+}
+
+- (void) getTelData
+{
+    NSArray *telbooks = [GGDataStore loadTelbooks];
+    
+    if (telbooks.count)
+    {
+        [self _updateWithTelbooks:telbooks];
+    }
     else
     {
         [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             NSMutableArray *array =[parser parseMSTelBook];
             [GGDataStore saveTelbooks:array];
-            NSLog(@"%@",array);
+            //NSLog(@"%@",array);
             
-            self.filteredMSTelName =  [NSMutableArray new];
-            self.primevalMSTelName =  [NSMutableArray new];
-            self.filteredMSTelMSG  =  [NSMutableDictionary new];
-            for (MSTelBook *book in array) {
-                [_filteredMSTelName addObject:book.name];
-                [_filteredMSTelMSG setObject:book forKey:book.name];
-            }
-            self.primevalMSTelName = [NSMutableArray arrayWithArray:_filteredMSTelName];
-            NSMutableArray *dep_tel = [NSMutableArray new];
-            
-            for (MSDepartMent *dep in _departArray) {
-                for (MSTelBook *telbook in array) {
-                    if ([telbook.departmentId intValue] == dep.ID) {
-                        [dep_tel addObject:telbook];
-                    }
-                }
-                if ([dep_tel count] > 0) {
-                    [_departTelDict setObject:[NSArray arrayWithArray:dep_tel] forKey:[NSString stringWithFormat:@"%lld",dep.ID]];
-                    [dep_tel removeAllObjects];
-                }
-                
-            }
-            [self initUseInterface];
+            [self _updateWithTelbooks:array];
         }];
     }
 }
@@ -177,12 +163,7 @@
         
         if (departments.count)
         {
-            for (MSDepartMent *department in departments) {
-                if (self.typeId == [department.superid intValue] ) {
-                    [_departArray addObject:department];
-                }
-            }
-            [self getTelData];
+            [self _updateWithDepartments:departments];
         }
         else
         {
@@ -191,14 +172,23 @@
                 NSMutableArray *array = [parser parseMSDepartMent];
                 [GGDataStore saveDepartments:array];
                 NSLog(@"%@",array);
-                for (MSDepartMent *department in array) {
-                    if (self.typeId == [department.superid intValue] ) {
-                        [_departArray addObject:department];
-                    }
-                }
-                [self getTelData];
+                
+                [self _updateWithDepartments:array];
             }];
         }
+    }
+}
+
+-(void)_updateWithDepartments:(NSArray *)aDepartments
+{
+    if (aDepartments)
+    {
+        for (MSDepartMent *department in aDepartments) {
+            if (self.typeId == [department.superid intValue] ) {
+                [_departArray addObject:department];
+            }
+        }
+        [self getTelData];
     }
 }
 
