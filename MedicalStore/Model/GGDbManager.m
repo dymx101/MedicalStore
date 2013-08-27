@@ -8,42 +8,26 @@
 
 #import "GGDbManager.h"
 #import "FMDatabase.h"
+#import "MSTelBook.h"
 
-static NSString *createPolicemanTableSQL = @"CREATE TABLE IF NOT EXISTS 'Policeman' ( \
+static NSString *createTelBookTableSQL = @"CREATE TABLE IF NOT EXISTS 'Telbook' ( \
 'id' INTEGER PRIMARY KEY NOT NULL , \
+'departmentid' VARCHAR(30), \
+'moduleid' VARCHAR(10), \
 'name' VARCHAR(30), \
-'gender' VARCHAR(10), \
-'number' VARCHAR(30), \
-'phone' VARCHAR(30), \
-'photo' VARCHAR(100), \
-'stationName' VARCHAR(30), \
-'stationPhone' VARCHAR(30), \
-'superviserPhone' VARCHAR(30) \
+'post' VARCHAR(30), \
+'officephone' VARCHAR(30), \
+'mobilephone' VARCHAR(30), \
+'homephone' VARCHAR(30) \
 )";
 
-static NSString *createWantedTableSQL = @"CREATE TABLE IF NOT EXISTS 'Wanted' ( \
-'id' INTEGER PRIMARY KEY NOT NULL , \
-'title' VARCHAR(100), \
-'content' TEXT, \
-'type' VARCHAR(30), \
-'rewardTime' VARCHAR(30), \
-'wantedManName' VARCHAR(100), \
-'wantedManGender' VARCHAR(30), \
-'wantedManAddress' VARCHAR(100), \
-'addTime' VARCHAR(30), \
-'updateTime' VARCHAR(30) \
-)";
 
-static NSString *insertPolicemanSQL = @"insert into 'Policeman' (id, name, gender, number, phone, photo, stationName, stationPhone, superviserPhone) values(%lld, %@, %@, %@, %@, %@, %@, %@, %@)";
-static NSString *deletePolicemanSQL = @"delete from Policeman where id=%lld ";
-static NSString *selectPolicemanSQL = @"select * from 'Policeman'";
-static NSString *selectPolicemanWithIdSQL = @"select * from 'Policeman' where id=%lld ";
+static NSString *insertTelbookSQL = @"insert into 'Telbook' (id, departmentid, moduleid, name, post, officephone, mobilephone, homephone) values(%lld, %@, %@, %@, %@, %@, %@,%@)";
+static NSString *deleteTelbookSQL = @"delete from Telbook where id=%lld ";
+static NSString *selectTelbookSQL = @"select * from 'Telbook'";
+static NSString *selectTelbookWithIdSQL = @"select * from 'Telbook' where id=%lld ";
 
-static NSString *insertWantedSimpleSQL = @"insert into 'Wanted' (id, title) values(%lld, '%@')";
-static NSString *insertWantedSQL = @"insert into 'Wanted' (id, title, content, type, rewardTime, wantedManName, wantedManGender, wantedManAddress, addTime, updateTime) values(%lld, %@, %@, %@, %@, %@, %@, %@, %@, %@)";
-static NSString *deleteWantedSQL = @"delete from Wanted where id=%lld ";
-static NSString *selectWantedSQL = @"select * from 'Wanted'";
-static NSString *selectWantedWithIdSQL = @"select * from 'Wanted' where id=%lld ";
+
 
 @implementation GGDbManager
 DEF_SINGLETON(GGDbManager)
@@ -53,7 +37,7 @@ DEF_SINGLETON(GGDbManager)
     static NSString *dbPath;
     if (!dbPath)
     {
-        dbPath = [PATH_OF_DOCUMENT stringByAppendingPathComponent:@"book.sqlite"];
+        dbPath = [PATH_OF_DOCUMENT stringByAppendingPathComponent:@"telbook.sqlite"];
     }
     
     return dbPath;
@@ -80,11 +64,85 @@ DEF_SINGLETON(GGDbManager)
         FMDatabase *db = [self _db];
         if ([db open])
         {
-            [db executeUpdate:createPolicemanTableSQL];
-            [db executeUpdate:createWantedTableSQL];
+            [db executeUpdate:createTelBookTableSQL];
             [db close];
         }
     }
+}
+
+-(BOOL)insertTelbook:(MSTelBook *)aTelBook
+{
+    BOOL success = NO;
+    FMDatabase *db = [self _db];
+    if (aTelBook && [db open])
+    {
+
+        success = [db executeUpdateWithFormat:insertTelbookSQL, aTelBook.ID, aTelBook.departmentId,aTelBook.moduleId,aTelBook.name,aTelBook.post,aTelBook.officePhone,aTelBook.mobilePhone,aTelBook.homePhone];
+        [db close];
+    }
+    
+    return success;
+}
+
+-(BOOL)deleteTelbookByID:(long long)aTelbookID
+{
+    BOOL success = NO;
+    FMDatabase *db = [self _db];
+    if ([db open])
+    {
+        NSString *sql = [NSString stringWithFormat:deleteTelbookSQL, aTelbookID];
+        success = [db executeUpdate:sql];
+        [db close];
+    }
+    
+    return success;
+}
+
+-(BOOL)hasTelbookWithID:(long long)aTelbookID
+{
+    FMDatabase *db = [self _db];
+    if ([db open])
+    {
+        NSString *sql = [NSString stringWithFormat:selectTelbookSQL, aTelbookID];
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next])
+        {
+            [db close];
+            return YES;
+        }
+        [db close];
+    }
+    
+    return NO;
+}
+
+-(NSArray *)getAllTelbooks
+{
+    NSMutableArray *telbooks;
+    
+    FMDatabase *db = [self _db];
+    if ([db open])
+    {
+        telbooks = [NSMutableArray array];
+        FMResultSet *rs = [db executeQuery:selectTelbookSQL];
+        while ([rs next])
+        {
+            MSTelBook *telbook = [MSTelBook model];
+            
+            telbook.ID = [rs longLongIntForColumn:@"id"];
+            telbook.departmentId = [rs stringForColumn:@"departmentid"];
+            telbook.moduleId = [rs stringForColumn:@"moduleid"];
+            telbook.name = [rs stringForColumn:@"name"];
+            telbook.post = [rs stringForColumn:@"post"];
+            telbook.officePhone = [rs stringForColumn:@"officephone"];
+            telbook.mobilePhone = [rs stringForColumn:@"mobilephone"];
+            telbook.homePhone = [rs stringForColumn:@"homephone"];
+            [telbooks addObject:telbook];
+        }
+        [db close];
+    }
+    
+    return telbooks;
 }
 
 @end

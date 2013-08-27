@@ -12,10 +12,11 @@
 @interface MSProductDetailVC : MSBaseVC
 
 @property(nonatomic,strong) MSTelBook *msTelbook;
+@property (nonatomic)BOOL keep;   // 收藏 1 or 取消收藏 0
 
 
--(IBAction)m1:(id)sender;
--(IBAction)m2:(id)sender;
--(IBAction)m3:(id)sender;
--(IBAction)m4:(id)sender;
+-(IBAction)call:(id)sender;
+-(IBAction)sendmessage:(id)sender;
+-(IBAction)addfavorite:(id)sender;
+
 @end

@@ -7,9 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+@class MSTelBook;
 
 
 @interface GGDbManager : NSObject
 AS_SINGLETON(GGDbManager)
+
+-(BOOL)insertTelbook:(MSTelBook *)aTelBook;
+-(BOOL)deleteTelbookByID:(long long)aTelbookID;
+-(BOOL)hasTelbookWithID:(long long)aTelbookID;
+-(NSArray *)getAllTelbooks;
 
 @end

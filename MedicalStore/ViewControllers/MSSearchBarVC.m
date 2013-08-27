@@ -10,14 +10,15 @@
 #import "MSDepartMent.h"
 #import "MSTelBook.h"
 #import "GGDataStore.h"
+#import "GGDbManager.h"
+
+#define ReloadTelBookList  @"ReloadTelBookList"
 
 @interface MSSearchBarVC ()
 
 @property(nonatomic,strong) NSMutableArray       *departArray;
 
 @property(nonatomic,strong) NSMutableDictionary  *departTelDict;
-
-@property(nonatomic,assign) BOOL                 isfavor;
 
 @end
 
@@ -41,6 +42,7 @@
         self.title = @"Search Bar";
         _showSectionIndexes = showSectionIndexes;
         _isfavor = isfavor;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadtelbooklist) name:ReloadTelBookList object:nil];
     }
     
     return self;
@@ -131,6 +133,7 @@
     
     if (_isfavor) {
         NSLog(@"isfavor");
+        [self reloadtelbooklist];
     }
     else
     {
@@ -243,7 +246,13 @@
         } else {
             return [_sections[section] count];
         }
-    } else {
+    }
+    else if(_isfavor)
+    {
+        return self.favoriteArray.count;
+    }
+    else
+    {
         return self.filteredMSTelName.count;
     }
 }
@@ -261,7 +270,12 @@
         } else {
             cell.textLabel.text = [_sections[indexPath.section] objectAtIndex:indexPath.row];
         }
-    } else {
+    }
+    else if(_isfavor)
+    {
+        cell.textLabel.text = [self.favoriteArray objectAtIndex:indexPath.row];
+    }
+    else {
         cell.textLabel.text = [self.filteredMSTelName objectAtIndex:indexPath.row];
     }
     
@@ -301,6 +315,13 @@
     self.currentSearchString = searchString;
     
     return YES;
+}
+
+-(void)reloadtelbooklist
+{
+    [_favoriteArray removeAllObjects];
+    _favoriteArray = [NSMutableArray arrayWithArray:[[GGDbManager sharedInstance] getAllTelbooks]];
+    [_tableView reloadData];
 }
 
 

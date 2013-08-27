@@ -16,6 +16,7 @@
 #import "MSProduct.h"
 #import "MSAppDelegate.h"
 #import "MSTelBook.h"
+#import "GGDbManager.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <objc/message.h>
@@ -163,7 +164,14 @@
             cell.lblSubTitle.text = msTelbook.post;
   
         } 
-    } else {
+    }
+    else if (self.isfavor)
+    {
+        msTelbook = [self.favoriteArray objectAtIndex:indexPath.row];
+        cell.lblTitle.text = msTelbook.name;
+        cell.lblSubTitle.text = msTelbook.post;
+    }
+    else {
         msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
         cell.lblTitle.text = msTelbook.name;
         cell.lblSubTitle.text = msTelbook.post;
@@ -180,8 +188,11 @@
 {
     MSProductDetailVC *vc = [MSProductDetailVC new];
     MSTelBook *msTelbook;
+    vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
     if (tableView == self.tableView) 
         msTelbook = self.sections[indexPath.section][indexPath.row];
+    else if (self.isfavor)
+        msTelbook = [self.favoriteArray objectAtIndex:indexPath.row];
     else
         msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
     vc.msTelbook = msTelbook;

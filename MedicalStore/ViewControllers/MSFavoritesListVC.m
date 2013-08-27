@@ -10,6 +10,7 @@
 #import "MSProductCell.h"
 #import "MSProductDetailVC.h"
 #import "MSTelBook.h"
+#import "GGDbManager.h"
 
 @interface MSFavoritesListVC ()
 {
@@ -165,9 +166,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MSProductDetailVC *vc = [MSProductDetailVC new];
-    
     MSTelBook *msTelbook = self.sections[indexPath.section][indexPath.row];
     vc.msTelbook = msTelbook;
+    vc.keep = NO;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
