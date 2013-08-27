@@ -10,6 +10,7 @@
 #import "MSDepartMent.h"
 #import "MSTelBook.h"
 #import "GGDataStore.h"
+#import "NSObject+BeeNotification.h"
 
 @interface MSSearchBarVC ()
 
@@ -30,6 +31,8 @@
     if ((self = [super initWithNibName:nil bundle:nil])) {
         self.title = @"Search Bar";
         _showSectionIndexes = showSectionIndexes;
+        
+        [self extraInit];
     }
     
     return self;
@@ -41,9 +44,30 @@
         self.title = @"Search Bar";
         _showSectionIndexes = showSectionIndexes;
         _isfavor = isfavor;
+        
+        [self extraInit];
     }
     
     return self;
+}
+
+-(void)extraInit
+{
+    [self observeNotification:MS_NOTIFY_DATA_REFRESHED];
+}
+
+-(void)handleNotification:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:MS_NOTIFY_DATA_REFRESHED])
+    {
+        [self _updateNeverGetTelDataWithDepartments:[GGDataStore loadDepartments]];
+        [self _updateWithTelbooks:[GGDataStore loadTelbooks]];
+    }
+}
+
+-(void)dealloc
+{
+    [self unobserveAllNotifications];
 }
 
 -(void)_updateWithTelbooks:(NSArray *)aTelbooks
@@ -175,6 +199,18 @@
                 
                 [self _updateWithDepartments:array];
             }];
+        }
+    }
+}
+
+-(void)_updateNeverGetTelDataWithDepartments:(NSArray *)aDepartments
+{
+    if (aDepartments)
+    {
+        for (MSDepartMent *department in aDepartments) {
+            if (self.typeId == [department.superid intValue] ) {
+                [_departArray addObject:department];
+            }
         }
     }
 }
