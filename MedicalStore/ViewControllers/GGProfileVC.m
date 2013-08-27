@@ -29,7 +29,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        self.title = @"个人资料";
         [self setTitle:@"身份验证"];
     }
     return self;
@@ -80,24 +79,35 @@
 -(IBAction)getValidateCodeAction:(id)sender
 {
     DLog(@"getValidateCodeAction");
-    [GGSharedAPI askChecking:@"towne" Phone:13397186156 callback:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-        long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
-        DLog(@">>>> %ld",flag);
-        if (flag == 1) {
-            [GGAlert alertWithApiMessage:@"变更失败"];
-        }
-        else
-        {
-            [GGAlert alertWithMessage:[NSString stringWithFormat:@"变更为\n 姓名:%@\n手机号:%@",@"towne",@"13397186156"] title:@"查看手机获取验证码"];
-        }
+    int tfnlength = [_tfName.text length];
+    int tfplength = [_tfPhone.text length];
+    
+    if (tfnlength == 0 || tfplength == 0) {
+        [GGAlert alertWithApiMessage:@"姓名和电话不能为空！"];
+    }
+    else
+    {
+        [GGSharedAPI askChecking:@"towne" Phone:13397186156 callback:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+            DLog(@">>>> %ld",flag);
+            if (flag == 1) {
+                [GGAlert alertWithApiMessage:@"变更失败"];
+            }
+            else
+            {
+                [GGAlert alertWithMessage:[NSString stringWithFormat:@"变更为\n 姓名:%@\n手机号:%@",@"towne",@"13397186156"] title:@"请从手机上获取验证码"];
+            }
+            
+        }];
+    }
 
-    }];
 }
 
 -(IBAction)validateAction:(id)sender
 {
     DLog(@"validateAction");
+
 }
 
 @end

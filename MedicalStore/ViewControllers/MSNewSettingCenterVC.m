@@ -153,13 +153,23 @@
     {
         if (row == 0)
         {
-
-            [GGAlert alertWithMessage:[NSString stringWithFormat:@"姓名:%@\n手机号:%@",_user.name,_user.phone] title:@"查看"];
+            if (nil != _user.name && nil != _user.phone) {
+                [GGAlert alertWithMessage:[NSString stringWithFormat:@"姓名:%@\n手机号:%@",_user.name,_user.phone] title:@"查看"];
+            }
+            else
+            {
+                GGProfileVC *vc = [[GGProfileVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+ 
         }
         else if (row == 1)
         {
-            GGProfileVC *vc = [[GGProfileVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self showAlertWithTextField];
+        }
+        else if (row == 2)
+        {
+            [GGAlert alertWithMessage:@"通讯录数据暂无更新!"];
         }
     }
     else if (section == 1)
@@ -209,6 +219,11 @@
     {
         [self enterITunesToUpdate];
     }
+    else if (alertView.tag == 1101)
+    {
+        if (buttonIndex == 1)
+            NSLog(@"%@",[[alertView textFieldAtIndex:0]text]);
+    }
 }
 
 
@@ -217,5 +232,21 @@
     NSURL * iTunesUrl = [NSURL URLWithString:@"http://itunes.apple.com/cn/app/id427457043?mt=8&ls=1"];
     [[UIApplication	sharedApplication] openURL:iTunesUrl];
 }
+
+
+-(void)showAlertWithTextField{
+    UIAlertView* dialog = [[UIAlertView alloc] initWithTitle:@"变更" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"提交", nil];
+    [dialog setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+    
+    // Change keyboard type
+    [[dialog textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
+    [[dialog textFieldAtIndex:1] setKeyboardType:UIKeyboardTypeNumberPad];
+    
+     dialog.tag = 1101;
+    [dialog show];
+}
+
+// Change keyboard type
+
 
 @end
