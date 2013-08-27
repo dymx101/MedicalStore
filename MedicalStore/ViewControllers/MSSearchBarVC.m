@@ -9,6 +9,7 @@
 #import "MSSearchBarVC.h"
 #import "MSDepartMent.h"
 #import "MSTelBook.h"
+#import "GGDataStore.h"
 
 @interface MSSearchBarVC ()
 
@@ -140,19 +141,36 @@
         
         [self.view showLoadingHUDWithText:@"数据加载中..."];
         
-        [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
-            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-            NSMutableArray *array = [parser parseMSDepartMent];
-            NSLog(@"%@",array);
-            for (MSDepartMent *department in array) {
+        NSArray *departments = [GGDataStore loadDepartments];
+        
+        if (departments.count)
+        {
+            for (MSDepartMent *department in departments) {
                 if (self.typeId == [department.superid intValue] ) {
                     [_departArray addObject:department];
                 }
             }
             [self getTelData];
-        }];
+        }
+        else
+        {
+            [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
+                GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+                NSMutableArray *array = [parser parseMSDepartMent];
+                [GGDataStore saveDepartments:array];
+                NSLog(@"%@",array);
+                for (MSDepartMent *department in array) {
+                    if (self.typeId == [department.superid intValue] ) {
+                        [_departArray addObject:department];
+                    }
+                }
+                [self getTelData];
+            }];
+        }
     }
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {

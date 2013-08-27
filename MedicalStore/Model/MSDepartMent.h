@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "GGDataModel.h"
 
-@interface MSDepartMent : GGDataModel
+@interface MSDepartMent : GGDataModel <NSCoding>
 
 @property(copy) NSString *phone;
 @property(copy) NSString *fax;

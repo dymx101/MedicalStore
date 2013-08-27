@@ -67,6 +67,7 @@
 		4CDBDD2117B77DBF00682F21 /* GGPhoneMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD2017B77DBD00682F21 /* GGPhoneMask.m */; };
 		4CDBDD2417B7ABCF00682F21 /* MSFavoritesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBDD2317B7ABCE00682F21 /* MSFavoritesListVC.m */; };
 		EA291E0517CC771800243D4A /* tabBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA291E0417CC771800243D4A /* tabBg@2x.png */; };
+		EA291E0817CC95B000243D4A /* GGDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EA291E0717CC95B000243D4A /* GGDataStore.m */; };
 		EA99964F17CB9D2300BAFF4B /* tab1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA99964717CB9D2300BAFF4B /* tab1@2x.png */; };
 		EA99965017CB9D2300BAFF4B /* tab1s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA99964817CB9D2300BAFF4B /* tab1s@2x.png */; };
 		EA99965117CB9D2300BAFF4B /* tab2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA99964917CB9D2300BAFF4B /* tab2@2x.png */; };
@@ -284,6 +285,8 @@
 		4CDBDD2217B7ABCD00682F21 /* MSFavoritesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFavoritesListVC.h; sourceTree = "<group>"; };
 		4CDBDD2317B7ABCE00682F21 /* MSFavoritesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFavoritesListVC.m; sourceTree = "<group>"; };
 		EA291E0417CC771800243D4A /* tabBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBg@2x.png"; sourceTree = "<group>"; };
+		EA291E0617CC95B000243D4A /* GGDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDataStore.h; sourceTree = "<group>"; };
+		EA291E0717CC95B000243D4A /* GGDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDataStore.m; sourceTree = "<group>"; };
 		EA99964717CB9D2300BAFF4B /* tab1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1@2x.png"; sourceTree = "<group>"; };
 		EA99964817CB9D2300BAFF4B /* tab1s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1s@2x.png"; sourceTree = "<group>"; };
 		EA99964917CB9D2300BAFF4B /* tab2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab2@2x.png"; sourceTree = "<group>"; };
@@ -895,6 +898,8 @@
 				EA9A1C3A1791C477005E9130 /* GGTagetActionPair.m */,
 				EA9A1C3B1791C477005E9130 /* GGUtils.h */,
 				EA9A1C3C1791C477005E9130 /* GGUtils.m */,
+				EA291E0617CC95B000243D4A /* GGDataStore.h */,
+				EA291E0717CC95B000243D4A /* GGDataStore.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1204,6 +1209,7 @@
 				EA99965E17CB9F5B00BAFF4B /* RDVTabBar.m in Sources */,
 				EA99965F17CB9F5B00BAFF4B /* RDVTabBarController.m in Sources */,
 				EA99966017CB9F5B00BAFF4B /* RDVTabBarItem.m in Sources */,
+				EA291E0817CC95B000243D4A /* GGDataStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
