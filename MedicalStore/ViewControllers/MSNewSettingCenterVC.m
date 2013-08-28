@@ -230,14 +230,18 @@
                     GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
                     long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
                     if (flag == 0) {
-                        [GGAlert alertWithMessage:@"变更成功"];
+                        [GGAlert alertWithMessage:@"变更成功!"];
                     }
                     else
                     {
-                        [GGAlert alertWithMessage:@"变更失败"];
+                        [GGAlert alertWithMessage:@"变更失败!"];
                     }
                 }];
             }
+            else{
+                [GGAlert alertWithMessage:@"您输入的号码不一致!"];
+            }
+            
             
         }
     }
