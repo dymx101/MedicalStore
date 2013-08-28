@@ -222,7 +222,24 @@
     else if (alertView.tag == 1101)
     {
         if (buttonIndex == 1)
-            NSLog(@"%@",[[alertView textFieldAtIndex:0]text]);
+        {
+            NSString *fstPhoneNum = [[alertView textFieldAtIndex:0]text];
+            NSString *secPhoneNum = [[alertView textFieldAtIndex:1]text];
+            if ([fstPhoneNum longLongValue] == [secPhoneNum longLongValue]) {
+                [GGSharedAPI changePhone:[fstPhoneNum longLongValue] callback:^(id operation, id aResultObject, NSError *anError) {
+                    GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+                    long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+                    if (flag == 0) {
+                        [GGAlert alertWithMessage:@"变更成功"];
+                    }
+                    else
+                    {
+                        [GGAlert alertWithMessage:@"变更失败"];
+                    }
+                }];
+            }
+            
+        }
     }
 }
 
@@ -239,7 +256,9 @@
     [dialog setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
     
     // Change keyboard type
+    [[dialog textFieldAtIndex:0] setPlaceholder:@"请输入您的手机号码！"];
     [[dialog textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
+    [[dialog textFieldAtIndex:1] setPlaceholder:@"请再次输入您的手机号码！"];
     [[dialog textFieldAtIndex:1] setKeyboardType:UIKeyboardTypeNumberPad];
     
      dialog.tag = 1101;
