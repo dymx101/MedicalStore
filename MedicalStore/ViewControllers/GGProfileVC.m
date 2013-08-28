@@ -92,7 +92,7 @@
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
             if (flag == 1) {
-                [GGAlert alertWithApiMessage:@"变更失败"];
+                [GGAlert alertWithApiMessage:@"申请验证码失败"];
             }
             else
             {
@@ -107,7 +107,26 @@
 -(IBAction)validateAction:(id)sender
 {
     DLog(@"validateAction");
-
+    NSString *validatestring = _tfValidate.text;
+    int tfvalidlength = [_tfValidate.text length];
+    if (tfvalidlength == 0 ) {
+        [GGAlert alertWithApiMessage:@"验证码不能为空！"];
+    }
+    else
+    {
+        [GGSharedAPI checkCode:validatestring callback:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+            DLog(@">>>> %ld",flag);
+            if (flag == 0) {
+                [GGAlert alertWithApiMessage:@"用户验证通过,即将进入应用,请稍后！"];
+            }
+            else
+            {
+                [GGAlert alertWithMessage:@"验证失败!"];
+            }
+        }];
+    }
 }
 
 @end
