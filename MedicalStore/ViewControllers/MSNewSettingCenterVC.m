@@ -10,6 +10,9 @@
 #import "MSAppDelegate.h"
 #import "GGProfileVC.h"
 #import "MSUserInfo.h"
+#import "GGVersionInfo.h"
+#import "GGDataStore.h"
+
 @interface MSNewSettingCenterVC () <UITableViewDataSource, UITableViewDelegate>
 
 @end
@@ -168,36 +171,65 @@
         }
         else if (row == 2)
         {
-            [GGAlert alertWithMessage:@"通讯录数据暂无更新!"];
+            [self checkUpdateWithData:@"1"];
         }
     }
     else if (section == 1)
     {
         if (row == 0) {
-            [self checkVersionUpdate:@"1"];
+            [self checkUpdateWithCurrentVersion:@"1"];
         }
         
     }
 }
 
--(void)checkVersionUpdate:(NSString *) currentVersion
+
+//数据升级检查
+-(void)checkUpdateWithData:(NSString *) currentVersion
 {
-    [GGSharedAPI checkUpdate:^(id operation, id aResultObject, NSError *anError) {
+    [[GGApi sharedApi] checkUpdate:^(id operation, id aResultObject, NSError *anError) {
+        
         GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
         long state = [[[parser apiData] objectForKey:@"state"] longValue];
         DLog(@">>>> %ld",state);
         if (state > [currentVersion intValue]) {
-            NSMutableString * updateString = [[NSMutableString alloc]initWithString:@"版本更新版本更新版本更新版本更新版本更新版本更新版本更新版本更新版本"] ;
-            NSRange range = NSMakeRange(0, [updateString length]);
-            [updateString replaceOccurrencesOfString:@"#" withString:@"\r" options:NSCaseInsensitiveSearch range:range];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示" message:updateString delegate:self cancelButtonTitle:@"稍后" otherButtonTitles:@"更新", nil];
-            [alert show];
-            alert.tag = 7789;
+            [GGAlert alert:@"正在更新数据,请稍后！" tag:101 delegate:self];
+        }
+        else
+        {
+         [GGAlert alertWithMessage:@"通讯录数据暂无更新!"];
+        }
+       
+    }];
+}
+
+//升级检查
+-(void)checkUpdateWithCurrentVersion:(NSString *) currentVersion
+{    
+    [[GGApi sharedApi] checkUpdateWithCurrentVersion:currentVersion callback:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        GGVersionInfo *versionInfo = [parser parseGetVersionInfo];
+        if (versionInfo != nil) {
+            if([versionInfo.verName floatValue] > [currentVersion floatValue])
+            {
+                NSString *updateString = versionInfo.updates;
+                if ([updateString isKindOfClass:[NSNull class]]) {
+                    updateString  = @"版本更新内容";
+                }
+                NSMutableString * showupdataText = [[NSMutableString alloc]initWithString:updateString] ;
+              
+                NSRange range = NSMakeRange(0, [updateString length]);
+                [showupdataText replaceOccurrencesOfString:@"#" withString:@"\r" options:NSCaseInsensitiveSearch range:range];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示" message:updateString delegate:self cancelButtonTitle:@"稍后" otherButtonTitles:@"更新", nil];
+                [alert show];
+                alert.tag = 7789;
+            }
         }
         else
         {
             [self alertNetError];
         }
+ 
     }];
 }
 
@@ -243,6 +275,10 @@
             
             
         }
+    }
+    else if(alertView.tag == 101)
+    {
+        [SharedAppDelegate refreshData];
     }
 }
 

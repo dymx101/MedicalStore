@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class MSUserInfo;
+@class GGVersionInfo;
 @class NSData;
 
 @interface GGApiParser : NSObject
@@ -33,5 +34,5 @@
 -(NSMutableArray *)parseMSDepartMent;
 -(MSUserInfo *)parseMSUserInfo;
 -(NSMutableArray *)parseMSTelBook;
-
+-(GGVersionInfo *)parseGetVersionInfo;
 @end

@@ -41,8 +41,10 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(void)changePhone:(long long)aPhone callback:(GGApiBlock)aCallback;
 //用户信息接口
 -(void)getUserInfo:(GGApiBlock)aCallback;
-//检查更新接口
+//数据更新接口
 -(void)checkUpdate:(GGApiBlock)aCallback;
+//版本更新接口
+-(void)checkUpdateWithCurrentVersion:(NSString *)aCurrentVersion  callback:(GGApiBlock)aCallback;
 
 @end
 

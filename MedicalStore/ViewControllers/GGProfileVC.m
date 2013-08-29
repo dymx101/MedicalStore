@@ -45,8 +45,8 @@
     _tfName.text = [GGUserDefault myName];
     _tfPhone.text = [GGUserDefault myPhone];
     
-    //UIBarButtonItem *barBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
-    //self.navigationItem.rightBarButtonItem = barBtn;
+    UIBarButtonItem *barBtn = [[UIBarButtonItem alloc] initWithTitle:@"退出" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
+    self.navigationItem.leftBarButtonItem = barBtn;
     
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)]];
     
@@ -72,12 +72,7 @@
 
 -(IBAction)save:(id)sender
 {
-    DLog(@"save profile");
-    [GGUserDefault saveMyName:self.tfName.text];
-    [GGUserDefault saveMyPhone:self.tfPhone.text];
-    NSArray * profile = [NSArray arrayWithObjects:self.tfName.text,self.tfPhone.text,nil];
-    [GGArchive archiveData:profile withFileName:@"profile.plist"];
-    [self.navigationController popViewControllerAnimated:YES];
+    exit(0);
 }
 
 -(IBAction)getValidateCodeAction:(id)sender
@@ -100,12 +95,11 @@
             }
             else
             {
-                [GGAlert alertWithMessage:[NSString stringWithFormat:@"\n 姓名:%@\n手机号:%@",_tfName,_tfPhone] title:@"请从手机上获取验证码"];
+                [GGAlert alertWithMessage:[NSString stringWithFormat:@" 姓名:%@ 手机号:%@",_tfName,_tfPhone] title:@"请从手机上获取验证码"];
             }
             
         }];
     }
-
 }
 
 -(IBAction)validateAction:(id)sender

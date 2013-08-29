@@ -8,6 +8,9 @@
 
 #import "MSProductDetailVC.h"
 #import "GGDbManager.h"
+#import "MSDepartMent.h"
+#import "MSTelBook.h"
+#import "GGDataStore.h"
 
 #define ReloadTelBookList  @"ReloadTelBookList"
 
@@ -21,10 +24,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblSubTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblTelTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblOfficeTelTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblHomeTelTitle;
 @property (weak, nonatomic) IBOutlet UIView *viewBrief;
 @property (weak, nonatomic) IBOutlet UILabel *lblBrief;
 @property (weak, nonatomic) IBOutlet UIView *viewHead;
 @property (weak, nonatomic) IBOutlet UIButton *addfavorite;
+
+@property (nonatomic, strong) NSString *departname;
+
 @end
 
 @implementation MSProductDetailVC
@@ -45,9 +53,21 @@
     
     self.navigationItem.title = @"联系人";
     
+    for (MSDepartMent *department in [GGDataStore loadDepartments]) {
+        if (department.ID == [_msTelbook.departmentId longLongValue]) {
+            _departname = department.name;
+            break;
+        }
+    }
+    
     self.lblTitle.text = _msTelbook.name;
-    self.lblSubTitle.text = _msTelbook.post;
+    self.lblSubTitle.text = [NSString stringWithFormat:@"%@ | %@",_departname,_msTelbook.post];
     self.lblTelTitle.text = _msTelbook.mobilePhone;
+    
+
+    
+    self.lblOfficeTelTitle.text = _msTelbook.officePhone;
+    self.lblHomeTelTitle.text = _msTelbook.homePhone;
     
     [_viewHead applyEffectShadowAndBorder];
     [_viewBrief applyEffectShadowAndBorder];
@@ -58,11 +78,35 @@
         [self.addfavorite setTitle:@"取消收藏" forState:UIControlStateNormal];
 }
 
--(IBAction)call:(id)sender
+-(IBAction)call1:(id)sender
 {
     NSLog(@"method_1");
     
     NSString *number = _msTelbook.mobilePhone;// 此处读入电话号码
+    
+    NSString *cleanedString = [[number componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
+    
+    [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
+}
+
+-(IBAction)call2:(id)sender
+{
+    NSLog(@"method_1");
+    
+    NSString *number = _msTelbook.officePhone;// 此处读入电话号码
+    
+    NSString *cleanedString = [[number componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+    NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
+    
+    [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
+}
+
+-(IBAction)call3:(id)sender
+{
+    NSLog(@"method_1");
+    
+    NSString *number = _msTelbook.homePhone;// 此处读入电话号码
     
     NSString *cleanedString = [[number componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C17357617CF251600828EFC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17357517CF251600828EFC /* Default.png */; };
 		4C17357917CF255B00828EFC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17357717CF251D00828EFC /* Default@2x.png */; };
+		4C17357F17CF4A0200828EFC /* GGVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17357E17CF4A0200828EFC /* GGVersionInfo.m */; };
 		4CAED09C17BD3CE70022B08D /* MSTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED09A17BD3CE70022B08D /* MSTestVC.m */; };
 		4CAED09D17BD3CE70022B08D /* MSTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAED09B17BD3CE70022B08D /* MSTestVC.xib */; };
 		4CAED19817C0AE8D0022B08D /* MSDepartMent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED19717C0AE8D0022B08D /* MSDepartMent.m */; };
@@ -176,6 +177,8 @@
 /* Begin PBXFileReference section */
 		4C17357517CF251600828EFC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4C17357717CF251D00828EFC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4C17357D17CF4A0200828EFC /* GGVersionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGVersionInfo.h; sourceTree = "<group>"; };
+		4C17357E17CF4A0200828EFC /* GGVersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGVersionInfo.m; sourceTree = "<group>"; };
 		4CAED09917BD3CE70022B08D /* MSTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestVC.h; sourceTree = "<group>"; };
 		4CAED09A17BD3CE70022B08D /* MSTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTestVC.m; sourceTree = "<group>"; };
 		4CAED09B17BD3CE70022B08D /* MSTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSTestVC.xib; sourceTree = "<group>"; };
@@ -943,6 +946,8 @@
 			isa = PBXGroup;
 			children = (
 				4CD6A08C17B5F29C00B66739 /* GGDataModel.h */,
+				4C17357D17CF4A0200828EFC /* GGVersionInfo.h */,
+				4C17357E17CF4A0200828EFC /* GGVersionInfo.m */,
 				4CD6A08D17B5F29D00B66739 /* GGDataModel.m */,
 				4CD6A04B17B5EDB000B66739 /* GGDbManager.h */,
 				4CD6A04C17B5EDB000B66739 /* GGDbManager.m */,
@@ -1214,6 +1219,7 @@
 				EA99965F17CB9F5B00BAFF4B /* RDVTabBarController.m in Sources */,
 				EA99966017CB9F5B00BAFF4B /* RDVTabBarItem.m in Sources */,
 				EA291E0817CC95B000243D4A /* GGDataStore.m in Sources */,
+				4C17357F17CF4A0200828EFC /* GGVersionInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

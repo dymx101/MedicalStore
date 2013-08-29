@@ -130,7 +130,7 @@
     [parameters setObject:aName forKey:@"name"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
     [parameters setObject:aCode forKey:@"code"];
-    [parameters setObject:__INT(1) forKey:@"phonePlatform"];
+    [parameters setObject:__INT(2) forKey:@"phonePlatform"];
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
@@ -256,6 +256,26 @@
     NSString *path = @"telBook-checkUpdate.rht";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
+//在线升级接口（Ios）
+
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-versionInfoIos.rht
+//参数：cltVerion  客户端版本
+//返回参数：(json格式)
+//返回：verName当前服务器端版本号 如：1.2  可以理解为：小版本
+//verCode 当前服务器端版本号 如：2  可以理解为；大版本
+//Updates 更新内容，其中#号为分隔符，代表换行
+//客户端检查自己版本是否与服务器端版本一样，一样无需进行升级，不一样需要升级
+//举例：verName值为1.3，客户端自己的版本号为1.2，表示有更新文件 调用文件下载接口进行下载。
+-(void)checkUpdateWithCurrentVersion:(NSString *)aCurrentVersion  callback:(GGApiBlock)aCallback
+{
+    NSString *path = @"telBook-versionInfoIos.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:aCurrentVersion forKey:@"cltVerion"];
+    
+    [self _execPostWithPath:path params:parameters callback:aCallback];
 }
 
 -(NSString *)hexStringFromString:(NSString *)string{
