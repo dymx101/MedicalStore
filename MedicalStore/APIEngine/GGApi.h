@@ -17,6 +17,7 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 + (GGApi *)sharedApi;
 + (NSString *)apiBaseUrl;
 
+
 -(void)canceAllOperations;
 
 -(void)_execPostWithPath:(NSString *)aPath params:(NSDictionary *)aParams callback:(GGApiBlock)aCallback;

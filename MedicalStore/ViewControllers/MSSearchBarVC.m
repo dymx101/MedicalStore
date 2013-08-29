@@ -11,6 +11,7 @@
 #import "MSTelBook.h"
 #import "GGDataStore.h"
 #import "GGDbManager.h"
+#import "GGProfileVC.h"
 
 #define ReloadTelBookList  @"ReloadTelBookList"
 #import "NSObject+BeeNotification.h"
@@ -113,6 +114,11 @@
         [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             NSMutableArray *array =[parser parseMSTelBook];
+            if (nil == array) {
+                [self.view hideLoadingHUD];
+                GGProfileVC *vc = [GGProfileVC new];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
             [GGDataStore saveTelbooks:array];
             //NSLog(@"%@",array);
             

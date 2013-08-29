@@ -158,8 +158,7 @@
             }
             else
             {
-                GGProfileVC *vc = [[GGProfileVC alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
+                [GGAlert alertWithMessage:@"您尚未绑定姓名和手机！"];
             }
  
         }

@@ -10,6 +10,7 @@
 #import "GGArchive.h"
 #import "GGUserDefault.h"
 #import "GGImagePool.h"
+#import "MSAppDelegate.h"
 
 @interface GGProfileVC ()
 @property (weak, nonatomic) IBOutlet UITextField *tfName;
@@ -87,7 +88,7 @@
     }
     else
     {
-        [GGSharedAPI askChecking:@"towne" Phone:13397186156 callback:^(id operation, id aResultObject, NSError *anError) {
+        [GGSharedAPI askChecking:_tfName.text Phone:[_tfPhone.text longLongValue] callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
@@ -96,7 +97,7 @@
             }
             else
             {
-                [GGAlert alertWithMessage:[NSString stringWithFormat:@"变更为\n 姓名:%@\n手机号:%@",@"towne",@"13397186156"] title:@"请从手机上获取验证码"];
+                [GGAlert alertWithMessage:[NSString stringWithFormat:@"\n 姓名:%@\n手机号:%@",_tfName,_tfPhone] title:@"请从手机上获取验证码"];
             }
             
         }];
@@ -114,12 +115,14 @@
     }
     else
     {
+//        validatestring = @"aaabbb";
         [GGSharedAPI checkCode:validatestring callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
             if (flag == 0) {
                 [GGAlert alertWithApiMessage:@"用户验证通过,即将进入应用,请稍后！"];
+                [SharedAppDelegate refreshData];
             }
             else
             {

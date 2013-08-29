@@ -17,6 +17,9 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) RDVTabBarController *tabBarController;
 @property (strong, nonatomic) MMDrawerController *drawerVC;
+
+-(void)refreshData;
 @end
+
 
 #define SharedAppDelegate      ((MSAppDelegate *)[UIApplication sharedApplication].delegate)
