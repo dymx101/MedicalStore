@@ -135,11 +135,7 @@
 
 - (void) initUseInterface
 {
-    [self.view hideLoadingHUD];
-    
     if (_showSectionIndexes) {
-//        UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
-//        
         NSMutableArray *unsortedSections = [[NSMutableArray alloc] initWithCapacity:[_departArray count]];
         
         for (NSUInteger i = 0; i < [_departArray count]; i++) {
@@ -148,7 +144,13 @@
             [unsortedSections addObjectIfNotNil:telbooks];
         }
         self.sections = unsortedSections;
-        [self.tableView reloadData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.view hideLoadingHUD];
+            [self.tableView reloadData];
+            
+        });
     }
 }
 
