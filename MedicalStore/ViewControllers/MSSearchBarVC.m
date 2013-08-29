@@ -17,11 +17,13 @@
 #define ReloadTelBookList  @"ReloadTelBookList"
 #import "NSObject+BeeNotification.h"
 
-@interface MSSearchBarVC ()
+@interface MSSearchBarVC ()<UIGestureRecognizerDelegate>
 
 @property(nonatomic,strong) NSMutableArray       *departArray;
 
 @property(nonatomic,strong) NSMutableDictionary  *departTelDict;
+
+@property(nonatomic,strong) UITapGestureRecognizer *singleTapRecogniser;
 
 @end
 
@@ -34,6 +36,10 @@
     if ((self = [super initWithNibName:nil bundle:nil])) {
         self.title = @"Search Bar";
         _showSectionIndexes = showSectionIndexes;
+        _singleTapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        _singleTapRecogniser.delegate = self;
+        _singleTapRecogniser.numberOfTouchesRequired = 1;
+        _singleTapRecogniser.numberOfTapsRequired = 1;
         
         [self extraInit];
     }
@@ -343,6 +349,17 @@
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section NS_AVAILABLE_IOS(6_0)
+{
+    [view setTag:section];
+    [view addGestureRecognizer:_singleTapRecogniser];
+}
+
+- (void) handleGesture:(UIGestureRecognizer *)gestureRecognizer
+{
+    NSLog(@"ok + %d",gestureRecognizer.view.tag);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
