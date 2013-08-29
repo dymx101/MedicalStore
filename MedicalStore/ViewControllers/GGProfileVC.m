@@ -11,8 +11,10 @@
 #import "GGUserDefault.h"
 #import "GGImagePool.h"
 #import "MSAppDelegate.h"
+#import "GGPhoneMask.h"
 
-@interface GGProfileVC ()
+
+@interface GGProfileVC ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *tfName;
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
 @property (weak, nonatomic) IBOutlet UITextField *tfValidate;
@@ -38,6 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     _tfName.text = [GGUserDefault myName];
     _tfPhone.text = [GGUserDefault myPhone];
@@ -121,8 +124,8 @@
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
             if (flag == 0) {
-                [GGAlert alertWithApiMessage:@"用户验证通过,即将进入应用,请稍后！"];
                 [SharedAppDelegate refreshData];
+                [GGAlert alert:@"用户验证通过,即将进入应用,请稍后！" tag:101 delegate:self];
             }
             else
             {
@@ -131,5 +134,13 @@
         }];
     }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 101) {
+        [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
+    }
+}
+
 
 @end

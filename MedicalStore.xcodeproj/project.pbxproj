@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C17357617CF251600828EFC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17357517CF251600828EFC /* Default.png */; };
+		4C17357917CF255B00828EFC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17357717CF251D00828EFC /* Default@2x.png */; };
 		4CAED09C17BD3CE70022B08D /* MSTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED09A17BD3CE70022B08D /* MSTestVC.m */; };
 		4CAED09D17BD3CE70022B08D /* MSTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAED09B17BD3CE70022B08D /* MSTestVC.xib */; };
 		4CAED19817C0AE8D0022B08D /* MSDepartMent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED19717C0AE8D0022B08D /* MSDepartMent.m */; };
@@ -85,8 +87,6 @@
 		EA9A1B8917919769005E9130 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1B8717919769005E9130 /* InfoPlist.strings */; };
 		EA9A1B8B1791976A005E9130 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1B8A1791976A005E9130 /* main.m */; };
 		EA9A1B8F1791976A005E9130 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1B8E1791976A005E9130 /* MSAppDelegate.m */; };
-		EA9A1B911791976A005E9130 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1B901791976A005E9130 /* Default@2x.png */; };
-		EA9A1B931791976A005E9130 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1B921791976A005E9130 /* Default.png */; };
 		EA9A1B951791976A005E9130 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1B941791976A005E9130 /* Default-568h@2x.png */; };
 		EA9A1BAB179199E8005E9130 /* AKTab.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1B9E179199E7005E9130 /* AKTab.m */; };
 		EA9A1BAC179199E8005E9130 /* AKTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BA0179199E7005E9130 /* AKTabBar.m */; };
@@ -174,6 +174,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C17357517CF251600828EFC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4C17357717CF251D00828EFC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4CAED09917BD3CE70022B08D /* MSTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestVC.h; sourceTree = "<group>"; };
 		4CAED09A17BD3CE70022B08D /* MSTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTestVC.m; sourceTree = "<group>"; };
 		4CAED09B17BD3CE70022B08D /* MSTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSTestVC.xib; sourceTree = "<group>"; };
@@ -622,6 +624,8 @@
 		EA9A1B7217919769005E9130 = {
 			isa = PBXGroup;
 			children = (
+				4C17357717CF251D00828EFC /* Default@2x.png */,
+				4C17357517CF251600828EFC /* Default.png */,
 				EA99965717CB9F5B00BAFF4B /* RDVTabBarController */,
 				EA9A1BD61791B5AD005E9130 /* Icon@2x.png */,
 				EA9A1BD41791B5A4005E9130 /* Icon.png */,
@@ -1047,8 +1051,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9A1B8917919769005E9130 /* InfoPlist.strings in Resources */,
-				EA9A1B911791976A005E9130 /* Default@2x.png in Resources */,
-				EA9A1B931791976A005E9130 /* Default.png in Resources */,
 				EA9A1B951791976A005E9130 /* Default-568h@2x.png in Resources */,
 				EA9A1BAD179199E8005E9130 /* AKTabBarController.bundle in Resources */,
 				EA9A1BCA1791AACF005E9130 /* tab_account@2x.png in Resources */,
@@ -1087,6 +1089,8 @@
 				EA99965517CB9D2300BAFF4B /* tab4@2x.png in Resources */,
 				EA99965617CB9D2300BAFF4B /* tab4s@2x.png in Resources */,
 				EA291E0517CC771800243D4A /* tabBg@2x.png in Resources */,
+				4C17357617CF251600828EFC /* Default.png in Resources */,
+				4C17357917CF255B00828EFC /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

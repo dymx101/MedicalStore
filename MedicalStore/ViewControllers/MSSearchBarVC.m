@@ -12,6 +12,7 @@
 #import "GGDataStore.h"
 #import "GGDbManager.h"
 #import "GGProfileVC.h"
+#import "GGPhoneMask.h"
 
 #define ReloadTelBookList  @"ReloadTelBookList"
 #import "NSObject+BeeNotification.h"
@@ -117,11 +118,10 @@
             if (nil == array) {
                 [self.view hideLoadingHUD];
                 GGProfileVC *vc = [GGProfileVC new];
-                [self.navigationController pushViewController:vc animated:YES];
+                UINavigationController *baseNC = [[UINavigationController alloc] initWithRootViewController:vc];
+                [[GGPhoneMask sharedInstance] addMaskVC:baseNC animated:YES alpha:1.0];
             }
             [GGDataStore saveTelbooks:array];
-            //NSLog(@"%@",array);
-            
             [self _updateWithTelbooks:array];
         }];
     }
