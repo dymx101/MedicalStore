@@ -116,11 +116,11 @@
 //phone 手机号
 //code  机器码
 //返回参数：(json格式)
-//返回：flag
-//0 申请成功
+//返回：flag 并把验证码发到邮箱
+//0 申请成功 并把验证码发到邮箱
 //1 申请失败
 
--(void)askChecking:(NSString*)aName Phone:(long long)aPhone callback:(GGApiBlock)aCallback
+-(void)askChecking:(NSString*)aName Phone:(long long)aPhone Mail:(NSString*)aMail callback:(GGApiBlock)aCallback
 {
 //    NSLog(@">> %@",[self hexStringFromString:aName]);
     NSString *path = @"telBook-askChecking.rht";
@@ -129,6 +129,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aName forKey:@"name"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
+    [parameters setObject:aMail forKey:@"mail"];
     [parameters setObject:aCode forKey:@"code"];
     [parameters setObject:__INT(2) forKey:@"phonePlatform"];
     [self _execGetWithPath:path params:parameters callback:aCallback];

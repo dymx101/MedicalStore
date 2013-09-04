@@ -80,7 +80,7 @@
 						<string key="NSFrame">{{20, 59}, {280, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="70526805"/>
+						<reference key="NSNextKeyView" ref="654410296"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -103,10 +103,39 @@
 						<reference key="IBUIFontDescription" ref="233462081"/>
 						<reference key="IBUIFont" ref="555894834"/>
 					</object>
+					<object class="IBUITextField" id="654410296">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{19, 100}, {280, 30}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="70526805"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<string key="IBUIText"/>
+						<int key="IBUIBorderStyle">3</int>
+						<string key="IBUIPlaceholder">请输入您的电子邮箱</string>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+							<reference key="NSCustomColorSpace" ref="777533907"/>
+						</object>
+						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
+						<float key="IBUIMinimumFontSize">17</float>
+						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+							<int key="IBUIKeyboardType">7</int>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIFontDescription" ref="233462081"/>
+						<reference key="IBUIFont" ref="555894834"/>
+					</object>
 					<object class="IBUITextField" id="70526805">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 102}, {137, 30}}</string>
+						<string key="NSFrame">{{20, 143}, {137, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="146304370"/>
@@ -142,7 +171,7 @@
 								<string key="NSFrame">{{10, 7}, {90, 21}}</string>
 								<reference key="NSSuperview" ref="406463653"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="637098450"/>
+								<reference key="NSNextKeyView" ref="753291032"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -174,6 +203,7 @@
 								<string key="NSFrame">{{11, 33}, {242, 60}}</string>
 								<reference key="NSSuperview" ref="406463653"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="637098450"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -203,7 +233,7 @@
 								<string key="NSFrame">{{10, 98}, {242, 45}}</string>
 								<reference key="NSSuperview" ref="406463653"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="753291032"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -224,7 +254,7 @@ A</string>
 								<double key="preferredMaxLayoutWidth">242</double>
 							</object>
 						</array>
-						<string key="NSFrame">{{27, 204}, {267, 154}}</string>
+						<string key="NSFrame">{{27, 247}, {267, 154}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="392022794"/>
@@ -238,7 +268,7 @@ A</string>
 					<object class="IBUIButton" id="146304370">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{165, 98}, {135, 38}}</string>
+						<string key="NSFrame">{{165, 139}, {135, 38}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="73590397"/>
@@ -274,7 +304,7 @@ A</string>
 					<object class="IBUIButton" id="73590397">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 145}, {280, 38}}</string>
+						<string key="NSFrame">{{20, 192}, {280, 38}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="406463653"/>
@@ -393,6 +423,14 @@ A</string>
 					</object>
 					<int key="connectionID">21</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tfMail</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="654410296"/>
+					</object>
+					<int key="connectionID">23</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -412,6 +450,7 @@ A</string>
 							<reference ref="70526805"/>
 							<reference ref="146304370"/>
 							<reference ref="73590397"/>
+							<reference ref="654410296"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -482,6 +521,12 @@ A</string>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">btnValidate</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="654410296"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">tfPhone</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -496,6 +541,7 @@ A</string>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -504,35 +550,17 @@ A</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">GGProfileVC</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="getValidateCodeAction:">id</string>
-						<string key="save:">id</string>
-						<string key="validateAction:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="getValidateCodeAction:">
-							<string key="name">getValidateCodeAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="save:">
-							<string key="name">save:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="validateAction:">
-							<string key="name">validateAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="btnGetValidCode">UIButton</string>
 						<string key="btnValiate">UIButton</string>
+						<string key="tfMail">UITextField</string>
 						<string key="tfName">UITextField</string>
 						<string key="tfPhone">UITextField</string>
 						<string key="tfValidate">UITextField</string>
@@ -546,6 +574,10 @@ A</string>
 						<object class="IBToOneOutletInfo" key="btnValiate">
 							<string key="name">btnValiate</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tfMail">
+							<string key="name">tfMail</string>
+							<string key="candidateClassName">UITextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tfName">
 							<string key="name">tfName</string>

@@ -17,6 +17,7 @@
 @interface GGProfileVC ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *tfName;
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
+@property (weak, nonatomic) IBOutlet UITextField *tfMail;
 @property (weak, nonatomic) IBOutlet UITextField *tfValidate;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnGetValidCode;
@@ -80,13 +81,14 @@
     DLog(@"getValidateCodeAction");
     int tfnlength = [_tfName.text length];
     int tfplength = [_tfPhone.text length];
+    int tfmlength = [_tfMail.text length];
     
-    if (tfnlength == 0 || tfplength == 0) {
-        [GGAlert alertWithApiMessage:@"姓名和电话不能为空！"];
+    if (tfnlength == 0 || tfplength == 0 || tfmlength == 0) {
+        [GGAlert alertWithApiMessage:@"姓名或电话或邮箱不能为空！"];
     }
     else
     {
-        [GGSharedAPI askChecking:_tfName.text Phone:[_tfPhone.text longLongValue] callback:^(id operation, id aResultObject, NSError *anError) {
+        [GGSharedAPI askChecking:_tfName.text Phone:[_tfPhone.text longLongValue] Mail:_tfMail.text callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
