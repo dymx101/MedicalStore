@@ -13,6 +13,7 @@
 		4C88053817DC723C00B43FBD /* MSLocVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C88053717DC723C00B43FBD /* MSLocVersion.m */; };
 		4C88053C17DC80D100B43FBD /* MSDepartmentDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C88053A17DC80D000B43FBD /* MSDepartmentDetailVC.m */; };
 		4C88053D17DC80D100B43FBD /* MSDepartmentDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C88053B17DC80D100B43FBD /* MSDepartmentDetailVC.xib */; };
+		4C88053F17DCB48D00B43FBD /* zimu_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C88053E17DCB48D00B43FBD /* zimu_bg.png */; };
 		4CAED09C17BD3CE70022B08D /* MSTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED09A17BD3CE70022B08D /* MSTestVC.m */; };
 		4CAED09D17BD3CE70022B08D /* MSTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAED09B17BD3CE70022B08D /* MSTestVC.xib */; };
 		4CAED19817C0AE8D0022B08D /* MSDepartMent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED19717C0AE8D0022B08D /* MSDepartMent.m */; };
@@ -187,6 +188,7 @@
 		4C88053917DC80D000B43FBD /* MSDepartmentDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDepartmentDetailVC.h; sourceTree = "<group>"; };
 		4C88053A17DC80D000B43FBD /* MSDepartmentDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDepartmentDetailVC.m; sourceTree = "<group>"; };
 		4C88053B17DC80D100B43FBD /* MSDepartmentDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSDepartmentDetailVC.xib; sourceTree = "<group>"; };
+		4C88053E17DCB48D00B43FBD /* zimu_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zimu_bg.png; sourceTree = "<group>"; };
 		4CAED09917BD3CE70022B08D /* MSTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestVC.h; sourceTree = "<group>"; };
 		4CAED09A17BD3CE70022B08D /* MSTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTestVC.m; sourceTree = "<group>"; };
 		4CAED09B17BD3CE70022B08D /* MSTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSTestVC.xib; sourceTree = "<group>"; };
@@ -836,6 +838,7 @@
 		EA9A1BE91791C027005E9130 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				4C88053E17DCB48D00B43FBD /* zimu_bg.png */,
 				EAABC45F179333C3001661FC /* addRed@2x.png */,
 				4CD6A00C17B15F4300B66739 /* btn@2x.png */,
 				EAABC45D17933327001661FC /* orangeBtnBg@2x.png */,
@@ -1110,6 +1113,7 @@
 				4C17357617CF251600828EFC /* Default.png in Resources */,
 				4C17357917CF255B00828EFC /* Default@2x.png in Resources */,
 				4C88053D17DC80D100B43FBD /* MSDepartmentDetailVC.xib in Resources */,
+				4C88053F17DCB48D00B43FBD /* zimu_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

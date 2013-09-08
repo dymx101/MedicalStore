@@ -12,6 +12,9 @@
 
 @interface MSFavoritesListVC : MSSearchBarVC
 
+@property BOOL departmentSearch;
+
 - (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor;
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor isDepartmentSearch:(BOOL)isDepartmentSearch;
 
 @end

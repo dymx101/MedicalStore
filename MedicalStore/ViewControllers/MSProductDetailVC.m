@@ -84,6 +84,11 @@
     
     NSString *number = _msTelbook.mobilePhone;// 此处读入电话号码
     
+    if ([number isEqualToString:@""]) {
+        [GGAlert alertWithMessage:@"暂无电话！"];
+        return;
+    }
+    
     NSString *cleanedString = [[number componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
     
@@ -96,6 +101,11 @@
     
     NSString *number = _msTelbook.officePhone;// 此处读入电话号码
     
+    if ([number isEqualToString:@""]) {
+        [GGAlert alertWithMessage:@"暂无电话！"];
+        return;
+    }
+    
     NSString *cleanedString = [[number componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
     
@@ -107,6 +117,11 @@
     NSLog(@"method_1");
     
     NSString *number = _msTelbook.homePhone;// 此处读入电话号码
+    
+    if ([number isEqualToString:@""]) {
+        [GGAlert alertWithMessage:@"暂无电话！"];
+        return;
+    }
     
     NSString *cleanedString = [[number componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
     NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];

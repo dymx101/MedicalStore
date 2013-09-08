@@ -14,6 +14,7 @@
 #import "GGProfileVC.h"
 #import "GGPhoneMask.h"
 #import "MSDepartmentDetailVC.h"
+#import "MSAppDelegate.h"
 
 #define ReloadTelBookList  @"ReloadTelBookList"
 #import "NSObject+BeeNotification.h"
@@ -23,8 +24,6 @@
 @property(nonatomic,strong) NSMutableArray       *departArray;
 
 @property(nonatomic,strong) NSMutableDictionary  *departTelDict;
-
-@property(nonatomic,strong) UITapGestureRecognizer *singleTapRecogniser;
 
 @end
 
@@ -37,10 +36,6 @@
     if ((self = [super initWithNibName:nil bundle:nil])) {
         self.title = @"Search Bar";
         _showSectionIndexes = showSectionIndexes;
-        _singleTapRecogniser = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-        _singleTapRecogniser.delegate = self;
-        _singleTapRecogniser.numberOfTouchesRequired = 1;
-        _singleTapRecogniser.numberOfTapsRequired = 1;
         
         [self extraInit];
     }
@@ -54,6 +49,19 @@
         self.title = @"Search Bar";
         _showSectionIndexes = showSectionIndexes;
         _isfavor = isfavor;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadtelbooklist) name:ReloadTelBookList object:nil];
+    }
+    
+    return self;
+}
+
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor isDepartmentSearch:(BOOL)isDepartmentSearch
+{
+    if ((self = [super initWithNibName:nil bundle:nil])) {
+        self.title = @"Search Bar";
+        _showSectionIndexes = showSectionIndexes;
+        _isfavor = isfavor;
+        _isDepartmentSearch = isDepartmentSearch;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadtelbooklist) name:ReloadTelBookList object:nil];
     }
     
@@ -84,12 +92,23 @@
     if (aTelbooks)
     {
         self.filteredMSTelName =  [NSMutableArray new];
+        self.filteredMSDepName =  [NSMutableArray new];
+        self.primevalMSDepName =  [NSMutableArray new];
         self.primevalMSTelName =  [NSMutableArray new];
         self.filteredMSTelMSG  =  [NSMutableDictionary new];
+        self.filteredMSDepMSG  =  [NSMutableDictionary new];
+        
         for (MSTelBook *book in aTelbooks) {
             [_filteredMSTelName addObject:book.name];
             [_filteredMSTelMSG setObject:book forKey:book.name];
         }
+        NSArray *departments = [GGDataStore loadDepartments];
+        for (MSDepartMent *department in departments) {
+            [_filteredMSDepName addObject:department.name];
+            [_filteredMSDepMSG setObject:department forKey:department.name];
+        }
+        
+        self.primevalMSDepName  = [NSMutableArray arrayWithArray:_filteredMSDepName];
         self.primevalMSTelName = [NSMutableArray arrayWithArray:_filteredMSTelName];
         NSMutableArray *dep_tel = [NSMutableArray new];
         [_departTelDict removeAllObjects];
@@ -122,6 +141,7 @@
     }
     else
     {
+        [self.view showLoadingHUD];
         [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             NSMutableArray *array =[parser parseMSTelBook];
@@ -198,7 +218,6 @@
         _departTelDict  = [NSMutableDictionary new];
         
         NSLog(@">>> %d",self.typeId);
-        
         [self.view showLoadingHUDWithText:@"数据加载中..."];
         
         NSArray *departments = [GGDataStore loadDepartments];
@@ -214,7 +233,7 @@
                 NSMutableArray *array = [parser parseMSDepartMent];
                 [GGDataStore saveDepartments:array];
                 NSLog(@"%@",array);
-                
+                [self.view hideLoadingHUD];
                 [self _updateWithDepartments:array];
             }];
         }
@@ -361,21 +380,49 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section NS_AVAILABLE_IOS(6_0)
-{
-    [view setTag:section];
-    [view addGestureRecognizer:_singleTapRecogniser];
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (tableView == self.tableView  && !_isfavor) {
+        return 30.0f;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-- (void) handleGesture:(UIGestureRecognizer *)gestureRecognizer
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSLog(@"ok + %d",gestureRecognizer.view.tag);
-    MSDepartmentDetailVC *vc = [MSDepartmentDetailVC new];
-//    MSTelBook *msTelbook =[self.favoriteArray objectAtIndex:indexPath.row];
-//    vc.msTelbook = msTelbook;
-//    vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
-    [self.navigationController pushViewController:vc animated:YES];
+    UIControl *result = nil;
     
+    if (tableView == self.tableView) {
+        
+        result = [[UIControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 30.0f)];
+        UIFont *font = [UIFont systemFontOfSize:14.0];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"zimu_bg"]];
+        imageView.frame = CGRectMake(0.0f, 0.0f, imageView.frame.size.width, 30.0f);
+        imageView.opaque = NO;
+        UILabel  *titlelable = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 30.0f)];
+        titlelable.text = ((MSDepartMent *)_departArray[section]).name;
+        titlelable.font = font;
+        titlelable.backgroundColor = [UIColor clearColor];
+        [imageView addSubview:titlelable];
+        [result addSubview:imageView];
+        
+        result.tag = section;
+        [result addTarget:self action:@selector(headerIsTapEvent:) forControlEvents:UIControlEventTouchUpInside];
+    }
+
+    return result;
+}
+
+- (void)headerIsTapEvent:(id)sender
+{
+    NSInteger sectionIndex = [sender tag];
+    NSLog(@"%i", sectionIndex);
+    MSDepartmentDetailVC *vc = [MSDepartmentDetailVC new];
+    MSDepartMent *msDepartment = _departArray[sectionIndex];
+    vc.msDepartment = msDepartment;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -401,11 +448,29 @@
 {
     if (searchString.length > 0) { // Should always be the case
         NSMutableArray *personsToSearch = [NSMutableArray arrayWithArray:self.primevalMSTelName];
+        NSMutableArray *departmentsToSearch = [NSMutableArray arrayWithArray:self.primevalMSDepName];
         if (self.currentSearchString.length > 0 && [searchString rangeOfString:self.currentSearchString].location == 0) { // If the new search string starts with the last search string, reuse the already filtered array so searching is faster
             personsToSearch = self.filteredMSTelName;
+            departmentsToSearch = self.filteredMSDepName;
         }
         
         self.filteredMSTelName = [NSMutableArray arrayWithArray:[personsToSearch filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(SELF CONTAINS[cd] %@) OR (SELF BEGINSWITH[cd] %@) OR (SELF ENDSWITH[cd] %@)", searchString,searchString,searchString]]];
+        
+        //部门检索
+        self.filteredMSDepName = [NSMutableArray arrayWithArray:[departmentsToSearch filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(SELF CONTAINS[cd] %@) OR (SELF BEGINSWITH[cd] %@) OR (SELF ENDSWITH[cd] %@)", searchString,searchString,searchString]]];
+        
+        //蛋疼的筛选
+        NSMutableArray *telboolNameSearchFromDeps = [NSMutableArray new];
+        NSArray        *telbooks = [GGDataStore loadTelbooks];
+        
+        for (MSTelBook *telbook in telbooks) {
+            for (NSString *departmentName in self.filteredMSDepName) {
+                if ([telbook.departmentId intValue] == ((MSDepartMent *)[_filteredMSDepMSG objectForKey:departmentName]).ID) {
+                    [telboolNameSearchFromDeps addObject:telbook.name];
+                }
+            }
+        }
+        self.filteredMSTelName = [NSMutableArray arrayWithArray:[self.filteredMSTelName arrayByAddingObjectsFromArray:telboolNameSearchFromDeps]];
     }
     
     self.currentSearchString = searchString;
@@ -415,8 +480,11 @@
 
 -(void)reloadtelbooklist
 {
-    [_favoriteArray removeAllObjects];
-    _favoriteArray = [NSMutableArray arrayWithArray:[[GGDbManager sharedInstance] getAllTelbooks]];
+    if(!_isDepartmentSearch)
+    {
+        [_favoriteArray removeAllObjects];
+        _favoriteArray = [NSMutableArray arrayWithArray:[[GGDbManager sharedInstance] getAllTelbooks]];
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });

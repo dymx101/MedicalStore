@@ -13,6 +13,7 @@
 #import "GGVersionInfo.h"
 #import "GGDataStore.h"
 #import "MSLocVersion.h"
+#import "NSObject+BeeNotification.h"
 
 @interface MSNewSettingCenterVC () <UITableViewDataSource, UITableViewDelegate>
 @property(strong, nonatomic) GGVersionInfo *versionInfo;
@@ -204,7 +205,6 @@
 {
     [self.view showLoadingHUD];
     [[GGApi sharedApi] checkUpdate:^(id operation, id aResultObject, NSError *anError) {
-        [self.view hideLoadingHUD];
         GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
         long state = [[[parser apiData] objectForKey:@"state"] longValue];
         DLog(@">>>> %ld",state);
@@ -216,10 +216,27 @@
             [currentlc setVersionCode:currentlc.versionCode];
             [GGDataStore saveVersions:currentlc];
             
-            [GGAlert alert:@"通讯录数据更新成功！" tag:101 delegate:self];
+//            [SharedAppDelegate refreshData];
+            [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
+                
+                GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+                NSMutableArray *departments = [parser parseMSDepartMent];
+                [GGDataStore saveDepartments:departments];
+                
+                [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
+                    GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+                    NSMutableArray *telbooks =[parser parseMSTelBook];
+                    [GGDataStore saveTelbooks:telbooks];
+                    [self postNotification:MS_NOTIFY_DATA_REFRESHED];
+                    [self.view hideLoadingHUD];
+                    [GGAlert alert:@"通讯录数据更新成功！" tag:101 delegate:self];
+                }];
+                
+            }];
         }
         else
         {
+            [self.view hideLoadingHUD];
             [GGAlert alertWithMessage:@"通讯录数据暂无更新!"];
         }
         
@@ -317,9 +334,6 @@
     }
     else if(alertView.tag == 101)
     {
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [SharedAppDelegate refreshData];
-        });
     }
 }
 

@@ -7,7 +7,14 @@
 //
 
 #import "MSBaseVC.h"
+@class MSDepartMent;
 
 @interface MSDepartmentDetailVC : MSBaseVC
+
+@property(nonatomic,strong) MSDepartMent *msDepartment;
+
+-(IBAction)call1:(id)sender;
+-(IBAction)call2:(id)sender;
+-(IBAction)call3:(id)sender;
 
 @end

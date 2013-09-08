@@ -137,10 +137,9 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == 101) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
             [SharedAppDelegate refreshData];
         });
-        
         [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
     }
 }

@@ -11,6 +11,7 @@
 #import "MSProductDetailVC.h"
 #import "MSTelBook.h"
 #import "GGDbManager.h"
+#import "GGPhoneMask.h"
 
 @interface MSFavoritesListVC ()
 {
@@ -40,6 +41,15 @@
     
     return self;
     
+}
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor isDepartmentSearch:(BOOL)isDepartmentSearch
+{
+    self = [super initWithSectionIndexes:showSectionIndexes isFavorites:isfavor isDepartmentSearch:isDepartmentSearch];
+    if (self) {
+        self.departmentSearch = isDepartmentSearch;
+    }
+    
+    return self;
 }
 
 - (void)viewDidLoad
@@ -76,9 +86,22 @@
  */
 -(void)setMenuButton
 {
-    UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-    [self.navigationController.navigationBar setHidden:NO];
+    if (_departmentSearch) {
+        UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftBtnClicked:)];
+         [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    }
+    else
+    {
+        UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
+        [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+        [self.navigationController.navigationBar setHidden:NO];
+    }
+
+}
+
+- (void)leftBtnClicked:(id)sender
+{
+    [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
