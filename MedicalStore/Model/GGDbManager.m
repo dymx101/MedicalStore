@@ -23,6 +23,8 @@ static NSString *createTelBookTableSQL = @"CREATE TABLE IF NOT EXISTS 'Telbook' 
 
 
 static NSString *insertTelbookSQL = @"insert into 'Telbook' (id, departmentid, moduleid, name, post, officephone, mobilephone, homephone) values(%lld, %@, %@, %@, %@, %@, %@,%@)";
+static NSString *updateTelbookSQL = @"update Telbook set departmentid=?,moduleid=?,name=?,post=?,officephone=?,mobilephone=?,homephone=? where id=?";
+
 static NSString *deleteTelbookSQL = @"delete from Telbook where id=%lld ";
 static NSString *selectTelbookSQL = @"select * from 'Telbook'";
 static NSString *selectTelbookWithIdSQL = @"select * from 'Telbook' where id=%lld ";
@@ -114,6 +116,28 @@ DEF_SINGLETON(GGDbManager)
     }
     
     return NO;
+}
+
+-(BOOL)updateTelbook:(MSTelBook *)telbook
+{
+    BOOL success = NO;
+    FMDatabase *db = [self _db];
+    if ([db open]) {
+        success = [db executeUpdate:updateTelbookSQL,telbook.departmentId,telbook.moduleId,telbook.name,telbook.post,telbook.officePhone,telbook.mobilePhone,telbook.homePhone,[NSNumber numberWithLongLong:telbook.ID]];
+        [db close];
+    }
+    return success;
+    
+    
+}
+
+-(void)updateAllTelbooks:(NSArray *) allTelbooks
+{
+    for ( MSTelBook *telbook in allTelbooks) {
+        if ([self hasTelbookWithID:telbook.ID]) {
+            [self updateTelbook:telbook];
+        }
+    }
 }
 
 -(NSArray *)getAllTelbooks

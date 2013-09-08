@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class MSLocVersion;
 
 @interface GGDataStore : NSObject
 AS_SINGLETON(GGDataStore)
@@ -17,6 +18,9 @@ AS_SINGLETON(GGDataStore)
 
 +(void)saveTelbooks:(NSArray *)aTelbooks;
 +(NSArray *)loadTelbooks;
+
++(void)saveVersions:(MSLocVersion *)version;
++(MSLocVersion *)loadVersions;
 
 
 @end

@@ -116,7 +116,6 @@
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             NSMutableArray *telbooks =[parser parseMSTelBook];
             [GGDataStore saveTelbooks:telbooks];
-            
             [self postNotification:MS_NOTIFY_DATA_REFRESHED];
         }];
         

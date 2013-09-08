@@ -82,7 +82,7 @@
     int tfnlength = [_tfName.text length];
     int tfplength = [_tfPhone.text length];
     int tfmlength = [_tfMail.text length];
-    
+    [self.view showLoadingHUD];
     if (tfnlength == 0 || tfplength == 0 || tfmlength == 0) {
         [GGAlert alertWithApiMessage:@"姓名或电话或邮箱不能为空！"];
     }
@@ -93,11 +93,13 @@
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
             if (flag == 1) {
+                [self.view hideLoadingHUD];
                 [GGAlert alertWithApiMessage:@"申请验证码失败"];
             }
             else
             {
-                [GGAlert alertWithMessage:[NSString stringWithFormat:@" 姓名:%@ 手机号:%@",_tfName,_tfPhone] title:@"请从手机上获取验证码"];
+                [self.view hideLoadingHUD];
+                [GGAlert alertWithMessage:[NSString stringWithFormat:@" 姓名:%@ 手机号:%@ 注册邮箱:%@",_tfName.text,_tfPhone.text,_tfMail.text] title:@"请登陆您的邮箱获取验证码"];
             }
             
         }];
@@ -114,17 +116,18 @@
     }
     else
     {
-//        validatestring = @"aaabbb";
+        //        validatestring = @"aaabbb";
+        [self.view showLoadingHUD];
         [GGSharedAPI checkCode:validatestring callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
             if (flag == 0) {
-                [SharedAppDelegate refreshData];
                 [GGAlert alert:@"用户验证通过,即将进入应用,请稍后！" tag:101 delegate:self];
             }
             else
             {
+                [self.view hideLoadingHUD];
                 [GGAlert alertWithMessage:@"验证失败!"];
             }
         }];
@@ -134,6 +137,10 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == 101) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [SharedAppDelegate refreshData];
+        });
+        
         [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
     }
 }

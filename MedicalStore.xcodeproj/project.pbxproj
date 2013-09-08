@@ -10,6 +10,7 @@
 		4C17357617CF251600828EFC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17357517CF251600828EFC /* Default.png */; };
 		4C17357917CF255B00828EFC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17357717CF251D00828EFC /* Default@2x.png */; };
 		4C17357F17CF4A0200828EFC /* GGVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17357E17CF4A0200828EFC /* GGVersionInfo.m */; };
+		4C88053817DC723C00B43FBD /* MSLocVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C88053717DC723C00B43FBD /* MSLocVersion.m */; };
 		4CAED09C17BD3CE70022B08D /* MSTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED09A17BD3CE70022B08D /* MSTestVC.m */; };
 		4CAED09D17BD3CE70022B08D /* MSTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAED09B17BD3CE70022B08D /* MSTestVC.xib */; };
 		4CAED19817C0AE8D0022B08D /* MSDepartMent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED19717C0AE8D0022B08D /* MSDepartMent.m */; };
@@ -179,6 +180,8 @@
 		4C17357717CF251D00828EFC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4C17357D17CF4A0200828EFC /* GGVersionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGVersionInfo.h; sourceTree = "<group>"; };
 		4C17357E17CF4A0200828EFC /* GGVersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGVersionInfo.m; sourceTree = "<group>"; };
+		4C88053617DC723C00B43FBD /* MSLocVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLocVersion.h; sourceTree = "<group>"; };
+		4C88053717DC723C00B43FBD /* MSLocVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLocVersion.m; sourceTree = "<group>"; };
 		4CAED09917BD3CE70022B08D /* MSTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestVC.h; sourceTree = "<group>"; };
 		4CAED09A17BD3CE70022B08D /* MSTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTestVC.m; sourceTree = "<group>"; };
 		4CAED09B17BD3CE70022B08D /* MSTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSTestVC.xib; sourceTree = "<group>"; };
@@ -963,6 +966,8 @@
 				4CAED19A17C0BF040022B08D /* MSUserInfo.m */,
 				4CAED19C17C0C1680022B08D /* MSTelBook.h */,
 				4CAED19D17C0C1690022B08D /* MSTelBook.m */,
+				4C88053617DC723C00B43FBD /* MSLocVersion.h */,
+				4C88053717DC723C00B43FBD /* MSLocVersion.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1220,6 +1225,7 @@
 				EA99966017CB9F5B00BAFF4B /* RDVTabBarItem.m in Sources */,
 				EA291E0817CC95B000243D4A /* GGDataStore.m in Sources */,
 				4C17357F17CF4A0200828EFC /* GGVersionInfo.m in Sources */,
+				4C88053817DC723C00B43FBD /* MSLocVersion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

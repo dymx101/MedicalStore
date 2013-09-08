@@ -91,7 +91,7 @@
         }
         self.primevalMSTelName = [NSMutableArray arrayWithArray:_filteredMSTelName];
         NSMutableArray *dep_tel = [NSMutableArray new];
-        
+        [_departTelDict removeAllObjects];
         for (MSDepartMent *dep in _departArray) {
             for (MSTelBook *telbook in aTelbooks) {
                 if ([telbook.departmentId intValue] == dep.ID) {
@@ -104,6 +104,9 @@
             }
             
         }
+        //更新 local db
+        [[GGDbManager sharedInstance] updateAllTelbooks:aTelbooks];
+        
         [self initUseInterface];
     }
 }
@@ -146,10 +149,8 @@
         self.sections = unsortedSections;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             [self.view hideLoadingHUD];
             [self.tableView reloadData];
-            
         });
     }
 }
@@ -223,6 +224,7 @@
 {
     if (aDepartments)
     {
+        [_departArray removeAllObjects];
         for (MSDepartMent *department in aDepartments) {
             if (self.typeId == [department.superid intValue] ) {
                 [_departArray addObject:department];
@@ -235,6 +237,7 @@
 {
     if (aDepartments)
     {
+        [_departArray removeAllObjects];
         for (MSDepartMent *department in aDepartments) {
             if (self.typeId == [department.superid intValue] ) {
                 [_departArray addObject:department];
@@ -249,6 +252,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    if ([_departArray count] == 0 && !_isfavor) {
+        [self.view showLoadingHUD];
+    }
     
     if (animated) {
         [self.tableView flashScrollIndicators];
@@ -406,7 +413,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
-
+    
 }
 
 
