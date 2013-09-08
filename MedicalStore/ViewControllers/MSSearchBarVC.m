@@ -13,6 +13,7 @@
 #import "GGDbManager.h"
 #import "GGProfileVC.h"
 #import "GGPhoneMask.h"
+#import "MSDepartmentDetailVC.h"
 
 #define ReloadTelBookList  @"ReloadTelBookList"
 #import "NSObject+BeeNotification.h"
@@ -369,6 +370,12 @@
 - (void) handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
     NSLog(@"ok + %d",gestureRecognizer.view.tag);
+    MSDepartmentDetailVC *vc = [MSDepartmentDetailVC new];
+//    MSTelBook *msTelbook =[self.favoriteArray objectAtIndex:indexPath.row];
+//    vc.msTelbook = msTelbook;
+//    vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
