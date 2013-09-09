@@ -133,7 +133,9 @@
             {
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     [SharedAppDelegate refreshData];
-                    [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
+                    });
                 });
             }
         }];
