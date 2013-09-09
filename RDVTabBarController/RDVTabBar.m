@@ -46,7 +46,9 @@
     for (NSInteger i = 0; i < [[self items] count]; i++) {
         RDVTabBarItem *item = [[self items] objectAtIndex:i];
         item.contentMode = UIViewContentModeScaleToFill;
-        [item setFrame:CGRectMake(self.edgeContentInset + (i * self.itemWidth), 0, self.itemWidth, CGRectGetHeight(self.frame))];
+        
+        CGRect rc = CGRectMake(self.edgeContentInset + (i * self.itemWidth), 0, self.itemWidth, CGRectGetHeight(self.frame));
+        [item setFrame:rc];
     }
 }
 
