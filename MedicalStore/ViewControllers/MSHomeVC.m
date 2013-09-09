@@ -17,6 +17,8 @@
 #import "MSAppDelegate.h"
 #import "MSTelBook.h"
 #import "GGDbManager.h"
+#import "MSDepartMent.h"
+#import "GGDataStore.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <objc/message.h>
@@ -160,21 +162,42 @@
     if (tableView == self.tableView) {
         if (self.showSectionIndexes) {
             msTelbook = self.sections[indexPath.section][indexPath.row];
+            NSString  *departname = @"";
+            for (MSDepartMent *department in [GGDataStore loadDepartments]) {
+                if (department.ID == [msTelbook.departmentId longLongValue]) {
+                    departname = department.name;
+                    break;
+                }
+            }
             cell.lblTitle.text = msTelbook.name;
-            cell.lblSubTitle.text = msTelbook.post;
+            cell.lblSubTitle.text = [NSString stringWithFormat:@"%@ | %@",departname,msTelbook.post];
   
         } 
     }
     else if (self.isfavor)
     {
         msTelbook = [self.favoriteArray objectAtIndex:indexPath.row];
+        NSString  *departname = @"";
+        for (MSDepartMent *department in [GGDataStore loadDepartments]) {
+            if (department.ID == [msTelbook.departmentId longLongValue]) {
+                departname = department.name;
+                break;
+            }
+        }
         cell.lblTitle.text = msTelbook.name;
-        cell.lblSubTitle.text = msTelbook.post;
+        cell.lblSubTitle.text = [NSString stringWithFormat:@"%@ | %@",departname,msTelbook.post];
     }
     else {
         msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
+        NSString  *departname = @"";
+        for (MSDepartMent *department in [GGDataStore loadDepartments]) {
+            if (department.ID == [msTelbook.departmentId longLongValue]) {
+                departname = department.name;
+                break;
+            }
+        }
         cell.lblTitle.text = msTelbook.name;
-        cell.lblSubTitle.text = msTelbook.post;
+        cell.lblSubTitle.text = [NSString stringWithFormat:@"%@ | %@",departname,msTelbook.post];
     }
     return cell;
 }

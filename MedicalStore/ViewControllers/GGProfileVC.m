@@ -82,23 +82,25 @@
     int tfnlength = [_tfName.text length];
     int tfplength = [_tfPhone.text length];
     int tfmlength = [_tfMail.text length];
-    [self.view showLoadingHUD];
+    
     if (tfnlength == 0 || tfplength == 0 || tfmlength == 0) {
         [GGAlert alertWithApiMessage:@"姓名或电话或邮箱不能为空！"];
     }
     else
     {
+        [self.view showLoadingHUD];
         [GGSharedAPI askChecking:_tfName.text Phone:[_tfPhone.text longLongValue] Mail:_tfMail.text callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
+            [self endEditing];
+            [self.view hideLoadingHUD];
+            
             if (flag == 1) {
-                [self.view hideLoadingHUD];
                 [GGAlert alertWithApiMessage:@"申请验证码失败"];
             }
             else
             {
-                [self.view hideLoadingHUD];
                 [GGAlert alertWithMessage:[NSString stringWithFormat:@" 姓名:%@ 手机号:%@ 注册邮箱:%@",_tfName.text,_tfPhone.text,_tfMail.text] title:@"请登陆您的邮箱获取验证码"];
             }
             
@@ -122,13 +124,17 @@
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
-            if (flag == 0) {
-                [GGAlert alert:@"用户验证通过,即将进入应用,请稍后！" tag:101 delegate:self];
+            [self endEditing];
+            if (flag == 1) {
+                [self.view hideLoadingHUD];
+                [GGAlert alertWithMessage:@"验证失败!"];
             }
             else
             {
-                [self.view hideLoadingHUD];
-                [GGAlert alertWithMessage:@"验证失败!"];
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [SharedAppDelegate refreshData];
+                    [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
+                });
             }
         }];
     }
@@ -140,7 +146,7 @@
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             [SharedAppDelegate refreshData];
         });
-        [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
+        
     }
 }
 
