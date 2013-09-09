@@ -19,6 +19,7 @@
 		4CAED19817C0AE8D0022B08D /* MSDepartMent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED19717C0AE8D0022B08D /* MSDepartMent.m */; };
 		4CAED19B17C0BF0D0022B08D /* MSUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED19A17C0BF040022B08D /* MSUserInfo.m */; };
 		4CAED19E17C0C16A0022B08D /* MSTelBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED19D17C0C1690022B08D /* MSTelBook.m */; };
+		4CC08FF117DE1E07004AE43A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC08FF017DE1E07004AE43A /* Reachability.m */; };
 		4CD6A00517B1459B00B66739 /* MSSearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6A00417B1459A00B66739 /* MSSearchBarVC.m */; };
 		4CD6A00717B145D600B66739 /* Persons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6A00617B145D600B66739 /* Persons.plist */; };
 		4CD6A00917B1550600B66739 /* Posts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CD6A00817B1550600B66739 /* Posts.plist */; };
@@ -198,6 +199,8 @@
 		4CAED19A17C0BF040022B08D /* MSUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSUserInfo.m; sourceTree = "<group>"; };
 		4CAED19C17C0C1680022B08D /* MSTelBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTelBook.h; sourceTree = "<group>"; };
 		4CAED19D17C0C1690022B08D /* MSTelBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTelBook.m; sourceTree = "<group>"; };
+		4CC08FEF17DE1E07004AE43A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4CC08FF017DE1E07004AE43A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4CD6A00317B1459A00B66739 /* MSSearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSearchBarVC.h; sourceTree = "<group>"; };
 		4CD6A00417B1459A00B66739 /* MSSearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSearchBarVC.m; sourceTree = "<group>"; };
 		4CD6A00617B145D600B66739 /* Persons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Persons.plist; sourceTree = "<group>"; };
@@ -904,6 +907,8 @@
 				EA9A1C291791C477005E9130 /* GGNib.h */,
 				EA9A1C2A1791C477005E9130 /* GGNib.m */,
 				EA9A1C2B1791C477005E9130 /* GGOrientation.h */,
+				4CC08FEF17DE1E07004AE43A /* Reachability.h */,
+				4CC08FF017DE1E07004AE43A /* Reachability.m */,
 				EA9A1C2C1791C477005E9130 /* GGOrientation.m */,
 				EA9A1C2D1791C477005E9130 /* GGPath.h */,
 				EA9A1C2E1791C477005E9130 /* GGPath.m */,
@@ -1240,6 +1245,7 @@
 				4C17357F17CF4A0200828EFC /* GGVersionInfo.m in Sources */,
 				4C88053817DC723C00B43FBD /* MSLocVersion.m in Sources */,
 				4C88053C17DC80D100B43FBD /* MSDepartmentDetailVC.m in Sources */,
+				4CC08FF117DE1E07004AE43A /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,7 +1275,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Luosheng Peng (75BAGEK59M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1285,7 +1291,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
+				PROVISIONING_PROFILE = "729967A4-4F5A-41B1-9B83-F1CAF969C841";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1320,13 +1326,13 @@
 		EA9A1B991791976A005E9130 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Luosheng Peng (75BAGEK59M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MedicalStore/MedicalStore-Prefix.pch";
 				INFOPLIST_FILE = "MedicalStore/MedicalStore-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
+				PROVISIONING_PROFILE = "729967A4-4F5A-41B1-9B83-F1CAF969C841";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

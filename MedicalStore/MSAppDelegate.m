@@ -19,6 +19,10 @@
 
 #import "GGDataStore.h"
 #import "NSObject+BeeNotification.h"
+#import "Reachability.h"
+#import "GGProfileVC.h"
+#import "GGPhoneMask.h"
+ 
 
 @implementation MSAppDelegate
 
@@ -95,8 +99,40 @@
     [self customizeTabBarForController:_tabBarController];
     
     //    [self refreshData];
+    if([self isExistenceNetwork])
+    {
+       [GGSharedAPI userCheck:^(id operation, id aResultObject, NSError *anError) {
+           GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+           long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+           if (flag == 1) {
+               GGProfileVC *vc = [GGProfileVC new];
+               UINavigationController *baseNC = [[UINavigationController alloc] initWithRootViewController:vc];
+               [[GGPhoneMask sharedInstance] addMaskVC:baseNC animated:YES alpha:1.0];
+           }
+       }];
+    }
     
     return YES;
+}
+
+-(BOOL)isExistenceNetwork
+{
+    BOOL isExistenceNetwork;
+    Reachability *r = [Reachability reachabilityWithHostname:GGN_STR_TEST_SERVER_URL];
+    
+    switch ([r currentReachabilityStatus]) {
+        case NotReachable:
+            isExistenceNetwork=FALSE;
+            break;
+        case ReachableViaWWAN:
+            isExistenceNetwork=TRUE;
+            break;
+        case ReachableViaWiFi:
+            isExistenceNetwork=TRUE;
+            break;
+    }
+    
+    return isExistenceNetwork;
 }
 
 -(void)refreshData

@@ -245,6 +245,20 @@
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
+//检查用户
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-userCheck.rht
+//返回参数：(json格式)
+//返回：flag   0 验证成功   1 验证失败
+-(void)userCheck:(GGApiBlock)aCallback
+{
+    NSString *path = @"telBook-userCheck.rht";
+    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    //    aCode = @"3C:07:54:17:EF:22";
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:aCode forKey:@"code"];
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
 //检查更新接口
 //
 //接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-checkUpdate.rht
