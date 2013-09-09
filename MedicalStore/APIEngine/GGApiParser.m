@@ -13,6 +13,7 @@
 #import "MSUserInfo.h"
 #import "MSTelBook.h"
 #import "GTMBase64.h"
+#import "GGVersionInfo.h"
 
 #define GG_ASSERT_API_DATA_IS_DIC   NSAssert([_apiData isKindOfClass:[NSDictionary class]], @"Api Data should be a NSDictionary");
 
@@ -156,6 +157,13 @@
     MSUserInfo * user = [MSUserInfo model];
     [user parseWithData:_apiData];
     return user;
+}
+
+-(GGVersionInfo *)parseGetVersionInfo
+{
+    GGVersionInfo * verson = [GGVersionInfo model];
+    [verson parseWithData:_apiData];
+    return verson;
 }
 
 @end

@@ -46,11 +46,11 @@
     
     //[centerVC.navigationBar setHidden:NO];
     
-    MSFavoritesListVC *FavoritVc = [[MSFavoritesListVC alloc] initWithSectionIndexes:YES isFavorites:YES];
+    MSFavoritesListVC *favoritVc = [[MSFavoritesListVC alloc] initWithSectionIndexes:YES isFavorites:YES];
  
-    FavoritVc.navigationItem.title = @"收藏列表";
+    favoritVc.navigationItem.title = @"收藏列表";
     
-    [centerVC pushViewController:FavoritVc animated:YES];
+    [centerVC pushViewController:favoritVc animated:YES];
 }
 
 

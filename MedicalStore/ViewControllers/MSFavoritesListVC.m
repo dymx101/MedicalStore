@@ -11,6 +11,7 @@
 #import "MSProductDetailVC.h"
 #import "MSTelBook.h"
 #import "GGDbManager.h"
+#import "GGPhoneMask.h"
 
 @interface MSFavoritesListVC ()
 {
@@ -32,7 +33,7 @@
 
 - (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor
 {
-  
+    
     self = [super initWithSectionIndexes:showSectionIndexes isFavorites:isfavor];
     if (self) {
         
@@ -40,6 +41,15 @@
     
     return self;
     
+}
+- (id)initWithSectionIndexes:(BOOL)showSectionIndexes isFavorites:(BOOL)isfavor isDepartmentSearch:(BOOL)isDepartmentSearch
+{
+    self = [super initWithSectionIndexes:showSectionIndexes isFavorites:isfavor isDepartmentSearch:isDepartmentSearch];
+    if (self) {
+        self.departmentSearch = isDepartmentSearch;
+    }
+    
+    return self;
 }
 
 - (void)viewDidLoad
@@ -60,11 +70,13 @@
             objc_msgSend(self.tableView, setPinsTableHeaderViewSelector, YES);
         }
     } else {
-        [self.tableView addSubview:self.searchBar];
+//        [self.tableView addSubview:self.searchBar];
         
-        self.tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.searchBar.bounds), 0, 0, 0);
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(CGRectGetHeight(self.searchBar.bounds), 0, 0, 0);
     }
+    CGRect rc = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 44);
+    self.tableView.frame = rc;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.backgroundColor = GGSharedColor.silverLight;
 }
@@ -74,9 +86,22 @@
  */
 -(void)setMenuButton
 {
-    UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-    [self.navigationController.navigationBar setHidden:NO];
+    if (_departmentSearch) {
+        UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftBtnClicked:)];
+         [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    }
+    else
+    {
+        UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
+        [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+        [self.navigationController.navigationBar setHidden:NO];
+    }
+
+}
+
+- (void)leftBtnClicked:(id)sender
+{
+    [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -142,18 +167,19 @@
         cell = [MSProductCell viewFromNibWithOwner:self];
     }
     
-        if (tableView == self.tableView) {
-            if (self.showSectionIndexes) {
-                msTelbook = self.sections[indexPath.section][indexPath.row];
-                cell.lblTitle.text = msTelbook.name;
-                cell.lblSubTitle.text = msTelbook.post;
-                
-            }
-        } else {
-            msTelbook = self.filteredMSTelName[indexPath.row];
-            cell.lblTitle.text = msTelbook.name;
-            cell.lblSubTitle.text = msTelbook.post;
-        }
+    
+    if(self.isfavor)
+    {
+        msTelbook = self.favoriteArray[indexPath.row];
+        cell.lblTitle.text = msTelbook.name;
+        cell.lblSubTitle.text = msTelbook.post;
+    }
+    else
+    {
+        msTelbook = self.filteredMSTelName[indexPath.row];
+        cell.lblTitle.text = msTelbook.name;
+        cell.lblSubTitle.text = msTelbook.post;
+    }
     
     return cell;
 }
@@ -166,9 +192,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MSProductDetailVC *vc = [MSProductDetailVC new];
-    MSTelBook *msTelbook = self.sections[indexPath.section][indexPath.row];
+    MSTelBook *msTelbook =[self.favoriteArray objectAtIndex:indexPath.row];
     vc.msTelbook = msTelbook;
-    vc.keep = NO;
+    vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

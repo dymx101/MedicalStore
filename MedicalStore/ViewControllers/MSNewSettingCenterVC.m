@@ -10,9 +10,13 @@
 #import "MSAppDelegate.h"
 #import "GGProfileVC.h"
 #import "MSUserInfo.h"
+#import "GGVersionInfo.h"
+#import "GGDataStore.h"
+#import "MSLocVersion.h"
+#import "NSObject+BeeNotification.h"
 
 @interface MSNewSettingCenterVC () <UITableViewDataSource, UITableViewDelegate>
-
+@property(strong, nonatomic) GGVersionInfo *versionInfo;
 @end
 
 @implementation MSNewSettingCenterVC
@@ -44,7 +48,7 @@
     
     [self setMenuButton];
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonSystemItemCancel target:self action:@selector(naviBackAction)];
+    //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonSystemItemCancel target:self action:@selector(naviBackAction)];
 	
     _tv = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     _tv.dataSource = self;
@@ -154,20 +158,208 @@
     {
         if (row == 0)
         {
-
-            [GGAlert alertWithMessage:[NSString stringWithFormat:@"姓名:%@\n手机号:%@",_user.name,_user.phone] title:@"查看"];
+            if (nil != _user.name && nil != _user.phone) {
+                [GGAlert alertWithMessage:[NSString stringWithFormat:@"姓名:%@\r手机号:%@",_user.name,_user.phone] title:@"通讯录绑定信息"];
+            }
+            else
+            {
+                [GGAlert alertWithMessage:@"您尚未在通讯录中绑定姓名和手机！"];
+            }
+            
         }
         else if (row == 1)
         {
-            GGProfileVC *vc = [[GGProfileVC alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self showAlertWithTextField];
+        }
+        else if (row == 2)
+        {
+            MSLocVersion *version = [GGDataStore loadVersions];
+            if (nil == version) {
+                [self checkUpdateWithData:@"0.00001"];
+            }
+            else
+            {
+                [self checkUpdateWithData:version.dataVersionCode];
+            }
         }
     }
     else if (section == 1)
     {
+        if (row == 0) {
+            MSLocVersion *version = [GGDataStore loadVersions];
+            if (nil == version) {
+                [self checkUpdateWithCurrentVersion:@"0.00001"];
+            }
+            else
+            {
+                [self checkUpdateWithCurrentVersion:version.versionCode];
+            }
+        }
         
     }
 }
+
+
+//数据升级检查
+-(void)checkUpdateWithData:(NSString *) currentVersion
+{
+    [self.view showLoadingHUD];
+    [[GGApi sharedApi] checkUpdate:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        long state = [[[parser apiData] objectForKey:@"state"] longValue];
+        DLog(@">>>> %ld",state);
+        if (state > [currentVersion intValue]) {
+            MSLocVersion *currentlc = [GGDataStore loadVersions];
+            if(nil == currentlc)
+                currentlc = [MSLocVersion new];
+            [currentlc setDataVersionCode:[NSString stringWithFormat:@"%ld",state]];
+            [currentlc setVersionCode:currentlc.versionCode];
+            [GGDataStore saveVersions:currentlc];
+            
+//            [SharedAppDelegate refreshData];
+            [GGSharedAPI getDepartMent:^(id operation, id aResultObject, NSError *anError) {
+                
+                GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+                NSMutableArray *departments = [parser parseMSDepartMent];
+                [GGDataStore saveDepartments:departments];
+                
+                [GGSharedAPI getTel:^(id operation, id aResultObject, NSError *anError) {
+                    GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+                    NSMutableArray *telbooks =[parser parseMSTelBook];
+                    [GGDataStore saveTelbooks:telbooks];
+                    [self postNotification:MS_NOTIFY_DATA_REFRESHED];
+                    [self.view hideLoadingHUD];
+                    [GGAlert alert:@"通讯录数据更新成功！" tag:101 delegate:self];
+                }];
+                
+            }];
+        }
+        else
+        {
+            [self.view hideLoadingHUD];
+            [GGAlert alertWithMessage:@"通讯录数据暂无更新!"];
+        }
+        
+    }];
+}
+
+//升级检查
+-(void)checkUpdateWithCurrentVersion:(NSString *) currentVersion
+{
+    [self.view showLoadingHUD];
+    if (nil == currentVersion) {
+        currentVersion = @"";
+    }
+    [[GGApi sharedApi] checkUpdateWithCurrentVersion:currentVersion callback:^(id operation, id aResultObject, NSError *anError) {
+        [self.view hideLoadingHUD];
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        _versionInfo = [parser parseGetVersionInfo];
+        if (_versionInfo != nil) {
+            if([_versionInfo.verName floatValue] > [currentVersion floatValue])
+            {
+                NSString *updateString = _versionInfo.updates;
+                if ([updateString isKindOfClass:[NSNull class]]) {
+                    updateString  = @"通讯录版本更新内容\r通讯录版本更新内容\r通讯录版本更新内容\r通讯录版本更新内容\r";
+                }
+                NSMutableString * showupdataText = [[NSMutableString alloc]initWithString:updateString] ;
+                
+                NSRange range = NSMakeRange(0, [updateString length]);
+                [showupdataText replaceOccurrencesOfString:@"#" withString:@"\r" options:NSCaseInsensitiveSearch range:range];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示" message:updateString delegate:self cancelButtonTitle:@"稍后" otherButtonTitles:@"更新", nil];
+                [alert show];
+                alert.tag = 7789;
+            }
+            else{
+                [GGAlert alertWithMessage:@"您当前通讯录为最新版本!"];
+            }
+        }
+        else
+        {
+            [self alertNetError];
+        }
+        
+    }];
+}
+
+- (void)alertNetError{
+    
+    UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:nil message:@"网络繁忙，请稍后重试..." delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView setTag:110];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 7789 && buttonIndex == 1)
+    {
+        MSLocVersion *currentlc = [GGDataStore loadVersions];
+        if(nil == currentlc)
+            currentlc = [MSLocVersion new];
+        [currentlc setDataVersionCode:currentlc.dataVersionCode];
+        [currentlc setVersionCode:_versionInfo.verName];
+        [GGDataStore saveVersions:currentlc];
+        
+        [self enterITunesToUpdate];
+    }
+    else if (alertView.tag == 1101)
+    {
+        if (buttonIndex == 1)
+        {
+            NSString *fstPhoneNum = [[alertView textFieldAtIndex:0]text];
+            NSString *secPhoneNum = [[alertView textFieldAtIndex:1]text];
+            if ([fstPhoneNum longLongValue] == [secPhoneNum longLongValue] && [fstPhoneNum longLongValue] != 0) {
+                [GGSharedAPI changePhone:[fstPhoneNum longLongValue] callback:^(id operation, id aResultObject, NSError *anError) {
+                    GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+                    long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+                    if (flag == 0) {
+                        [GGAlert alertWithMessage:@"手机号码变更成功!"];
+                    }
+                    else
+                    {
+                        [GGAlert alertWithMessage:@"手机号码变更失败!"];
+                    }
+                }];
+            }
+            else if([fstPhoneNum longLongValue] == 0)
+            {
+                [GGAlert alertWithMessage:@"您输入的号码不能为空!"];
+            }
+            else
+            {
+                [GGAlert alertWithMessage:@"您输入的号码不一致!"];
+            }
+            
+            
+        }
+    }
+    else if(alertView.tag == 101)
+    {
+    }
+}
+
+
+-(void)enterITunesToUpdate
+{
+    NSURL * iTunesUrl = [NSURL URLWithString:@"http://itunes.apple.com/cn/app/id427457043?mt=8&ls=1"];
+    [[UIApplication	sharedApplication] openURL:iTunesUrl];
+}
+
+
+-(void)showAlertWithTextField{
+    UIAlertView* dialog = [[UIAlertView alloc] initWithTitle:@"变更" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"提交", nil];
+    [dialog setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+    
+    // Change keyboard type
+    [[dialog textFieldAtIndex:0] setPlaceholder:@"请输入您的手机号码！"];
+    [[dialog textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeNumberPad];
+    [[dialog textFieldAtIndex:1] setPlaceholder:@"请再次输入您的手机号码！"];
+    [[dialog textFieldAtIndex:1] setKeyboardType:UIKeyboardTypeNumberPad];
+    
+    dialog.tag = 1101;
+    [dialog show];
+}
+
+// Change keyboard type
 
 
 @end

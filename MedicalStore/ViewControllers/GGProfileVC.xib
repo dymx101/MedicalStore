@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.SystemVersion">11G63</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.39</string>
-		<string key="IBDocument.HIToolboxVersion">626.00</string>
+		<string key="IBDocument.AppKitVersion">1138.51</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -80,7 +80,7 @@
 						<string key="NSFrame">{{20, 59}, {280, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="70526805"/>
+						<reference key="NSNextKeyView" ref="654410296"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -103,10 +103,39 @@
 						<reference key="IBUIFontDescription" ref="233462081"/>
 						<reference key="IBUIFont" ref="555894834"/>
 					</object>
+					<object class="IBUITextField" id="654410296">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{19, 100}, {280, 30}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="70526805"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<string key="IBUIText"/>
+						<int key="IBUIBorderStyle">3</int>
+						<string key="IBUIPlaceholder">请输入您的电子邮箱</string>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+							<reference key="NSCustomColorSpace" ref="777533907"/>
+						</object>
+						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
+						<float key="IBUIMinimumFontSize">17</float>
+						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+							<int key="IBUIKeyboardType">7</int>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+						<reference key="IBUIFontDescription" ref="233462081"/>
+						<reference key="IBUIFont" ref="555894834"/>
+					</object>
 					<object class="IBUITextField" id="70526805">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 102}, {137, 30}}</string>
+						<string key="NSFrame">{{20, 143}, {137, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="146304370"/>
@@ -126,7 +155,7 @@
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
-							<int key="IBUIKeyboardType">5</int>
+							<int key="IBUIKeyboardType">6</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="233462081"/>
@@ -171,7 +200,7 @@
 							<object class="IBUILabel" id="753291032">
 								<reference key="NSNextResponder" ref="406463653"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{11, 33}, {242, 54}}</string>
+								<string key="NSFrame">{{11, 33}, {242, 60}}</string>
 								<reference key="NSSuperview" ref="406463653"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="637098450"/>
@@ -181,7 +210,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">1. 您在此输入的任何信息只是为了协助警方及时获知与案件相关的准确信息，以便第一时间响应您的举报。</string>
+								<string key="IBUIText">1.温馨提示：首次使用时，请您先输入您的姓名和手机号，点击“获取验证码”按钮，待获取验证码后填写验证码，点击“验证”按钮进行验证！</string>
 								<reference key="IBUITextColor" ref="163549578"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -201,7 +230,7 @@
 							<object class="IBUILabel" id="637098450">
 								<reference key="NSNextResponder" ref="406463653"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 87}, {242, 40}}</string>
+								<string key="NSFrame">{{10, 98}, {242, 45}}</string>
 								<reference key="NSSuperview" ref="406463653"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -211,7 +240,10 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">2. 我们将严格保守您的个人隐私，绝对不会泄漏您的任何个人信息。</string>
+								<string type="base64-UTF8" key="IBUIText">Mi7mr4/mrKHlkK/liqjlupTnlKjml7bpnIDmo4Dmn6XnlKjmiLfnu5Hlrprmg4XlhrXvvIzor7fkv53o
+r4HnvZHnu5zov57mjqXlj6/nlKjvvIzlpoLov57mjqXkuI3kuIrmnI3liqHlmajvvIzor7fmgqjmo4Dm
+n6XnvZHnu5zlkI7ngrnlh7vlj7PkuIrop5LigJzmo4Dmn6XigJ3mjInpkq7ov5vooYzpqozor4HvvIEK
+A</string>
 								<reference key="IBUITextColor" ref="163549578"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -222,7 +254,7 @@
 								<double key="preferredMaxLayoutWidth">242</double>
 							</object>
 						</array>
-						<string key="NSFrame">{{27, 204}, {267, 141}}</string>
+						<string key="NSFrame">{{27, 247}, {267, 154}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="392022794"/>
@@ -236,7 +268,7 @@
 					<object class="IBUIButton" id="146304370">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{165, 98}, {135, 38}}</string>
+						<string key="NSFrame">{{165, 139}, {135, 38}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="73590397"/>
@@ -272,7 +304,7 @@
 					<object class="IBUIButton" id="73590397">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 145}, {280, 38}}</string>
+						<string key="NSFrame">{{20, 192}, {280, 38}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="406463653"/>
@@ -391,6 +423,14 @@
 					</object>
 					<int key="connectionID">21</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tfMail</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="654410296"/>
+					</object>
+					<int key="connectionID">23</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -410,6 +450,7 @@
 							<reference ref="70526805"/>
 							<reference ref="146304370"/>
 							<reference ref="73590397"/>
+							<reference ref="654410296"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -480,6 +521,12 @@
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">btnValidate</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="654410296"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">tfPhone</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -494,6 +541,7 @@
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -502,7 +550,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -512,6 +560,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="btnGetValidCode">UIButton</string>
 						<string key="btnValiate">UIButton</string>
+						<string key="tfMail">UITextField</string>
 						<string key="tfName">UITextField</string>
 						<string key="tfPhone">UITextField</string>
 						<string key="tfValidate">UITextField</string>
@@ -525,6 +574,10 @@
 						<object class="IBToOneOutletInfo" key="btnValiate">
 							<string key="name">btnValiate</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tfMail">
+							<string key="name">tfMail</string>
+							<string key="candidateClassName">UITextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tfName">
 							<string key="name">tfName</string>

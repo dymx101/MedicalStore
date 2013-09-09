@@ -56,7 +56,7 @@ DEF_SINGLETON(GGAPITest)
 
 -(void)_TestaskChecking
 {
-    [GGSharedAPI askChecking:@"towne" Phone:13397186156 callback:^(id operation, id aResultObject, NSError *anError) {
+    [GGSharedAPI askChecking:@"towne" Phone:13397186156 Mail:@"tangqii@163.com" callback:^(id operation, id aResultObject, NSError *anError) {
         GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
         long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
         DLog(@">>>> %ld",flag);

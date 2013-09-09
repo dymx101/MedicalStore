@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C17357617CF251600828EFC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17357517CF251600828EFC /* Default.png */; };
+		4C17357917CF255B00828EFC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C17357717CF251D00828EFC /* Default@2x.png */; };
+		4C17357F17CF4A0200828EFC /* GGVersionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17357E17CF4A0200828EFC /* GGVersionInfo.m */; };
+		4C88053817DC723C00B43FBD /* MSLocVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C88053717DC723C00B43FBD /* MSLocVersion.m */; };
+		4C88053C17DC80D100B43FBD /* MSDepartmentDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C88053A17DC80D000B43FBD /* MSDepartmentDetailVC.m */; };
+		4C88053D17DC80D100B43FBD /* MSDepartmentDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C88053B17DC80D100B43FBD /* MSDepartmentDetailVC.xib */; };
+		4C88053F17DCB48D00B43FBD /* zimu_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C88053E17DCB48D00B43FBD /* zimu_bg.png */; };
 		4CAED09C17BD3CE70022B08D /* MSTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED09A17BD3CE70022B08D /* MSTestVC.m */; };
 		4CAED09D17BD3CE70022B08D /* MSTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAED09B17BD3CE70022B08D /* MSTestVC.xib */; };
 		4CAED19817C0AE8D0022B08D /* MSDepartMent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CAED19717C0AE8D0022B08D /* MSDepartMent.m */; };
@@ -85,8 +92,6 @@
 		EA9A1B8917919769005E9130 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1B8717919769005E9130 /* InfoPlist.strings */; };
 		EA9A1B8B1791976A005E9130 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1B8A1791976A005E9130 /* main.m */; };
 		EA9A1B8F1791976A005E9130 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1B8E1791976A005E9130 /* MSAppDelegate.m */; };
-		EA9A1B911791976A005E9130 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1B901791976A005E9130 /* Default@2x.png */; };
-		EA9A1B931791976A005E9130 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1B921791976A005E9130 /* Default.png */; };
 		EA9A1B951791976A005E9130 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9A1B941791976A005E9130 /* Default-568h@2x.png */; };
 		EA9A1BAB179199E8005E9130 /* AKTab.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1B9E179199E7005E9130 /* AKTab.m */; };
 		EA9A1BAC179199E8005E9130 /* AKTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A1BA0179199E7005E9130 /* AKTabBar.m */; };
@@ -174,6 +179,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C17357517CF251600828EFC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4C17357717CF251D00828EFC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4C17357D17CF4A0200828EFC /* GGVersionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGVersionInfo.h; sourceTree = "<group>"; };
+		4C17357E17CF4A0200828EFC /* GGVersionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGVersionInfo.m; sourceTree = "<group>"; };
+		4C88053617DC723C00B43FBD /* MSLocVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLocVersion.h; sourceTree = "<group>"; };
+		4C88053717DC723C00B43FBD /* MSLocVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLocVersion.m; sourceTree = "<group>"; };
+		4C88053917DC80D000B43FBD /* MSDepartmentDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDepartmentDetailVC.h; sourceTree = "<group>"; };
+		4C88053A17DC80D000B43FBD /* MSDepartmentDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDepartmentDetailVC.m; sourceTree = "<group>"; };
+		4C88053B17DC80D100B43FBD /* MSDepartmentDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSDepartmentDetailVC.xib; sourceTree = "<group>"; };
+		4C88053E17DCB48D00B43FBD /* zimu_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zimu_bg.png; sourceTree = "<group>"; };
 		4CAED09917BD3CE70022B08D /* MSTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestVC.h; sourceTree = "<group>"; };
 		4CAED09A17BD3CE70022B08D /* MSTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTestVC.m; sourceTree = "<group>"; };
 		4CAED09B17BD3CE70022B08D /* MSTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSTestVC.xib; sourceTree = "<group>"; };
@@ -622,6 +637,8 @@
 		EA9A1B7217919769005E9130 = {
 			isa = PBXGroup;
 			children = (
+				4C17357717CF251D00828EFC /* Default@2x.png */,
+				4C17357517CF251600828EFC /* Default.png */,
 				EA99965717CB9F5B00BAFF4B /* RDVTabBarController */,
 				EA9A1BD61791B5AD005E9130 /* Icon@2x.png */,
 				EA9A1BD41791B5A4005E9130 /* Icon.png */,
@@ -760,6 +777,9 @@
 				4CDBDD2317B7ABCE00682F21 /* MSFavoritesListVC.m */,
 				EA9C371417C8438E00FC0808 /* MSNewSettingCenterVC.h */,
 				EA9C371517C8438E00FC0808 /* MSNewSettingCenterVC.m */,
+				4C88053917DC80D000B43FBD /* MSDepartmentDetailVC.h */,
+				4C88053A17DC80D000B43FBD /* MSDepartmentDetailVC.m */,
+				4C88053B17DC80D100B43FBD /* MSDepartmentDetailVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -818,6 +838,7 @@
 		EA9A1BE91791C027005E9130 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				4C88053E17DCB48D00B43FBD /* zimu_bg.png */,
 				EAABC45F179333C3001661FC /* addRed@2x.png */,
 				4CD6A00C17B15F4300B66739 /* btn@2x.png */,
 				EAABC45D17933327001661FC /* orangeBtnBg@2x.png */,
@@ -939,6 +960,8 @@
 			isa = PBXGroup;
 			children = (
 				4CD6A08C17B5F29C00B66739 /* GGDataModel.h */,
+				4C17357D17CF4A0200828EFC /* GGVersionInfo.h */,
+				4C17357E17CF4A0200828EFC /* GGVersionInfo.m */,
 				4CD6A08D17B5F29D00B66739 /* GGDataModel.m */,
 				4CD6A04B17B5EDB000B66739 /* GGDbManager.h */,
 				4CD6A04C17B5EDB000B66739 /* GGDbManager.m */,
@@ -954,6 +977,8 @@
 				4CAED19A17C0BF040022B08D /* MSUserInfo.m */,
 				4CAED19C17C0C1680022B08D /* MSTelBook.h */,
 				4CAED19D17C0C1690022B08D /* MSTelBook.m */,
+				4C88053617DC723C00B43FBD /* MSLocVersion.h */,
+				4C88053717DC723C00B43FBD /* MSLocVersion.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1047,8 +1072,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9A1B8917919769005E9130 /* InfoPlist.strings in Resources */,
-				EA9A1B911791976A005E9130 /* Default@2x.png in Resources */,
-				EA9A1B931791976A005E9130 /* Default.png in Resources */,
 				EA9A1B951791976A005E9130 /* Default-568h@2x.png in Resources */,
 				EA9A1BAD179199E8005E9130 /* AKTabBarController.bundle in Resources */,
 				EA9A1BCA1791AACF005E9130 /* tab_account@2x.png in Resources */,
@@ -1087,6 +1110,10 @@
 				EA99965517CB9D2300BAFF4B /* tab4@2x.png in Resources */,
 				EA99965617CB9D2300BAFF4B /* tab4s@2x.png in Resources */,
 				EA291E0517CC771800243D4A /* tabBg@2x.png in Resources */,
+				4C17357617CF251600828EFC /* Default.png in Resources */,
+				4C17357917CF255B00828EFC /* Default@2x.png in Resources */,
+				4C88053D17DC80D100B43FBD /* MSDepartmentDetailVC.xib in Resources */,
+				4C88053F17DCB48D00B43FBD /* zimu_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,6 +1237,9 @@
 				EA99965F17CB9F5B00BAFF4B /* RDVTabBarController.m in Sources */,
 				EA99966017CB9F5B00BAFF4B /* RDVTabBarItem.m in Sources */,
 				EA291E0817CC95B000243D4A /* GGDataStore.m in Sources */,
+				4C17357F17CF4A0200828EFC /* GGVersionInfo.m in Sources */,
+				4C88053817DC723C00B43FBD /* MSLocVersion.m in Sources */,
+				4C88053C17DC80D100B43FBD /* MSDepartmentDetailVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

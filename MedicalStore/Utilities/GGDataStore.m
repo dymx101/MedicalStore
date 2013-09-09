@@ -7,6 +7,7 @@
 //
 
 #import "GGDataStore.h"
+#import "MSLocVersion.h"
 
 @implementation GGDataStore
 DEF_SINGLETON(GGDataStore)
@@ -49,6 +50,11 @@ DEF_SINGLETON(GGDataStore)
     return [[self savedDataPath] stringByAppendingPathComponent:@"telbooks.plist"];
 }
 
++(NSString *)pathVersions
+{
+    return [[self savedDataPath] stringByAppendingPathComponent:@"telversions.plist"];
+}
+
 +(NSString *)ensurePathExists:(NSString *)aPath
 {
     NSError *error;
@@ -64,6 +70,27 @@ DEF_SINGLETON(GGDataStore)
     [[NSFileManager defaultManager] removeItemAtPath:aPath error:nil];
 }
 
++(void)saveVersions:(MSLocVersion *)version
+{
+    [self ensurePathExists:[self savedDataPath]];
+    if (version) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:version];
+        BOOL ok = [data writeToFile:[self pathVersions] atomically:YES];
+        DLog(@"%d", ok);
+    }
+}
+
++(MSLocVersion *)loadVersions
+{
+    NSData *unarchiveArr = [[NSData alloc] initWithContentsOfFile:[self pathVersions]];
+    if (unarchiveArr)
+    {
+        MSLocVersion *version = [NSKeyedUnarchiver unarchiveObjectWithData:unarchiveArr];
+        return version;
+    }
+    return nil;
+}
+
 +(void)saveDepartments:(NSArray *)aDepartments
 {
     [self ensurePathExists:[self savedDataPath]];
@@ -77,27 +104,26 @@ DEF_SINGLETON(GGDataStore)
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
             [archiveArr addObjectIfNotNil:data];
         }
-        
         BOOL ok = [archiveArr writeToFile:[self pathDepartments] atomically:YES];
         DLog(@"%d", ok);
     }
     
     
     ///////
-//    NSError *error;
-//    NSData *data = [NSPropertyListSerialization dataWithPropertyList:aDepartments
-//                                                              format: NSPropertyListBinaryFormat_v1_0 options:0 error:&error];
-//    if (!data) {
-//        NSLog(@"failed to convert array to data: %@", error);
-//        return;
-//    }
-//    
-//    if (![data writeToFile:[self pathDepartments] options:NSDataWritingAtomic error:&error]) {
-//        NSLog(@"failed to write data to file: %@", error);
-//        return;
-//    }
-//    
-//    NSLog(@"wrote data successfully");
+    //    NSError *error;
+    //    NSData *data = [NSPropertyListSerialization dataWithPropertyList:aDepartments
+    //                                                              format: NSPropertyListBinaryFormat_v1_0 options:0 error:&error];
+    //    if (!data) {
+    //        NSLog(@"failed to convert array to data: %@", error);
+    //        return;
+    //    }
+    //
+    //    if (![data writeToFile:[self pathDepartments] options:NSDataWritingAtomic error:&error]) {
+    //        NSLog(@"failed to write data to file: %@", error);
+    //        return;
+    //    }
+    //
+    //    NSLog(@"wrote data successfully");
 }
 
 +(NSArray *)loadDepartments
@@ -133,11 +159,10 @@ DEF_SINGLETON(GGDataStore)
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
             [archiveArr addObjectIfNotNil:data];
         }
-        
         BOOL ok = [archiveArr writeToFile:[self pathTelbooks] atomically:YES];
         DLog(@"%d", ok);
     }
-
+    
 }
 
 +(NSArray *)loadTelbooks

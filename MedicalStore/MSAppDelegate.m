@@ -32,9 +32,9 @@
     
     _tabBarController = [[RDVTabBarController alloc] init];
     
-
+    
     NSMutableArray *vcs = [NSMutableArray array];
-
+    
     MSHomeVC * homeVc1 = [[MSHomeVC alloc] initWithSectionIndexes:YES TypeId:1];
     homeVc1.navigationItem.title = @"区'四大家'领导";
     homeVc1.MSTabImageName = @"tab1";
@@ -84,7 +84,7 @@
 #else       // for real
     self.window.rootViewController = _drawerVC;
 #endif
-
+    
     
     [_window makeKeyAndVisible];
     
@@ -94,7 +94,7 @@
     
     [self customizeTabBarForController:_tabBarController];
     
-    [self refreshData];
+    //    [self refreshData];
     
     return YES;
 }
@@ -116,18 +116,18 @@
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             NSMutableArray *telbooks =[parser parseMSTelBook];
             [GGDataStore saveTelbooks:telbooks];
-            
             [self postNotification:MS_NOTIFY_DATA_REFRESHED];
         }];
         
     }];
+    
 }
 
 - (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {
     //UIImage *finishedImage = [[UIImage imageNamed:@"tabbar_selected_background"]
-      //                        resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 0)];
+    //                        resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 0)];
     //UIImage *unfinishedImage = [[UIImage imageNamed:@"tabbar_unselected_background"]
-      //                          resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 0)];
+    //                          resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 0)];
     
     RDVTabBar *tabBar = [tabBarController tabBar];
     tabBar.edgeContentInset = 0.f;
@@ -142,7 +142,7 @@
     for (int i = 0; i < 4; i++)
     {
         RDVTabBarItem *item = tabBarController.tabBar.items[i];
-        //item.backgroundColor = GGSharedColor.random;
+
         UIImage *finishedImg, *unfinishedImg;
         switch (i)
         {
@@ -180,14 +180,14 @@
         
         [item setBackgroundSelectedImage:finishedImg withUnselectedImage:unfinishedImg];
     }
-
     
     
-//    for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
-//        [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
-//        UIImage *image = [UIImage imageNamed:@"first"];
-//        [item setFinishedSelectedImage:image withFinishedUnselectedImage:image];
-//    }
+    
+    //    for (RDVTabBarItem *item in [[tabBarController tabBar] items]) {
+    //        [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
+    //        UIImage *image = [UIImage imageNamed:@"first"];
+    //        [item setFinishedSelectedImage:image withFinishedUnselectedImage:image];
+    //    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -198,7 +198,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

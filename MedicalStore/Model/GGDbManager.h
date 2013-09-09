@@ -17,5 +17,6 @@ AS_SINGLETON(GGDbManager)
 -(BOOL)deleteTelbookByID:(long long)aTelbookID;
 -(BOOL)hasTelbookWithID:(long long)aTelbookID;
 -(NSArray *)getAllTelbooks;
+-(void)updateAllTelbooks:(NSArray *) allTelbooks;
 
 @end

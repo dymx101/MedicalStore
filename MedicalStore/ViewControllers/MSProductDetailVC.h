@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MSTelBook.h"
+
+@class MSTelBook;
 
 @interface MSProductDetailVC : MSBaseVC
 
@@ -15,7 +16,9 @@
 @property (nonatomic)BOOL keep;   // 收藏 1 or 取消收藏 0
 
 
--(IBAction)call:(id)sender;
+-(IBAction)call1:(id)sender;
+-(IBAction)call2:(id)sender;
+-(IBAction)call3:(id)sender;
 -(IBAction)sendmessage:(id)sender;
 -(IBAction)addfavorite:(id)sender;
 

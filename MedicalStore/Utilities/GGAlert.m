@@ -78,6 +78,18 @@
 //    }
 //}
 
++(void)alert:(NSString *)aMessage tag:(int)aTag delegate:(id/*<UIAlertViewDelegate>*/)aDelegate
+{
+    //aMessage = [aMessage stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:aMessage
+                                                   delegate:aDelegate
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    alert.tag = aTag;
+    [alert show];
+}
+
 +(void)alert:(NSString *)aMessage delegate:(id/*<UIAlertViewDelegate>*/)aDelegate
 {
     //aMessage = [aMessage stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
@@ -89,18 +101,19 @@
     [alert show];
 }
 
-+(void)alertCancelOK:(NSString *)aMessage delegate:(id)aDelegate
++(void)alertCancelOK:(NSString *)aMessage tag:(int)aTag delegate:(id)aDelegate
 {
-    [self alertCancelOK:aMessage title:nil delegate:aDelegate];
+    [self alertCancelOK:aMessage title:nil tag:aTag delegate:aDelegate];
 }
 
-+(void)alertCancelOK:(NSString *)aMessage  title:(NSString *)aTitle  delegate:(id)aDelegate
++(void)alertCancelOK:(NSString *)aMessage title:(NSString *)aTitle tag:(int)aTag delegate:(id)aDelegate
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:aTitle
                                                     message:aMessage
                                                    delegate:aDelegate
                                           cancelButtonTitle:@"Cancel"
                                           otherButtonTitles:@"Ok", nil];
+    alert.tag = aTag;
     [alert show];
 }
 

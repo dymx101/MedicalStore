@@ -116,19 +116,22 @@
 //phone 手机号
 //code  机器码
 //返回参数：(json格式)
-//返回：flag
-//0 申请成功
+//返回：flag 并把验证码发到邮箱
+//0 申请成功 并把验证码发到邮箱
 //1 申请失败
 
--(void)askChecking:(NSString*)aName Phone:(long long)aPhone callback:(GGApiBlock)aCallback
+-(void)askChecking:(NSString*)aName Phone:(long long)aPhone Mail:(NSString*)aMail callback:(GGApiBlock)aCallback
 {
+//    NSLog(@">> %@",[self hexStringFromString:aName]);
     NSString *path = @"telBook-askChecking.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
-    aCode = @"3C:07:54:17:EF:22";
+//    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aName forKey:@"name"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
+    [parameters setObject:aMail forKey:@"mail"];
     [parameters setObject:aCode forKey:@"code"];
+    [parameters setObject:__INT(2) forKey:@"phonePlatform"];
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
@@ -145,7 +148,7 @@
 {
     NSString *path = @"telBook-checkCode.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
-    aCode = @"3C:07:54:17:EF:22";
+//    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     [parameters setObject:aSecurityCode forKey:@"securityCode"];
@@ -192,7 +195,7 @@
 {
     NSString *path = @"telBook-getTel.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
-    aCode = @"3C:07:54:17:EF:22";
+//    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     if (![aDepartment isEqualToString:@"all"]) {
@@ -219,7 +222,7 @@
 {
     NSString *path = @"telBook-changePhone.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
-    aCode = @"3C:07:54:17:EF:22";
+//    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
@@ -236,7 +239,7 @@
 {
     NSString *path = @"telBook-getUserInfo.rht";
     NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
-    aCode = @"3C:07:54:17:EF:22";
+//    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
     [self _execGetWithPath:path params:parameters callback:aCallback];
@@ -254,6 +257,47 @@
     NSString *path = @"telBook-checkUpdate.rht";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
+//在线升级接口（Ios）
+
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-versionInfoIos.rht
+//参数：cltVerion  客户端版本
+//返回参数：(json格式)
+//返回：verName当前服务器端版本号 如：1.2  可以理解为：小版本
+//verCode 当前服务器端版本号 如：2  可以理解为；大版本
+//Updates 更新内容，其中#号为分隔符，代表换行
+//客户端检查自己版本是否与服务器端版本一样，一样无需进行升级，不一样需要升级
+//举例：verName值为1.3，客户端自己的版本号为1.2，表示有更新文件 调用文件下载接口进行下载。
+-(void)checkUpdateWithCurrentVersion:(NSString *)aCurrentVersion  callback:(GGApiBlock)aCallback
+{
+    NSString *path = @"telBook-versionInfoIos.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:aCurrentVersion forKey:@"cltVerion"];
+    
+    [self _execPostWithPath:path params:parameters callback:aCallback];
+}
+
+-(NSString *)hexStringFromString:(NSString *)string{
+    NSData *myD = [string dataUsingEncoding:NSUTF8StringEncoding];
+    Byte *bytes = (Byte *)[myD bytes];
+    //下面是Byte 转换为16进制。
+    NSString *hexStr=@"";
+    for(int i=0;i<[myD length];i++)
+        
+    {
+        NSString *newHexStr = [NSString stringWithFormat:@"%x",bytes[i]&0xff];///16进制数
+        
+        if([newHexStr length]==1)
+            
+            hexStr = [NSString stringWithFormat:@"%@0%@",hexStr,newHexStr];
+        
+        else
+            
+            hexStr = [NSString stringWithFormat:@"%@%@",hexStr,newHexStr]; 
+    } 
+    return hexStr; 
 }
 
 @end

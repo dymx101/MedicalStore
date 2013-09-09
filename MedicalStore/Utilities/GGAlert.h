@@ -16,11 +16,13 @@
 +(void)alertWithApiMessage:(NSString *)aMessage;
 
 +(void)alertWithMessage:(NSString *)aMessage;
++(void)alertWithMessage:(NSString *)aMessage tag:(int)aTag;
 +(void)alertWithMessage:(NSString *)aMessage title:(NSString *)aTitle;
++(void)alert:(NSString *)aMessage tag:(int)aTag delegate:(id/*<UIAlertViewDelegate>*/)aDelegate;
 
 +(void)alertNetError;
-+(void)alertCancelOK:(NSString *)aMessage delegate:(id)aDelegate;
-+(void)alertCancelOK:(NSString *)aMessage  title:(NSString *)aTitle  delegate:(id)aDelegate;
++(void)alertCancelOK:(NSString *)aMessage tag:(int)aTag delegate:(id)aDelegate;
++(void)alertCancelOK:(NSString *)aMessage title:(NSString *)aTitle tag:(int)aTag delegate:(id)aDelegate;
 //+(void)alertErrorForParser:(GGApiParser *)aParser;
 
 #pragma mark - warnings

@@ -10,10 +10,14 @@
 #import "GGArchive.h"
 #import "GGUserDefault.h"
 #import "GGImagePool.h"
+#import "MSAppDelegate.h"
+#import "GGPhoneMask.h"
 
-@interface GGProfileVC ()
+
+@interface GGProfileVC ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *tfName;
 @property (weak, nonatomic) IBOutlet UITextField *tfPhone;
+@property (weak, nonatomic) IBOutlet UITextField *tfMail;
 @property (weak, nonatomic) IBOutlet UITextField *tfValidate;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnGetValidCode;
@@ -29,7 +33,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        self.title = @"个人资料";
         [self setTitle:@"身份验证"];
     }
     return self;
@@ -39,11 +42,12 @@
 {
     [super viewDidLoad];
     
+    
     _tfName.text = [GGUserDefault myName];
     _tfPhone.text = [GGUserDefault myPhone];
     
-    //UIBarButtonItem *barBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
-    //self.navigationItem.rightBarButtonItem = barBtn;
+    UIBarButtonItem *barBtn = [[UIBarButtonItem alloc] initWithTitle:@"退出" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
+    self.navigationItem.leftBarButtonItem = barBtn;
     
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)]];
     
@@ -69,35 +73,76 @@
 
 -(IBAction)save:(id)sender
 {
-    DLog(@"save profile");
-    [GGUserDefault saveMyName:self.tfName.text];
-    [GGUserDefault saveMyPhone:self.tfPhone.text];
-    NSArray * profile = [NSArray arrayWithObjects:self.tfName.text,self.tfPhone.text,nil];
-    [GGArchive archiveData:profile withFileName:@"profile.plist"];
-    [self.navigationController popViewControllerAnimated:YES];
+    exit(0);
 }
 
 -(IBAction)getValidateCodeAction:(id)sender
 {
     DLog(@"getValidateCodeAction");
-    [GGSharedAPI askChecking:@"towne" Phone:13397186156 callback:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-        long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
-        DLog(@">>>> %ld",flag);
-        if (flag == 1) {
-            [GGAlert alertWithApiMessage:@"变更失败"];
-        }
-        else
-        {
-            [GGAlert alertWithMessage:[NSString stringWithFormat:@"变更为\n 姓名:%@\n手机号:%@",@"towne",@"13397186156"] title:@"查看手机获取验证码"];
-        }
-
-    }];
+    int tfnlength = [_tfName.text length];
+    int tfplength = [_tfPhone.text length];
+    int tfmlength = [_tfMail.text length];
+    [self.view showLoadingHUD];
+    if (tfnlength == 0 || tfplength == 0 || tfmlength == 0) {
+        [GGAlert alertWithApiMessage:@"姓名或电话或邮箱不能为空！"];
+    }
+    else
+    {
+        [GGSharedAPI askChecking:_tfName.text Phone:[_tfPhone.text longLongValue] Mail:_tfMail.text callback:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+            DLog(@">>>> %ld",flag);
+            if (flag == 1) {
+                [self.view hideLoadingHUD];
+                [GGAlert alertWithApiMessage:@"申请验证码失败"];
+            }
+            else
+            {
+                [self.view hideLoadingHUD];
+                [GGAlert alertWithMessage:[NSString stringWithFormat:@" 姓名:%@ 手机号:%@ 注册邮箱:%@",_tfName.text,_tfPhone.text,_tfMail.text] title:@"请登陆您的邮箱获取验证码"];
+            }
+            
+        }];
+    }
 }
 
 -(IBAction)validateAction:(id)sender
 {
     DLog(@"validateAction");
+    NSString *validatestring = _tfValidate.text;
+    int tfvalidlength = [_tfValidate.text length];
+    if (tfvalidlength == 0 ) {
+        [GGAlert alertWithApiMessage:@"验证码不能为空！"];
+    }
+    else
+    {
+        //        validatestring = @"aaabbb";
+        [self.view showLoadingHUD];
+        [GGSharedAPI checkCode:validatestring callback:^(id operation, id aResultObject, NSError *anError) {
+            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+            long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+            DLog(@">>>> %ld",flag);
+            if (flag == 0) {
+                [GGAlert alert:@"用户验证通过,即将进入应用,请稍后！" tag:101 delegate:self];
+            }
+            else
+            {
+                [self.view hideLoadingHUD];
+                [GGAlert alertWithMessage:@"验证失败!"];
+            }
+        }];
+    }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 101) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [SharedAppDelegate refreshData];
+        });
+        [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
+    }
+}
+
 
 @end

@@ -17,6 +17,7 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 + (GGApi *)sharedApi;
 + (NSString *)apiBaseUrl;
 
+
 -(void)canceAllOperations;
 
 -(void)_execPostWithPath:(NSString *)aPath params:(NSDictionary *)aParams callback:(GGApiBlock)aCallback;
@@ -27,7 +28,7 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(NSString *)uniqueNumber;
 
 //申请验证接口
--(void)askChecking:(NSString*)aName Phone:(long long)aPhone callback:(GGApiBlock)aCallback;
+-(void)askChecking:(NSString*)aName Phone:(long long)aPhone Mail:(NSString*)aMail callback:(GGApiBlock)aCallback;
 //验证码验证接口
 -(void)checkCode:(NSString *)aSecurityCode callback:(GGApiBlock)aCallback;
 //部门信息接口
@@ -40,8 +41,10 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(void)changePhone:(long long)aPhone callback:(GGApiBlock)aCallback;
 //用户信息接口
 -(void)getUserInfo:(GGApiBlock)aCallback;
-//检查更新接口
+//数据更新接口
 -(void)checkUpdate:(GGApiBlock)aCallback;
+//版本更新接口
+-(void)checkUpdateWithCurrentVersion:(NSString *)aCurrentVersion  callback:(GGApiBlock)aCallback;
 
 @end
 
