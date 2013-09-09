@@ -136,12 +136,13 @@
     UIColor *tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tabBg"]];
     tabBar.backgroundColor = tintColor;//[UIColor colorWithRed:67.f / 255 green:140.f / 255 blue:202.f / 255 alpha:1];
     
-    [tabBar setFrame:CGRectMake(CGRectGetMinX(tabBar.frame), CGRectGetMinY(tabBar.frame), CGRectGetWidth(tabBar.frame), 60)];
+    CGRect rc = CGRectMake(CGRectGetMinX(tabBar.frame), CGRectGetMinY(tabBar.frame), 320, 60);
+    [tabBar setFrame:rc];
     
     for (int i = 0; i < 4; i++)
     {
         RDVTabBarItem *item = tabBarController.tabBar.items[i];
-        
+
         UIImage *finishedImg, *unfinishedImg;
         switch (i)
         {
