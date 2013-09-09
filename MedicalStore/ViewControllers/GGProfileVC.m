@@ -52,6 +52,10 @@
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)]];
     
     [_btnValiate setBackgroundImage:GGSharedImagePool.bgBtnOrange forState:UIControlStateNormal];
+    
+    [self.btnGetValidCode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getValidateCodeAction:)]];
+    
+    [self.btnValiate addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(validateAction:)]];
 //    [self.btnGetValidCode addTarget:self action:@selector(getValidateCodeAction:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.btnValiate addTarget:self action:@selector(validateAction:) forControlEvents:UIControlEventTouchUpInside];
 }
