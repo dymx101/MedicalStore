@@ -172,6 +172,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideLoadingHUD];
             [self.tableView reloadData];
+            [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
         });
     }
 }

@@ -52,8 +52,8 @@
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)]];
     
     [_btnValiate setBackgroundImage:GGSharedImagePool.bgBtnOrange forState:UIControlStateNormal];
-    [self.btnGetValidCode addTarget:self action:@selector(getValidateCodeAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.btnValiate addTarget:self action:@selector(validateAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.btnGetValidCode addTarget:self action:@selector(getValidateCodeAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.btnValiate addTarget:self action:@selector(validateAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewDidUnload {
@@ -133,9 +133,6 @@
             {
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     [SharedAppDelegate refreshData];
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
-                    });
                 });
             }
         }];
