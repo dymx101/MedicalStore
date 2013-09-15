@@ -26,6 +26,8 @@
 @interface MSHomeVC ()
 {
     BOOL _mayUsePrivateAPI;
+    
+    int repeat;
 }
 
 @end
@@ -190,7 +192,16 @@
     else {
         NSString *mstelNameKeyword = self.filteredMSTelName[indexPath.row];
         NSArray *mstelIDS = [self.filteredMSTelIDMSG allKeysForObject:mstelNameKeyword];
-        msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[indexPath.row]];
+        
+        if ([mstelIDS count] > 1) {
+            if (repeat == 0) {
+                repeat = [mstelIDS count];
+            }
+            msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[[mstelIDS count] - repeat--]];
+        }
+        else
+            msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[0]];
+
         NSString  *departname = @"";
         for (MSDepartMent *department in [GGDataStore loadDepartments]) {
             if (department.ID == [msTelbook.departmentId longLongValue]) {
@@ -222,7 +233,15 @@
     {
         NSString *mstelNameKeyword = self.filteredMSTelName[indexPath.row];
         NSArray *mstelIDS = [self.filteredMSTelIDMSG allKeysForObject:mstelNameKeyword];
-        msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[indexPath.row]];
+        
+        if ([mstelIDS count] > 1) {
+            if (repeat == 0) {
+                repeat = [mstelIDS count];
+            }
+            msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[[mstelIDS count] - repeat--]];
+        }
+        else
+            msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[0]];
     }
     vc.msTelbook = msTelbook;
     vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
