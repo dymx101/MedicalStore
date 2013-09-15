@@ -28,6 +28,7 @@
     BOOL _mayUsePrivateAPI;
     
     int repeat;
+
 }
 
 @end
@@ -51,6 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _tempdictionary = [NSMutableDictionary new];
     
     //[self.navigationController.view printViewsTree];
     
@@ -211,6 +214,7 @@
         }
         cell.lblTitle.text = msTelbook.name;
         cell.lblSubTitle.text = [NSString stringWithFormat:@"%@ | %@",departname,msTelbook.post];
+        [_tempdictionary setObject:msTelbook forKey:indexPath];
     }
     return cell;
 }
@@ -231,17 +235,7 @@
         msTelbook = [self.favoriteArray objectAtIndex:indexPath.row];
     else
     {
-        NSString *mstelNameKeyword = self.filteredMSTelName[indexPath.row];
-        NSArray *mstelIDS = [self.filteredMSTelIDMSG allKeysForObject:mstelNameKeyword];
-        
-        if ([mstelIDS count] > 1) {
-            if (repeat == 0) {
-                repeat = [mstelIDS count];
-            }
-            msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[[mstelIDS count] - repeat--]];
-        }
-        else
-            msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[0]];
+        msTelbook = [_tempdictionary objectForKey:indexPath];
     }
     vc.msTelbook = msTelbook;
     vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
