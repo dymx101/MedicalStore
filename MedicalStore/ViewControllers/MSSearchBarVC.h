@@ -29,6 +29,7 @@ static NSString * const kFKRSearchBarTableViewControllerDefaultTableViewCellIden
 @property(nonatomic,assign) int     typeId;
 
 @property(nonatomic, strong) NSMutableArray           *filteredMSTelName;
+@property(nonatomic, strong) NSMutableDictionary      *filteredMSTelIDMSG;
 @property(nonatomic, strong) NSMutableArray           *filteredMSDepName;
 @property(nonatomic, strong) NSMutableArray           *primevalMSTelName;
 @property(nonatomic, strong) NSMutableArray           *primevalMSDepName;

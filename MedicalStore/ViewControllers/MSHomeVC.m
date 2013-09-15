@@ -188,7 +188,9 @@
         cell.lblSubTitle.text = [NSString stringWithFormat:@"%@ | %@",departname,msTelbook.post];
     }
     else {
-        msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
+        NSString *mstelNameKeyword = self.filteredMSTelName[indexPath.row];
+        NSArray *mstelIDS = [self.filteredMSTelIDMSG allKeysForObject:mstelNameKeyword];
+        msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[indexPath.row]];
         NSString  *departname = @"";
         for (MSDepartMent *department in [GGDataStore loadDepartments]) {
             if (department.ID == [msTelbook.departmentId longLongValue]) {
@@ -211,12 +213,17 @@
 {
     MSProductDetailVC *vc = [MSProductDetailVC new];
     MSTelBook *msTelbook;
+
     if (tableView == self.tableView) 
         msTelbook = self.sections[indexPath.section][indexPath.row];
     else if (self.isfavor)
         msTelbook = [self.favoriteArray objectAtIndex:indexPath.row];
     else
-        msTelbook = [self.filteredMSTelMSG objectForKey:self.filteredMSTelName[indexPath.row]];
+    {
+        NSString *mstelNameKeyword = self.filteredMSTelName[indexPath.row];
+        NSArray *mstelIDS = [self.filteredMSTelIDMSG allKeysForObject:mstelNameKeyword];
+        msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[indexPath.row]];
+    }
     vc.msTelbook = msTelbook;
     vc.keep = ![[GGDbManager sharedInstance] hasTelbookWithID:msTelbook.ID];
     [self.navigationController pushViewController:vc animated:YES];

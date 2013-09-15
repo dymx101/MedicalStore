@@ -92,6 +92,7 @@
     if (aTelbooks)
     {
         self.filteredMSTelName =  [NSMutableArray new];
+        self.filteredMSTelIDMSG=  [NSMutableDictionary new];
         self.filteredMSDepName =  [NSMutableArray new];
         self.primevalMSDepName =  [NSMutableArray new];
         self.primevalMSTelName =  [NSMutableArray new];
@@ -99,17 +100,15 @@
         self.filteredMSDepMSG  =  [NSMutableDictionary new];
         
         for (MSTelBook *book in aTelbooks) {
-            if ([_filteredMSTelName containsObject:book.name] == NO) {
-                [_filteredMSTelName addObject:book.name];
-                [_filteredMSTelMSG setObject:book forKey:book.name];
-            }
+            NSString *bookID = [NSString stringWithFormat:@"%lld",book.ID];
+            [_filteredMSTelName addObject:book.name];
+            [_filteredMSTelIDMSG setObject:book.name forKey:bookID];
+            [_filteredMSTelMSG setObject:book forKey:bookID];
         }
         NSArray *departments = [GGDataStore loadDepartments];
         for (MSDepartMent *department in departments) {
-            if ([_filteredMSDepName containsObject:department.name] == NO) {
                 [_filteredMSDepName addObject:department.name];
                 [_filteredMSDepMSG setObject:department forKey:department.name];
-            }
         }
         self.primevalMSDepName  = [NSMutableArray arrayWithArray:_filteredMSDepName];
         self.primevalMSTelName = [NSMutableArray arrayWithArray:_filteredMSTelName];
