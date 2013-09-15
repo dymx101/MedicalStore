@@ -214,8 +214,8 @@
         }
         cell.lblTitle.text = msTelbook.name;
         cell.lblSubTitle.text = [NSString stringWithFormat:@"%@ | %@",departname,msTelbook.post];
-        [_tempdictionary setObject:msTelbook forKey:indexPath];
     }
+    [_tempdictionary setObject:msTelbook forKey:indexPath];
     return cell;
 }
 

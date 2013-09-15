@@ -12,6 +12,8 @@
 #import "MSTelBook.h"
 #import "GGDbManager.h"
 #import "GGPhoneMask.h"
+#import "MSDepartMent.h"
+#import "GGDataStore.h"
 
 @interface MSFavoritesListVC ()
 {
@@ -180,6 +182,16 @@
         cell.lblTitle.text = msTelbook.name;
         cell.lblSubTitle.text = msTelbook.post;
     }
+    
+    NSString  *departname = @"";
+    for (MSDepartMent *department in [GGDataStore loadDepartments]) {
+        if (department.ID == [msTelbook.departmentId longLongValue]) {
+            departname = department.name;
+            break;
+        }
+    }
+    cell.lblTitle.text = msTelbook.name;
+    cell.lblSubTitle.text = [NSString stringWithFormat:@"%@ | %@",departname,msTelbook.post];
     
     return cell;
 }
