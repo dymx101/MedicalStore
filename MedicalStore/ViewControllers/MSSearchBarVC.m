@@ -182,7 +182,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideLoadingHUD];
             [self.tableView reloadData];
-            [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
+            [GGSharedAPI userCheck:^(id operation, id aResultObject, NSError *anError) {
+                GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+                long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+                if (flag == 0) {
+                    [[GGPhoneMask sharedInstance] dismissMaskVCAnimated:YES];
+                }
+            }];
         });
     }
 }

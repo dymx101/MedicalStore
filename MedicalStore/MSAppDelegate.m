@@ -104,7 +104,7 @@
        [GGSharedAPI userCheck:^(id operation, id aResultObject, NSError *anError) {
            GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
            long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
-           if (flag == 1) {
+           if (flag != 0) {
                GGProfileVC *vc = [GGProfileVC new];
                UINavigationController *baseNC = [[UINavigationController alloc] initWithRootViewController:vc];
                [[GGPhoneMask sharedInstance] addMaskVC:baseNC animated:YES alpha:1.0];

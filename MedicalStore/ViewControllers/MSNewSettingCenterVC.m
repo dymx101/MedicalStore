@@ -265,7 +265,7 @@
                 
                 NSRange range = NSMakeRange(0, [updateString length]);
                 [showupdataText replaceOccurrencesOfString:@"#" withString:@"\r" options:NSCaseInsensitiveSearch range:range];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示" message:updateString delegate:self cancelButtonTitle:@"稍后" otherButtonTitles:@"更新", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新提示" message:showupdataText delegate:self cancelButtonTitle:@"稍后" otherButtonTitles:@"更新", nil];
                 [alert show];
                 alert.tag = 7789;
             }
