@@ -340,7 +340,7 @@
 
 -(void)enterITunesToUpdate
 {
-    NSURL * iTunesUrl = [NSURL URLWithString:@"http://itunes.apple.com/cn/app/id427457043?mt=8&ls=1"];
+    NSURL * iTunesUrl = [NSURL URLWithString:@"http://itunes.apple.com/cn/app/id875066281"];
     [[UIApplication	sharedApplication] openURL:iTunesUrl];
 }
 

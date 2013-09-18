@@ -118,7 +118,7 @@
 -(BOOL)isExistenceNetwork
 {
     BOOL isExistenceNetwork;
-    Reachability *r = [Reachability reachabilityWithHostname:GGN_STR_TEST_SERVER_URL];
+    Reachability *r = [Reachability reachabilityWithHostname:GGN_STR_PRODUCT_SERVER_URL];
     
     switch ([r currentReachabilityStatus]) {
         case NotReachable:

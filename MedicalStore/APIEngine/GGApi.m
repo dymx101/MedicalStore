@@ -15,7 +15,7 @@
 
 +(NSString *)apiBaseUrl
 {
-    return [NSString stringWithFormat:@"%@/", GGN_STR_TEST_SERVER_URL];
+    return [NSString stringWithFormat:@"%@/", GGN_STR_PRODUCT_SERVER_URL];
 }
 
 + (GGApi *)sharedApi
