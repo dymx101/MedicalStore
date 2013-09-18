@@ -127,9 +127,17 @@
             
         }
         //更新 local db
-        [[GGDbManager sharedInstance] updateAllTelbooks:aTelbooks];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            [[GGDbManager sharedInstance] updateAllTelbooks:aTelbooks];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self initUseInterface];
+            });
+        });
         
-        [self initUseInterface];
+        
+       
     }
 }
 
