@@ -11,6 +11,7 @@
 
 @property(nonatomic,strong) NSString *MSTabImageName;
 @property(nonatomic,strong) NSMutableDictionary *tempdictionary;
+@property(nonatomic,strong) NSMutableDictionary *repeatKeydictionary;
 
 
 - (id)initWithSectionIndexes:(BOOL)showSectionIndexes TypeId:(int)typeId;

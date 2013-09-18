@@ -54,6 +54,7 @@
     [super viewDidLoad];
     
     _tempdictionary = [NSMutableDictionary new];
+    _repeatKeydictionary = [NSMutableDictionary new];
     
     //[self.navigationController.view printViewsTree];
     
@@ -197,10 +198,19 @@
         NSArray *mstelIDS = [self.filteredMSTelIDMSG allKeysForObject:mstelNameKeyword];
         
         if ([mstelIDS count] > 1) {
-            if (repeat == 0) {
-                repeat = [mstelIDS count];
-            }
+            if (![_repeatKeydictionary objectForKey:mstelNameKeyword]) {
+                [_repeatKeydictionary setObject:[NSString stringWithFormat:@"%d",[mstelIDS count]] forKey:mstelNameKeyword];
+            };
+            repeat = [[_repeatKeydictionary objectForKey:mstelNameKeyword] intValue];
             msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[[mstelIDS count] - repeat--]];
+            if(repeat == 0)
+            {
+                [_repeatKeydictionary removeObjectForKey:mstelNameKeyword];
+            }
+            else
+            {
+            [_repeatKeydictionary setObject:[NSString stringWithFormat:@"%d",repeat] forKey:mstelNameKeyword];
+            }
         }
         else
             msTelbook = [self.filteredMSTelMSG objectForKey:mstelIDS[0]];
