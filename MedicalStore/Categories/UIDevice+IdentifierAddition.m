@@ -80,7 +80,8 @@
 #pragma mark Public Methods
 
 + (NSString *) uniqueDeviceIdentifier{
-    NSString *macaddress = [UIDevice macaddress];
+//    NSString *macaddress = [UIDevice macaddress];
+    NSString *macaddress = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
     
     NSString *stringToHash = [NSString stringWithFormat:@"%@%@",macaddress,bundleIdentifier];
@@ -90,7 +91,8 @@
 }
 
 + (NSString *) uniqueGlobalDeviceIdentifier{
-    NSString *macaddress = [UIDevice macaddress];
+//    NSString *macaddress = [UIDevice macaddress];
+    NSString *macaddress = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString *uniqueIdentifier = [macaddress stringFromMD5];
     
     return uniqueIdentifier;

@@ -124,7 +124,8 @@
 {
 //    NSLog(@">> %@",[self hexStringFromString:aName]);
     NSString *path = @"telBook-askChecking.rht";
-    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+//    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    NSString *aCode = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 //    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aName forKey:@"name"];
@@ -147,7 +148,9 @@
 -(void)checkCode:(NSString *)aSecurityCode callback:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-checkCode.rht";
-    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+//    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    NSString *aCode = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+//    NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 //    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
@@ -194,7 +197,8 @@
 -(void)getTel:(NSString *)aDepartment callback:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-getTel.rht";
-    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+//    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    NSString *aCode = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 //    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
@@ -221,7 +225,8 @@
 -(void)changePhone:(long long)aPhone callback:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-changePhone.rht";
-    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+//    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    NSString *aCode = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 //    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
@@ -238,7 +243,8 @@
 -(void)getUserInfo:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-getUserInfo.rht";
-    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+//    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    NSString *aCode = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 //    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
@@ -252,7 +258,8 @@
 -(void)userCheck:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-userCheck.rht";
-    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+//    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
+    NSString *aCode = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     //    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
