@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>43852D77-7061-4B48-8422-E7A5D5811F62</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MedicalStore</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5FC06BF6-CD17-4381-8212-A508AD4E6D30</key>
+		<string>https://github.com/dymx101/MedicalStore.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MedicalStore.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5FC06BF6-CD17-4381-8212-A508AD4E6D30</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dymx101/MedicalStore.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5FC06BF6-CD17-4381-8212-A508AD4E6D30</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5FC06BF6-CD17-4381-8212-A508AD4E6D30</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MedicalStore</string>
+		</dict>
+	</array>
+</dict>
+</plist>

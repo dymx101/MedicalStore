@@ -28,7 +28,7 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(NSString *)uniqueNumber;
 
 //申请验证接口
--(void)askChecking:(NSString*)aName Phone:(long long)aPhone Mail:(NSString*)aMail callback:(GGApiBlock)aCallback;
+-(void)getCheckCode:(NSString*)aName Phone:(long long)aPhone Mail:(NSString*)aMail callback:(GGApiBlock)aCallback;
 //验证码验证接口
 -(void)checkCode:(NSString *)aSecurityCode callback:(GGApiBlock)aCallback;
 //部门信息接口

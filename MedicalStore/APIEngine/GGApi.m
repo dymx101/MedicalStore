@@ -15,7 +15,7 @@
 
 +(NSString *)apiBaseUrl
 {
-    return [NSString stringWithFormat:@"%@/", GGN_STR_PRODUCT_SERVER_URL];
+    return [NSString stringWithFormat:@"%@/", GGN_STR_TEST_SERVER_URL];
 }
 
 + (GGApi *)sharedApi
@@ -111,7 +111,7 @@
 }
 
 //申请验证接口
-//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-askChecking.rht
+//接口地址：http://rhtsoft.gnway.net:8889/tel/telBook-getCheckCode.rht
 //参数：name  姓名
 //phone 手机号
 //code  机器码
@@ -120,17 +120,17 @@
 //0 申请成功 并把验证码发到邮箱
 //1 申请失败
 
--(void)askChecking:(NSString*)aName Phone:(long long)aPhone Mail:(NSString*)aMail callback:(GGApiBlock)aCallback
+-(void)getCheckCode:(NSString*)aName Phone:(long long)aPhone Mail:(NSString*)aMail callback:(GGApiBlock)aCallback
 {
 //    NSLog(@">> %@",[self hexStringFromString:aName]);
-    NSString *path = @"telBook-askChecking.rht";
+    NSString *path = @"telBook-getCheckCode.rht";
 //    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
     NSString *aCode = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 //    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aName forKey:@"name"];
     [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
-    [parameters setObject:aMail forKey:@"mail"];
+    [parameters setObject:@"" forKey:@"mail"];
     [parameters setObject:aCode forKey:@"code"];
     [parameters setObject:__INT(2) forKey:@"phonePlatform"];
     [self _execGetWithPath:path params:parameters callback:aCallback];

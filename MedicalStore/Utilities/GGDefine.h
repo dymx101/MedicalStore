@@ -60,7 +60,8 @@ typedef enum {
 
 
 //////////////////////////// server environment /////////////////////////////////////////
-#define GGN_STR_TEST_SERVER_URL     @"http://rhtsoft.gnway.net:8889/tel"
+//#define GGN_STR_TEST_SERVER_URL     @"http://rhtsoft.gnway.net:8889/tel"
+#define GGN_STR_TEST_SERVER_URL     @"http://192.168.10.102/tel"
 #define GGN_STR_PRODUCT_SERVER_URL  @"http://dhb.xnzhaoshang.com/tel/"
 
 

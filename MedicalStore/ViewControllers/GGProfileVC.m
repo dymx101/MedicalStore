@@ -85,15 +85,15 @@
     DLog(@"getValidateCodeAction");
     int tfnlength = [_tfName.text length];
     int tfplength = [_tfPhone.text length];
-    int tfmlength = [_tfMail.text length];
+//    int tfmlength = [_tfMail.text length];
     
-    if (tfnlength == 0 || tfplength == 0 || tfmlength == 0) {
-        [GGAlert alertWithApiMessage:@"姓名或电话或邮箱不能为空！"];
+    if (tfnlength == 0 || tfplength == 0 ) {
+        [GGAlert alertWithApiMessage:@"姓名或电话不能为空！"];
     }
     else
     {
         [self.view showLoadingHUD];
-        [GGSharedAPI askChecking:_tfName.text Phone:[_tfPhone.text longLongValue] Mail:_tfMail.text callback:^(id operation, id aResultObject, NSError *anError) {
+        [GGSharedAPI getCheckCode:_tfName.text Phone:[_tfPhone.text longLongValue] Mail:_tfMail.text callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);
@@ -105,7 +105,7 @@
             }
             else
             {
-                [GGAlert alertWithMessage:[NSString stringWithFormat:@" 姓名:%@ 手机号:%@ 注册邮箱:%@",_tfName.text,_tfPhone.text,_tfMail.text] title:@"请登陆您的邮箱获取验证码"];
+                [GGAlert alertWithMessage:[NSString stringWithFormat:@" 姓名:%@ 手机号:%@ 注册",_tfName.text,_tfPhone.text] title:@"请从您的手机获取验证码"];
             }
             
         }];
