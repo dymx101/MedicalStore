@@ -117,6 +117,7 @@
     DLog(@"validateAction");
     NSString *validatestring = _tfValidate.text;
     int tfvalidlength = [_tfValidate.text length];
+    
     if (tfvalidlength == 0 ) {
         [GGAlert alertWithApiMessage:@"验证码不能为空！"];
     }
@@ -124,7 +125,7 @@
     {
         //        validatestring = @"aaabbb";
         [self.view showLoadingHUD];
-        [GGSharedAPI checkCode:validatestring callback:^(id operation, id aResultObject, NSError *anError) {
+        [GGSharedAPI checkCode:validatestring Name:_tfName.text Phone:[_tfPhone.text longLongValue] callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
             DLog(@">>>> %ld",flag);

@@ -145,7 +145,7 @@
 //返回：flag
 //0 验证成功
 //1 验证失败
--(void)checkCode:(NSString *)aSecurityCode callback:(GGApiBlock)aCallback
+-(void)checkCode:(NSString *)aSecurityCode Name:(NSString*)aName Phone:(long long)aPhone callback:(GGApiBlock)aCallback
 {
     NSString *path = @"telBook-checkCode.rht";
 //    NSString *aCode = [UIDevice macaddress]; //机器码用mac地址
@@ -154,6 +154,8 @@
 //    aCode = @"3C:07:54:17:EF:22";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:aCode forKey:@"code"];
+    [parameters setObject:aName forKey:@"name"];
+    [parameters setObject:__LONGLONG(aPhone) forKey:@"phone"];
     [parameters setObject:aSecurityCode forKey:@"securityCode"];
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }

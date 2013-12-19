@@ -30,7 +30,7 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 //申请验证接口
 -(void)getCheckCode:(NSString*)aName Phone:(long long)aPhone Mail:(NSString*)aMail callback:(GGApiBlock)aCallback;
 //验证码验证接口
--(void)checkCode:(NSString *)aSecurityCode callback:(GGApiBlock)aCallback;
+-(void)checkCode:(NSString *)aSecurityCode Name:(NSString*)aName Phone:(long long)aPhone callback:(GGApiBlock)aCallback;
 //部门信息接口
 -(void)getDepartMent:(GGApiBlock)aCallback;
 -(void)getDepartMent:(NSString *)superId callback:(GGApiBlock)aCallback;

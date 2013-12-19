@@ -1275,25 +1275,23 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yu zhang (QNM2K66DZU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yu zhang (QNM2K66DZU)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "62F08F4B-BE6C-4F11-BC36-04774E855A11";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "62F08F4B-BE6C-4F11-BC36-04774E855A11";
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -1309,35 +1307,35 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wuhan Rui Hao Tai Technology Co. Ltd. (6VY45GUZ4E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wuhan Rui Hao Tai Technology Co. Ltd. (6VY45GUZ4E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yu zhang (QNM2K66DZU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yu zhang (QNM2K66DZU)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "62F08F4B-BE6C-4F11-BC36-04774E855A11";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "62F08F4B-BE6C-4F11-BC36-04774E855A11";
 				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
 		};
 		EA9A1B991791976A005E9130 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yu zhang (QNM2K66DZU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yu zhang (QNM2K66DZU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MedicalStore/MedicalStore-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "MedicalStore/MedicalStore-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
+				PROVISIONING_PROFILE = "62F08F4B-BE6C-4F11-BC36-04774E855A11";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "62F08F4B-BE6C-4F11-BC36-04774E855A11";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1345,15 +1343,15 @@
 		EA9A1B9A1791976A005E9130 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wuhan Rui Hao Tai Technology Co. Ltd. (6VY45GUZ4E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wuhan Rui Hao Tai Technology Co. Ltd. (6VY45GUZ4E)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yu zhang (QNM2K66DZU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yu zhang (QNM2K66DZU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MedicalStore/MedicalStore-Prefix.pch";
 				INFOPLIST_FILE = "MedicalStore/MedicalStore-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CCEABAC5-DB4E-4313-B5B8-FC4F74F58238";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CCEABAC5-DB4E-4313-B5B8-FC4F74F58238";
+				PROVISIONING_PROFILE = "62F08F4B-BE6C-4F11-BC36-04774E855A11";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "62F08F4B-BE6C-4F11-BC36-04774E855A11";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

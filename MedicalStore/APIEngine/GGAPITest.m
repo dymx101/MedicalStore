@@ -54,23 +54,23 @@ DEF_SINGLETON(GGAPITest)
     }];
 }
 
--(void)_TestaskChecking
-{
-    [GGSharedAPI getCheckCode:@"towne" Phone:13397186156 Mail:@"tangqii@163.com" callback:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-        long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
-        DLog(@">>>> %ld",flag);
-    }];
-}
-
--(void)_TestcheckCode
-{
-    [GGSharedAPI checkCode:@"QXDWUO" callback:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-        long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
-        DLog(@">>>> %ld",flag);
-    }];
-}
+//-(void)_TestaskChecking
+//{
+//    [GGSharedAPI getCheckCode:@"towne" Phone:13397186156 Mail:@"tangqii@163.com" callback:^(id operation, id aResultObject, NSError *anError) {
+//        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+//        long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+//        DLog(@">>>> %ld",flag);
+//    }];
+//}
+//
+//-(void)_TestcheckCode
+//{
+//    [GGSharedAPI checkCode:@"QXDWUO" callback:^(id operation, id aResultObject, NSError *anError) {
+//        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+//        long flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+//        DLog(@">>>> %ld",flag);
+//    }];
+//}
 
 -(void)_TestgetDep
 {
